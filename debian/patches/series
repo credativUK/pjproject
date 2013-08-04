@@ -1,3 +1,4 @@
 soname.patch
 milenage.patch
 pkgconfig_nodestdir.patch
+reduce_linkage.patch
