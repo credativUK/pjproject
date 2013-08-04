@@ -1,0 +1,6 @@
+# Embedded copies that are not used
+outdated-autotools-helper-file third_party/srtp/config.guess 2004-09-07
+outdated-autotools-helper-file third_party/srtp/config.sub 2004-08-29
+ancient-autotools-helper-file third_party/portaudio/config.guess 2003-02-22
+ancient-autotools-helper-file third_party/portaudio/config.sub 2003-02-22
+
