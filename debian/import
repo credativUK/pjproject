@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# A script to import the orig tarball while tripping non-distributable
+# bits
+
+exec git import-orig \
+	--filter=pjmedia/src/pjmedia-audiodev/s60_g729_bitstream.h \
+	--filter=third_party/g7221 \
+	--filter=third_party/ilbc \
+	--filter=third_party/milenage \
+	--filter=third_party/BaseClasses \
+	--pristine-tar \
+	--filter-pristine-tar \
+	"$@"
