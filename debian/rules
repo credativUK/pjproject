@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+export CFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CFLAGS)
+# export _CXXFLAGS includes $(_CFLAGS)
+#CXXFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CXXFLAGS)
+export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+ifneq (,$(wildcard third-party/ilbc/iLBC_decode.c))
+	# Sanity check for one of the third party libraries we need to
+	# remove from the source tree
+	@echo "iLBC was not removed. Exiting"; exit 1
+endif
+	dh_auto_configure -- --enable-shared \
+		--disable-g7221-codec --disable-ilbc-codec --disable-resample \
+		--with-external-gsm --with-external-speex --with-external-pa \
+		--with-external-srtp

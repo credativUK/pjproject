@@ -1,0 +1,4 @@
+FIXME:
+* APPS_APP_LDLIBS in build.mak has some extra libraries (LIBS from
+  autoconf) that add useless dependencies.
+* ossible-gpl-code-linked-with-openssl

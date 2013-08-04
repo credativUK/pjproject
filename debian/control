@@ -1,0 +1,111 @@
+Source: pjproject
+Section: comm
+Priority: optional
+Maintainer: Tzafrir Cohen <tzafrir@debian.org>
+Build-Depends: debhelper (>= 8),
+ libspeex-dev, libspeexdsp-dev,
+ portaudio19-dev,
+ libgsm1-dev,
+ libsrtp0-dev
+Standards-Version: 3.9.3
+Homepage: http://www.pjsip.org/
+Vcs-Git: git://anonscm.debian.org/pkg-voip/pjproject.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-voip/pjproject.git
+
+Package: libpjlib-util2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - helper utilities
+ Helper utilities for the PJ Project libraries.
+ .
+ Part of the PJ Project.
+
+Package: libpjmedia-audiodev2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - Audio devices
+ Audio devices handling library.
+ .
+ Part of the PJ Project.
+
+
+Package: libpjmedia-codec2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - Multimedia codecs handling
+ Multimedia codecs handling library.
+ .
+ Part of the PJ Project.
+
+Package: libpjmedia-videodev2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - video devices
+ Video devices handling library.
+ .
+ Part of the PJ Project.
+
+Package: libpjmedia2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - VoIP media
+ VoIP media handling library.
+ .
+ Part of the PJ Project.
+
+Package: libpjnath2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - nath
+ SIP handling library - nath (FIXME: what is it?)
+ .
+ Part of the PJ Project.
+
+Package: libpjsip-simple2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - SIP SIMPLE instant messaging
+ SIP SIMPLE Instant Messaging library.
+ .
+ Part of the PJ Project.
+
+Package: libpjsip-ua2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - SIP UA
+ SIP handling library - SIP UA handling
+ .
+ Part of the PJ Project.
+
+Package: libpjsip2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library
+ SIP handling library
+ .
+ Part of the PJ Project.
+
+Package: libpjsua2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library
+ UA basic libraries (?)
+ .
+ Part of the PJ Project.
+
+Package: libpj2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - PJProject core
+ PJ Project core libraries.
+ .
+ Part of the PJ Project.
+
+Package: libpjproject-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: SIP handling library - development headers
+ SIP handling library
+ .
+ This library includes the development headers.
