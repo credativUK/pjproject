@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 8),
  libspeex-dev, libspeexdsp-dev,
  portaudio19-dev,
  libgsm1-dev,
+ uuid-dev,
  libsrtp0-dev
 Standards-Version: 3.9.3
 Homepage: http://www.pjsip.org/
