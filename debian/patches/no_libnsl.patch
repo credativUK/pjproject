@@ -1,0 +1,67 @@
+All libraries and applications were being linked against libnsl,
+but it was not being used anywhere.
+
+--- a/aconfigure
++++ b/aconfigure
+@@ -4085,51 +4085,6 @@ _ACEOF
+ 
+ fi
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for puts in -lnsl" >&5
+-$as_echo_n "checking for puts in -lnsl... " >&6; }
+-if test "${ac_cv_lib_nsl_puts+set}" = set; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lnsl  $LIBS"
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char puts ();
+-int
+-main ()
+-{
+-return puts ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_nsl_puts=yes
+-else
+-  ac_cv_lib_nsl_puts=no
+-fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext conftest.$ac_ext
+-LIBS=$ac_check_lib_save_LIBS
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_nsl_puts" >&5
+-$as_echo "$ac_cv_lib_nsl_puts" >&6; }
+-if test "x$ac_cv_lib_nsl_puts" = x""yes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_LIBNSL 1
+-_ACEOF
+-
+-  LIBS="-lnsl $LIBS"
+-
+-fi
+-
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for sin in -lm" >&5
+ $as_echo_n "checking for sin in -lm... " >&6; }
+ if test "${ac_cv_lib_m_sin+set}" = set; then :
+--- a/aconfigure.ac
++++ b/aconfigure.ac
+@@ -113,7 +113,6 @@ AC_CHECK_LIB(ole32,puts)
+ AC_CHECK_LIB(winmm,puts)
+ AC_CHECK_LIB(socket,puts)
+ AC_CHECK_LIB(rt,puts)
+-AC_CHECK_LIB(nsl,puts)
+ AC_CHECK_LIB(m,sin)
+ AC_CHECK_LIB(uuid,uuid_generate)
+ AC_CHECK_LIB(uuid,uuid_generate,[ac_has_uuid_lib=1])

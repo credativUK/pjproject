@@ -1,4 +1,7 @@
 soname.patch
 milenage.patch
 pkgconfig_nodestdir.patch
-reduce_linkage.patch
+no_libasound.patch
+no_libnsl.patch
+reduce_pjlib_linkage.patch
+reduce_pjmedia_linkage.patch
