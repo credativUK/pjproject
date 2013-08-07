@@ -1,5 +1,5 @@
-pjproject (2.1.0~ast20130801-1) UNRELEASED; urgency=low
+pjproject (2.1.0~ast20130801-1) unstable; urgency=low
 
   * Initial release. (Closes: #708122)
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Sun, 07 Apr 2013 22:41:37 +0300
+ -- Tzafrir Cohen <tzafrir@debian.org>  Wed, 07 Aug 2013 22:20:07 +0300
