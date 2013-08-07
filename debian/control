@@ -7,7 +7,8 @@ Build-Depends: debhelper (>= 8),
  portaudio19-dev,
  libgsm1-dev,
  uuid-dev,
- libsrtp0-dev
+ libsrtp0-dev,
+ libssl-dev
 Standards-Version: 3.9.3
 Homepage: http://www.pjsip.org/
 Vcs-Git: git://anonscm.debian.org/pkg-voip/pjproject.git
