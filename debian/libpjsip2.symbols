@@ -1,8 +1,6 @@
 libpjsip.so.2 libpjsip2 #MINVER#
  PJSIP_SYN_ERR_EXCEPTION@Base 2.1.0~ast20130801
- create_incoming_packet@Base 2.1.0~ast20130801
  deinit_sip_parser@Base 2.1.0~ast20130801
- get_tpname@Base 2.1.0~ast20130801
  init_sip_parser@Base 2.1.0~ast20130801
  mod_stateful_util@Base 2.1.0~ast20130801
  pjsip_ALGORITHM_STR@Base 2.1.0~ast20130801
@@ -368,4 +366,3 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_warning_hdr_create@Base 2.1.0~ast20130801
  pjsip_warning_hdr_create_from_status@Base 2.1.0~ast20130801
  pjsip_www_authenticate_hdr_create@Base 2.1.0~ast20130801
- transport_names@Base 2.1.0~ast20130801

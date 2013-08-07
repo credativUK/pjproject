@@ -2,7 +2,6 @@ libpjsua.so.2 libpjsua2 #MINVER#
  acquire_call@Base 2.1.0~ast20130801
  call_media_on_event@Base 2.1.0~ast20130801
  good_number@Base 2.1.0~ast20130801
- lock_buddy@Base 2.1.0~ast20130801
  normalize_route_uri@Base 2.1.0~ast20130801
  on_dlg_forked@Base 2.1.0~ast20130801
  pjsip_info_method@Base 2.1.0~ast20130801
@@ -205,4 +204,3 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_verify_url@Base 2.1.0~ast20130801
  print_call@Base 2.1.0~ast20130801
  resolve_stun_server@Base 2.1.0~ast20130801
- update_service_route@Base 2.1.0~ast20130801

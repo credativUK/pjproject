@@ -1,6 +1,4 @@
 libpjlib-util.so.2 libpjlib-util2 #MINVER#
- __getopt_initialized@Base 2.1.0~ast20130801
- base64_char@Base 2.1.0~ast20130801
  pj_base64_decode@Base 2.1.0~ast20130801
  pj_base64_encode@Base 2.1.0~ast20130801
  pj_cis_add_alpha@Base 2.1.0~ast20130801
@@ -127,4 +125,3 @@ libpjlib-util.so.2 libpjlib-util2 #MINVER#
  pjstun_get_mapped_addr@Base 2.1.0~ast20130801
  pjstun_msg_find_attr@Base 2.1.0~ast20130801
  pjstun_parse_msg@Base 2.1.0~ast20130801
- str_snprintf@Base 2.1.0~ast20130801

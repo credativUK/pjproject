@@ -357,4 +357,3 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  speex_aec_create@Base 2.1.0~ast20130801
  speex_aec_destroy@Base 2.1.0~ast20130801
  speex_aec_reset@Base 2.1.0~ast20130801
- state_names@Base 2.1.0~ast20130801

@@ -1,11 +1,4 @@
 libpjsip-simple.so.2 libpjsip-simple2 #MINVER#
- STR_APPLICATION@Base 2.1.0~ast20130801
- STR_APP_PIDF_XML@Base 2.1.0~ast20130801
- STR_APP_XPIDF_XML@Base 2.1.0~ast20130801
- STR_EVENT@Base 2.1.0~ast20130801
- STR_PIDF_XML@Base 2.1.0~ast20130801
- STR_PRESENCE@Base 2.1.0~ast20130801
- STR_XPIDF_XML@Base 2.1.0~ast20130801
  pjpidf_create@Base 2.1.0~ast20130801
  pjpidf_op@Base 2.1.0~ast20130801
  pjpidf_parse@Base 2.1.0~ast20130801

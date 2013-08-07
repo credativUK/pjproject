@@ -1,5 +1,4 @@
 libpjnath.so.2 libpjnath2 #MINVER#
- find_str@Base 2.1.0~ast20130801
  pj_ice_calc_foundation@Base 2.1.0~ast20130801
  pj_ice_get_cand_type_name@Base 2.1.0~ast20130801
  pj_ice_sess_add_cand@Base 2.1.0~ast20130801

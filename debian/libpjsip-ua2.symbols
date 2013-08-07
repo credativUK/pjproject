@@ -1,12 +1,4 @@
 libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
- RACK@Base 2.1.0~ast20130801
- RSEQ@Base 2.1.0~ast20130801
- STR_MESSAGE@Base 2.1.0~ast20130801
- STR_REFER@Base 2.1.0~ast20130801
- STR_SIPFRAG@Base 2.1.0~ast20130801
- STR_SIPFRAG_VERSION@Base 2.1.0~ast20130801
- inv_set_cause@Base 2.1.0~ast20130801
- inv_set_state@Base 2.1.0~ast20130801
  pjsip_100rel_attach@Base 2.1.0~ast20130801
  pjsip_100rel_create_prack@Base 2.1.0~ast20130801
  pjsip_100rel_end_session@Base 2.1.0~ast20130801
@@ -84,4 +76,3 @@ libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
  pjsip_xfer_initiate@Base 2.1.0~ast20130801
  pjsip_xfer_notify@Base 2.1.0~ast20130801
  pjsip_xfer_send_request@Base 2.1.0~ast20130801
- tag_100rel@Base 2.1.0~ast20130801

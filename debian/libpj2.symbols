@@ -438,4 +438,3 @@ libpj.so.2 libpj2 #MINVER#
  pj_utoa_pad@Base 2.1.0~ast20130801
  pjlib_ctype_c_dummy_symbol@Base 2.1.0~ast20130801
  platform_strerror@Base 2.1.0~ast20130801
- stack_based_factory@Base 2.1.0~ast20130801

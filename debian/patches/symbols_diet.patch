@@ -1,0 +1,219 @@
+Description: Symbols that should not be exported
+Author: Tzafrir Cohen <tzafrir.cohen@xorcom.com>
+
+--- a/pjlib-util/src/pjlib-util/getopt.c
++++ b/pjlib-util/src/pjlib-util/getopt.c
+@@ -111,7 +111,7 @@ int pj_optind = 1;
+    causes problems with re-calling pj_getopt as programs generally don't
+    know that. */
+ 
+-int __getopt_initialized = 0;
++static int __getopt_initialized = 0;
+ 
+ /* The next char to be scanned in the option-element
+    in which the last option character we returned was found.
+--- a/pjlib/src/pj/pool_buf.c
++++ b/pjlib/src/pj/pool_buf.c
+@@ -21,7 +21,7 @@
+ #include <pj/assert.h>
+ #include <pj/os.h>
+ 
+-struct pj_pool_factory stack_based_factory;
++static struct pj_pool_factory stack_based_factory;
+ 
+ struct creation_param
+ {
+--- a/pjlib-util/src/pjlib-util/base64.c
++++ b/pjlib-util/src/pjlib-util/base64.c
+@@ -24,7 +24,7 @@
+ #define INV	    -1
+ #define PADDING	    '='
+ 
+-const char base64_char[] = {
++static const char base64_char[] = {
+     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+     'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+     'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
+--- a/pjlib-util/src/pjlib-util/http_client.c
++++ b/pjlib-util/src/pjlib-util/http_client.c
+@@ -1491,7 +1491,7 @@ on_error:
+ /* snprintf() to a pj_str_t struct with an option to append the 
+  * result at the back of the string.
+  */
+-void str_snprintf(pj_str_t *s, size_t size, 
++static void str_snprintf(pj_str_t *s, size_t size, 
+                   pj_bool_t append, const char *format, ...)
+ {
+     va_list arg;
+--- a/pjmedia/src/pjmedia/echo_suppress.c
++++ b/pjmedia/src/pjmedia/echo_suppress.c
+@@ -125,7 +125,7 @@ typedef enum talk_state
+     ST_REM_TALK
+ } talk_state_t;
+ 
+-const char *state_names[] = 
++static const char *state_names[] = 
+ {
+     "Null",
+     "local talking",
+--- a/pjmedia/src/pjmedia-codec/g722/g722_dec.c
++++ b/pjmedia/src/pjmedia-codec/g722/g722_dec.c
+@@ -450,7 +450,7 @@ static int block5h (int dh, int sh)
+     return (rh) ;
+ }
+ 
+-void rx_qmf(g722_dec_t *dec, int rl, int rh, int *xout1, int *xout2)
++static void rx_qmf(g722_dec_t *dec, int rl, int rh, int *xout1, int *xout2)
+ {
+     int i;
+ 
+--- a/pjmedia/src/pjmedia-codec/speex_codec.c
++++ b/pjmedia/src/pjmedia-codec/speex_codec.c
+@@ -725,7 +725,7 @@ static pj_status_t  spx_codec_modify(pjm
+ /* This function will iterate frames & submodes in the Speex bits.
+  * Returns 0 if a frame found, otherwise returns -1.
+  */
+-int speex_get_next_frame(SpeexBits *bits)
++static int speex_get_next_frame(SpeexBits *bits)
+ {
+     static const int inband_skip_table[NB_SUBMODES] =
+        {1, 1, 4, 4, 4, 4, 4, 4, 8, 8, 16, 16, 32, 32, 64, 64 };
+--- a/pjnath/src/pjnath/ice_session.c
++++ b/pjnath/src/pjnath/ice_session.c
+@@ -1989,7 +1989,7 @@ static void periodic_timer(pj_timer_heap
+ 
+ 
+ /* Utility: find string in string array */
+-const pj_str_t *find_str(const pj_str_t *strlist[], unsigned count,
++static const pj_str_t *find_str(const pj_str_t *strlist[], unsigned count,
+ 			 const pj_str_t *str)
+ {
+     unsigned i;
+--- a/pjsip/src/pjsip/sip_transport_loop.c
++++ b/pjsip/src/pjsip/sip_transport_loop.c
+@@ -67,7 +67,7 @@ struct loop_transport
+ 
+ 
+ /* Helper function to create "incoming" packet */
+-struct recv_list *create_incoming_packet( struct loop_transport *loop,
++static struct recv_list *create_incoming_packet( struct loop_transport *loop,
+ 					  pjsip_tx_data *tdata )
+ {
+     pj_pool_t *pool;
+--- a/pjsip/src/pjsip/sip_transport.c
++++ b/pjsip/src/pjsip/sip_transport.c
+@@ -125,7 +125,7 @@ typedef struct transport_data
+ /*
+  * Transport names.
+  */
+-struct transport_names_t
++static struct transport_names_t
+ {
+     pjsip_transport_type_e type;	    /* Transport type	    */
+     pj_uint16_t		   port;	    /* Default port number  */
+@@ -212,7 +212,7 @@ static void tp_state_callback(pjsip_tran
+ 			      const pjsip_transport_state_info *info);
+ 
+ 
+-struct transport_names_t *get_tpname(pjsip_transport_type_e type)
++static struct transport_names_t *get_tpname(pjsip_transport_type_e type)
+ {
+     unsigned i;
+     for (i=0; i<PJ_ARRAY_SIZE(transport_names); ++i) {
+--- a/pjsip/src/pjsip-simple/presence.c
++++ b/pjsip/src/pjsip-simple/presence.c
+@@ -130,13 +130,13 @@ static pjsip_evsub_user pres_user =
+ /*
+  * Some static constants.
+  */
+-const pj_str_t STR_EVENT	    = { "Event", 5 };
+-const pj_str_t STR_PRESENCE	    = { "presence", 8 };
+-const pj_str_t STR_APPLICATION	    = { "application", 11 };
+-const pj_str_t STR_PIDF_XML	    = { "pidf+xml", 8};
+-const pj_str_t STR_XPIDF_XML	    = { "xpidf+xml", 9};
+-const pj_str_t STR_APP_PIDF_XML	    = { "application/pidf+xml", 20 };
+-const pj_str_t STR_APP_XPIDF_XML    = { "application/xpidf+xml", 21 };
++static const pj_str_t STR_EVENT	    = { "Event", 5 };
++static const pj_str_t STR_PRESENCE	    = { "presence", 8 };
++static const pj_str_t STR_APPLICATION	    = { "application", 11 };
++static const pj_str_t STR_PIDF_XML	    = { "pidf+xml", 8};
++static const pj_str_t STR_XPIDF_XML	    = { "xpidf+xml", 9};
++static const pj_str_t STR_APP_PIDF_XML	    = { "application/pidf+xml", 20 };
++static const pj_str_t STR_APP_XPIDF_XML    = { "application/xpidf+xml", 21 };
+ 
+ 
+ /*
+--- a/pjsip/src/pjsip-ua/sip_100rel.c
++++ b/pjsip/src/pjsip-ua/sip_100rel.c
+@@ -50,9 +50,9 @@ static void on_retransmit(pj_timer_heap_
+ 			  struct pj_timer_entry *entry);
+ 
+ 
+-const pj_str_t tag_100rel = { "100rel", 6 };
+-const pj_str_t RSEQ = { "RSeq", 4 };
+-const pj_str_t RACK = { "RAck", 4 };
++static const pj_str_t tag_100rel = { "100rel", 6 };
++static const pj_str_t RSEQ = { "RSeq", 4 };
++static const pj_str_t RACK = { "RAck", 4 };
+ 
+ 
+ /* 100rel module */
+--- a/pjsip/src/pjsip-ua/sip_inv.c
++++ b/pjsip/src/pjsip-ua/sip_inv.c
+@@ -192,7 +192,7 @@ static pj_status_t mod_inv_unload(void)
+ /*
+  * Set session state.
+  */
+-void inv_set_state(pjsip_inv_session *inv, pjsip_inv_state state,
++static void inv_set_state(pjsip_inv_session *inv, pjsip_inv_state state,
+ 		   pjsip_event *e)
+ {
+     pjsip_inv_state prev_state = inv->state;
+@@ -279,7 +279,7 @@ void inv_set_state(pjsip_inv_session *in
+ /*
+  * Set cause code.
+  */
+-void inv_set_cause(pjsip_inv_session *inv, int cause_code,
++static void inv_set_cause(pjsip_inv_session *inv, int cause_code,
+ 		   const pj_str_t *cause_text)
+ {
+     if (cause_code > inv->cause) {
+--- a/pjsip/src/pjsip-ua/sip_xfer.c
++++ b/pjsip/src/pjsip-ua/sip_xfer.c
+@@ -76,10 +76,10 @@ PJ_DEF(const pjsip_method*) pjsip_get_re
+ /*
+  * String constants
+  */
+-const pj_str_t STR_REFER = { "refer", 5 };
+-const pj_str_t STR_MESSAGE = { "message", 7 };
+-const pj_str_t STR_SIPFRAG = { "sipfrag", 7 };
+-const pj_str_t STR_SIPFRAG_VERSION = {";version=2.0", 12 };
++static const pj_str_t STR_REFER = { "refer", 5 };
++static const pj_str_t STR_MESSAGE = { "message", 7 };
++static const pj_str_t STR_SIPFRAG = { "sipfrag", 7 };
++static const pj_str_t STR_SIPFRAG_VERSION = {";version=2.0", 12 };
+ 
+ 
+ /*
+--- a/pjsip/src/pjsua-lib/pjsua_acc.c
++++ b/pjsip/src/pjsua-lib/pjsua_acc.c
+@@ -1662,7 +1662,7 @@ static pj_bool_t acc_check_nat_addr(pjsu
+ }
+ 
+ /* Check and update Service-Route header */
+-void update_service_route(pjsua_acc *acc, pjsip_rx_data *rdata)
++static void update_service_route(pjsua_acc *acc, pjsip_rx_data *rdata)
+ {
+     pjsip_generic_string_hdr *hsr = NULL;
+     pjsip_route_hdr *hr, *h;
+--- a/pjsip/src/pjsua-lib/pjsua_pres.c
++++ b/pjsip/src/pjsua-lib/pjsua_pres.c
+@@ -74,7 +74,7 @@ struct buddy_lock
+ };
+ 
+ /* Acquire lock to the specified buddy_id */
+-pj_status_t lock_buddy(const char *title,
++static pj_status_t lock_buddy(const char *title,
+ 		       pjsua_buddy_id buddy_id,
+ 		       struct buddy_lock *lck,
+ 		       unsigned _unused_)
