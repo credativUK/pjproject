@@ -3,6 +3,7 @@ Section: comm
 Priority: optional
 Maintainer: Tzafrir Cohen <tzafrir@debian.org>
 Build-Depends: debhelper (>= 8),
+ autotools-dev,
  libspeex-dev, libspeexdsp-dev,
  portaudio19-dev,
  libgsm1-dev,

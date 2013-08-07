@@ -6,7 +6,11 @@ export CFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CFL
 export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 %:
-	dh $@
+	dh $@ --with autotools_dev
+
+# In case it would be needed:
+#override_dh_autoreconf:
+#	dh_autoreconf autoconf aconfigure.ac >aconfigure
 
 override_dh_auto_configure:
 ifneq (,$(wildcard third-party/ilbc/iLBC_decode.c))
