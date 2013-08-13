@@ -42,15 +42,32 @@ Files:
  pjlib-util/src/pjlib-util/sha1.c
 License: public-domain
 
-Files: pjlib-util/src/pjlib-util/getopt.c
+Files:
+ pjlib-util/src/pjlib-util/getopt.c
 Copyright:
  1987,88,89,90,91,92,93,94,96,97 Free Software Foundation, Inc
  [modified later by] Mike Borella <mike_borella@mw.3com.com>
 License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ On Debian systems you should find a copy of LGPL v. 2 on
+ /usr/share/common-licenses/LGPL-2 .
 Comment:
  pjlib-util/include/pjlib-util/getopt.h has the same license boilerplate,
  only it has a comment "this file has now become GPL" on top (comment
  removed by Upstream).
+
+Files: pjlib/src/pj/compat/longjmp_i386.S pjlib/src/pj/compat/setjmp_i386.S
+Copyright: 1995-2001 Free Software Foundation, Inc.
+License: LGPL-2.1+
 
 Files: pjmedia/src/pjmedia/alaw_ulaw.c
 Copyright: Sun Microsystems, Inc.
@@ -77,17 +94,17 @@ License: Old-Sun-License
 
 Files: third_party/mp3/BladeMP3EncDLL.h
 Copyright: 1999-2002 A.L. Faber
-License: LGPL-2+
+License: LGPL-2.1+
 
 Files: third_party/resample/*
 Copyright: 1994-2006 by Julius O. Smith III <jos@ccrma.stanford.edu>
-License: LGPL-2
+License: LGPL-2.1
  The resample program is free software distributed in accordance
  with the Lesser GNU Public License (LGPL).  There is NO warranty; not
  even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  .
- On Debian systems you should find a copy of LGPL v. 2 on
- /usr/share/common-licenses/LGPL-2 .
+ On Debian systems you should find a copy of LGPL v. 2.1 on
+ /usr/share/common-licenses/LGPL-2.1 .
 Comment:
  * This software is not the copy of the library used in the Debian package.
  * Homepage of the software: https://ccrma.stanford.edu/~jos/resample/
@@ -141,35 +158,50 @@ Comment:
 
 Files: third_party/speex/*
 Copyright: 2002-2008 Jean-Marc Valin
-License: BSD-3-clause
+License: BSD-3-clause-Xiph
+Comment:
+ This software is not the copy of the library used in the Debian package.
+
+Files: third_party/speex/libspeex/*_bfin*
+Copyright: 2005 Analog Devices
+License: BSD-3-clause-Xiph
+
+Files: third_party/speex/symbian/config.h
+Copyright: 2003 Commonwealth Scientific and Industrial Research
+License: BSD-3-clause-CSIRO
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
- .
+
  - Redistributions of source code must retain the above copyright
  notice, this list of conditions and the following disclaimer.
- .
+
  - Redistributions in binary form must reproduce the above copyright
  notice, this list of conditions and the following disclaimer in the
  documentation and/or other materials provided with the distribution.
- .
- - Neither the name of the Xiph.org Foundation nor the names of its
+
+ - Neither the name of CSIRO Australia nor the names of its
  contributors may be used to endorse or promote products derived from
  this software without specific prior written permission.
- .
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Comment:
- This software is not the copy of the library used in the Debian package.
+
+Files: third_party/speex/libspeex/lsp_bfin.h
+ third_party/speex/libspeex/quant_lsp_bfin.h
+Copyright: 2006 David Rowe
+License: BSD-3-clause-Xiph
+
+Files: third_party/speex/libspeex/kiss_fft.c
+ third_party/speex/libspeex/kiss_fftr.c
+ third_party/speex/libspeex/_kiss_fft_guts.h
+Copyright: 2003-2004, Mark Borgerding
+License: BSD-3-clause-Xiph
+
+Files: third_party/speex/libspeex/preprocess.c
+Copyright: 2004-2006 Epic Games
+License: BSD-3-clause-Xiph
+
+Files: third_party/speex/libspeex/resample.c
+Copyright: 2008 Thorvald Natvig
+License: BSD-3-clause-Xiph
 
 Files: third_party/portaudio/*
 Copyright: 1999-2008 Ross Bencina and Phil Burk
@@ -223,7 +255,7 @@ License: GPL-2+
  On Debian systems you should find a copy of GPL v. 2 on
  /usr/share/common-licenses/GPL-2 .
 
-License: LGPL-2+
+License: LGPL-2.1+
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
  License as published by the Free Software Foundation; either
@@ -235,7 +267,7 @@ License: LGPL-2+
  Lesser General Public License for more details.
  .
  On Debian systems you should find a copy of LGPL v. 2 on
- /usr/share/common-licenses/LGPL-2 .
+ /usr/share/common-licenses/LGPL-2.1 .
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining
@@ -256,4 +288,32 @@ License: Expat
  ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: BSD-3-clause-Xiph
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ - Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ - Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ - Neither the name of the Xiph.org Foundation nor the names of its
+ contributors may be used to endorse or promote products derived from
+ this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
