@@ -344,27 +344,27 @@ libpj.so.2 libpj2 #MINVER#
  pj_sockaddr_set_str_addr@Base 2.1.0~ast20130801
  pj_srand@Base 2.1.0~ast20130801
  pj_ssl_cert_get_verify_status_strings@Base 2.1.0~ast20130801
- pj_ssl_cert_info_dump@Base 2.1.0~ast20130801-1
- pj_ssl_cert_load_from_files@Base 2.1.0~ast20130801-1
- pj_ssl_cipher_get_availables@Base 2.1.0~ast20130801-1
- pj_ssl_cipher_is_supported@Base 2.1.0~ast20130801-1
- pj_ssl_cipher_name@Base 2.1.0~ast20130801-1
- pj_ssl_sock_close@Base 2.1.0~ast20130801-1
- pj_ssl_sock_create@Base 2.1.0~ast20130801-1
- pj_ssl_sock_get_info@Base 2.1.0~ast20130801-1
- pj_ssl_sock_get_user_data@Base 2.1.0~ast20130801-1
+ pj_ssl_cert_info_dump@Base 2.1.0~ast20130801
+ pj_ssl_cert_load_from_files@Base 2.1.0~ast20130801
+ pj_ssl_cipher_get_availables@Base 2.1.0~ast20130801
+ pj_ssl_cipher_is_supported@Base 2.1.0~ast20130801
+ pj_ssl_cipher_name@Base 2.1.0~ast20130801
+ pj_ssl_sock_close@Base 2.1.0~ast20130801
+ pj_ssl_sock_create@Base 2.1.0~ast20130801
+ pj_ssl_sock_get_info@Base 2.1.0~ast20130801
+ pj_ssl_sock_get_user_data@Base 2.1.0~ast20130801
  pj_ssl_sock_param_default@Base 2.1.0~ast20130801
- pj_ssl_sock_renegotiate@Base 2.1.0~ast20130801-1
- pj_ssl_sock_send@Base 2.1.0~ast20130801-1
- pj_ssl_sock_sendto@Base 2.1.0~ast20130801-1
- pj_ssl_sock_set_certificate@Base 2.1.0~ast20130801-1
- pj_ssl_sock_set_user_data@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_accept@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_connect@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_read2@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_read@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_recvfrom2@Base 2.1.0~ast20130801-1
- pj_ssl_sock_start_recvfrom@Base 2.1.0~ast20130801-1
+ pj_ssl_sock_renegotiate@Base 2.1.0~ast20130801
+ pj_ssl_sock_send@Base 2.1.0~ast20130801
+ pj_ssl_sock_sendto@Base 2.1.0~ast20130801
+ pj_ssl_sock_set_certificate@Base 2.1.0~ast20130801
+ pj_ssl_sock_set_user_data@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_accept@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_connect@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_read2@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_read@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_recvfrom2@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_recvfrom@Base 2.1.0~ast20130801
  pj_str@Base 2.1.0~ast20130801
  pj_strassign@Base 2.1.0~ast20130801
  pj_strcat2@Base 2.1.0~ast20130801

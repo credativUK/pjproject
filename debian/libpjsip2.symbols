@@ -279,8 +279,8 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_tel_nb_cmp@Base 2.1.0~ast20130801
  pjsip_tel_uri_create@Base 2.1.0~ast20130801
  pjsip_tel_uri_subsys_init@Base 2.1.0~ast20130801
- pjsip_tls_transport_start2@Base 2.1.0~ast20130801-1
- pjsip_tls_transport_start@Base 2.1.0~ast20130801-1
+ pjsip_tls_transport_start2@Base 2.1.0~ast20130801
+ pjsip_tls_transport_start@Base 2.1.0~ast20130801
  pjsip_to_hdr_create@Base 2.1.0~ast20130801
  pjsip_to_hdr_init@Base 2.1.0~ast20130801
  pjsip_tpmgr_acquire_transport2@Base 2.1.0~ast20130801
