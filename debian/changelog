@@ -1,8 +1,14 @@
-pjproject (2.1.0~ast20130801-2) UNRELEASED; urgency=low
+pjproject (2.1.0.0.ast20130823-1) UNRELEASED; urgency=low
 
+  [ Jeremy Lainé ]
   * Fix dh_auto_clean on an unconfigured source tree (Closes: #722013).
   * Fix syntax error in machine-readable debian/copyright.
   * Update Standards-Version to 3.9.4 (no changes).
+
+  [ Tzafrir Cohen ]
+  * Further copyright fixes.
+  * New upstream git snapshot:
+    pkgconfig_nodestdir.patch, soname.patch dropped: merged upstream.
 
  -- Jeremy Lainé <jeremy.laine@m4x.org>  Thu, 12 Sep 2013 12:47:33 +0200
 

@@ -1,6 +1,4 @@
-soname.patch
 milenage.patch
-pkgconfig_nodestdir.patch
 no_libasound.patch
 no_libnsl.patch
 reduce_pjlib_linkage.patch
