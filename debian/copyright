@@ -40,7 +40,24 @@ Comment:
 Files:
  pjlib-util/src/pjlib-util/md5.c pjlib-util/src/pjlib-util/crc32.c
  pjlib-util/src/pjlib-util/sha1.c
+Copyright: -
 License: public-domain
+ sha1.c:
+ * This is the implementation of SHA-1 encryption algorithm based on
+ * Steve Reid work. Modified to work with PJLIB.
+ .
+ md5.c:
+ * This code implements the MD5 message-digest algorithm.
+ * The algorithm is due to Ron Rivest.  This code was
+ * written by Colin Plumb in 1993, no copyright is claimed.
+ * This code is in the public domain; do with it what you wish.
+ .
+ crc32.c:
+ * This file is partly taken from Crypto++ library (http://www.cryptopp.com)
+ * and http://www.di-mgt.com.au/crypto.html#CRC.
+ *
+ * Since the original version of the code is put in public domain,
+ * this file is put on public domain as well.
 
 Files:
  pjlib-util/src/pjlib-util/getopt.c
