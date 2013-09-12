@@ -2,6 +2,7 @@ Source: pjproject
 Section: comm
 Priority: optional
 Maintainer: Tzafrir Cohen <tzafrir@debian.org>
+Uploaders: Jeremy Lainé <jeremy.laine@m4x.org>
 Build-Depends: debhelper (>= 8),
  autotools-dev,
  dh-autoreconf,
