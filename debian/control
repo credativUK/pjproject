@@ -12,7 +12,7 @@ Build-Depends: debhelper (>= 8),
  uuid-dev,
  libsrtp0-dev,
  libssl-dev
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Homepage: http://www.pjsip.org/
 Vcs-Git: git://anonscm.debian.org/pkg-voip/pjproject.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-voip/pjproject.git
