@@ -5,3 +5,4 @@ reduce_pjlib_linkage.patch
 reduce_pjmedia_linkage.patch
 typos.patch
 symbols_diet.patch
+fix_gcc_warn.patch
