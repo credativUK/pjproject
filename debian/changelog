@@ -9,6 +9,7 @@ pjproject (2.1.0.0.ast20130823-1) UNRELEASED; urgency=low
   * Further copyright fixes.
   * New upstream git snapshot:
     pkgconfig_nodestdir.patch, soname.patch dropped: merged upstream.
+  * fix_gcc_warn.patch: remove some build warnings.
 
  -- Jeremy Lainé <jeremy.laine@m4x.org>  Thu, 12 Sep 2013 12:47:33 +0200
 
