@@ -1,4 +1,4 @@
-pjproject (2.1.0.0.ast20130823-1) UNRELEASED; urgency=low
+pjproject (2.1.0.0.ast20130823-1) unstable; urgency=low
 
   [ Jeremy Lainé ]
   * Fix dh_auto_clean on an unconfigured source tree (Closes: #722013).
@@ -11,7 +11,7 @@ pjproject (2.1.0.0.ast20130823-1) UNRELEASED; urgency=low
     pkgconfig_nodestdir.patch, soname.patch dropped: merged upstream.
   * fix_gcc_warn.patch: remove some build warnings.
 
- -- Jeremy Lainé <jeremy.laine@m4x.org>  Thu, 12 Sep 2013 12:47:33 +0200
+ -- Tzafrir Cohen <tzafrir@debian.org>  Thu, 12 Sep 2013 16:53:51 +0300
 
 pjproject (2.1.0~ast20130801-1) unstable; urgency=low
 
