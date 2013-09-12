@@ -12,6 +12,10 @@ export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 #override_dh_autoreconf:
 #	dh_autoreconf autoconf aconfigure.ac >aconfigure
 
+override_dh_auto_clean:
+	# Handle the case where the source tree is not configured.
+	if test -f build.mak; then make distclean; fi
+
 override_dh_auto_configure:
 ifneq (,$(wildcard third-party/ilbc/iLBC_decode.c))
 	# Sanity check for one of the third party libraries we need to

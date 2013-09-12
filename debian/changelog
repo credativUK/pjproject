@@ -1,3 +1,9 @@
+pjproject (2.1.0~ast20130801-2) UNRELEASED; urgency=low
+
+  * Fix dh_auto_clean on an unconfigured source tree (Closes: #722013).
+
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Thu, 12 Sep 2013 12:47:33 +0200
+
 pjproject (2.1.0~ast20130801-1) unstable; urgency=low
 
   * Initial release. (Closes: #708122)
