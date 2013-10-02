@@ -1,3 +1,10 @@
+pjproject (2.1.0.0.ast20130823-2) UNRELEASED; urgency=low
+
+  * -dev package: depend explicitly on libsrtp0-dev due to -lsrtp in
+    the pkg-config file.
+
+ -- Tzafrir Cohen <tzafrir@debian.org>  Wed, 02 Oct 2013 19:51:32 +0300
+
 pjproject (2.1.0.0.ast20130823-1) unstable; urgency=low
 
   [ Jeremy Lainé ]
