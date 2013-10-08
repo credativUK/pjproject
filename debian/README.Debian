@@ -1,0 +1,13 @@
+Source
+======
+PJProject / PJSip can be found at http://pjsip.org/
+
+This package is currently based on a fork of PJProject that is
+maintained by the developers of Asterisk. It adds support for
+dynamic linking, which is required to use this library as a separate
+package within Debian:
+
+  https://github.com/asterisk/pjproject
+
+The support for building PJProject as dynamic libraries has been
+coordinated with Upstream and should be merged Real Soon Now[tm].
