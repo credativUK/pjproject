@@ -1,4 +1,4 @@
-/* $Id: regc_test.c 4094 2012-04-26 09:31:00Z bennylp $ */
+/* $Id: regc_test.c 4420 2013-03-05 11:59:54Z bennylp $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -347,7 +347,10 @@ static int do_test(const char *title,
 		  client_cfg->error, client_result.error));
 	return -210;
     }
-    if (client_result.code != client_cfg->code) {
+    if (client_result.code != client_cfg->code &&
+	client_cfg->code != 502 && client_cfg->code != 503 &&
+	client_result.code != 502 && client_result.code != 503)
+    {
 	PJ_LOG(3,(THIS_FILE, "    error: expecting code=%d, got code=%d",
 		  client_cfg->code, client_result.code));
 	return -220;

@@ -1,4 +1,4 @@
-/* $Id: pjsua_call.c 4411 2013-03-04 04:34:38Z nanang $ */
+/* $Id: pjsua_call.c 4561 2013-07-15 01:29:03Z ming $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -386,7 +386,7 @@ on_make_call_med_tp_complete(pjsua_call_id call_id,
 
     if (status != PJ_SUCCESS) {
 	pj_str_t err_str;
-	int title_len;
+	pj_ssize_t title_len;
 
 	call->last_code = PJSIP_SC_TEMPORARILY_UNAVAILABLE;
 	pj_strcpy2(&call->last_text, "Media init error: ");
@@ -530,8 +530,8 @@ on_error:
     }
 
     if (call_id != -1) {
-	reset_call(call_id);
 	pjsua_media_channel_deinit(call_id);
+	reset_call(call_id);
     }
 
     call->med_ch_cb = NULL;
@@ -659,6 +659,9 @@ PJ_DEF(pj_status_t) pjsua_call_make_call(pjsua_acc_id acc_id,
 	goto on_error;
     }
 
+    /* Clear call descriptor */
+    reset_call(call_id);
+
     call = &pjsua_var.calls[call_id];
 
     /* Associate session with account */
@@ -719,7 +722,10 @@ PJ_DEF(pj_status_t) pjsua_call_make_call(pjsua_acc_id acc_id,
     /* Create outgoing dialog: */
     status = pjsip_dlg_create_uac( pjsip_ua_instance(), 
 				   &acc->cfg.id, &contact,
-				   dest_uri, dest_uri, &dlg);
+				   dest_uri,
+                                   (msg_data && msg_data->target_uri.slen?
+                                    &msg_data->target_uri: dest_uri),
+                                   &dlg);
     if (status != PJ_SUCCESS) {
 	pjsua_perror(THIS_FILE, "Dialog creation failed", status);
 	goto on_error;
@@ -790,9 +796,11 @@ on_error:
     }
 
     if (call_id != -1) {
-	reset_call(call_id);
 	pjsua_media_channel_deinit(call_id);
+	reset_call(call_id);
     }
+
+    pjsua_check_snd_dev_idle();
 
     if (tmp_pool)
 	pj_pool_release(tmp_pool);
@@ -1369,7 +1377,8 @@ pj_bool_t pjsua_call_on_incoming(pjsip_rx_data *rdata)
 		 */
 		pjsip_dlg_respond(dlg, rdata, sip_err_code, NULL, NULL, NULL);
 		pjsip_inv_terminate(call->inv, sip_err_code, PJ_FALSE); 
-		call->inv = NULL; 
+		call->inv = NULL;
+		call->async_call.dlg = NULL;
 		goto on_return;
 	    }
 	} else if (status != PJ_EPENDING) {
@@ -1377,6 +1386,7 @@ pj_bool_t pjsua_call_on_incoming(pjsip_rx_data *rdata)
 	    pjsip_dlg_respond(dlg, rdata, sip_err_code, NULL, NULL, NULL);
 	    pjsip_inv_terminate(call->inv, sip_err_code, PJ_FALSE); 
 	    call->inv = NULL; 
+	    call->async_call.dlg = NULL;
 	    goto on_return;
 	}
     }
@@ -1403,6 +1413,7 @@ pj_bool_t pjsua_call_on_incoming(pjsip_rx_data *rdata)
 
 	pjsua_media_channel_deinit(call->index);
 	call->inv = NULL;
+	call->async_call.dlg = NULL;
 
 	goto on_return;
     }
@@ -1442,6 +1453,7 @@ pj_bool_t pjsua_call_on_incoming(pjsip_rx_data *rdata)
 	}
 	pjsua_media_channel_deinit(call->index);
 	call->inv = NULL;
+	call->async_call.dlg = NULL;
 	goto on_return;
 
     } else {
@@ -1450,6 +1462,7 @@ pj_bool_t pjsua_call_on_incoming(pjsip_rx_data *rdata)
 	    pjsua_perror(THIS_FILE, "Unable to send 100 response", status);
 	    pjsua_media_channel_deinit(call->index);
 	    call->inv = NULL;
+	    call->async_call.dlg = NULL;
 	    goto on_return;
 	}
     }
@@ -2257,10 +2270,18 @@ PJ_DEF(pj_status_t) pjsua_call_process_redirect( pjsua_call_id call_id,
 PJ_DEF(pj_status_t) pjsua_call_set_hold(pjsua_call_id call_id,
 					const pjsua_msg_data *msg_data)
 {
+    return pjsua_call_set_hold2(call_id, 0, msg_data);
+}
+
+PJ_DEF(pj_status_t) pjsua_call_set_hold2(pjsua_call_id call_id,
+                                         unsigned options,
+					 const pjsua_msg_data *msg_data)
+{
     pjmedia_sdp_session *sdp;
     pjsua_call *call;
     pjsip_dialog *dlg = NULL;
     pjsip_tx_data *tdata;
+    pj_str_t *new_contact = NULL;
     pj_status_t status;
 
     PJ_ASSERT_RETURN(call_id>=0 && call_id<(int)pjsua_var.ua_cfg.max_calls,
@@ -2283,8 +2304,14 @@ PJ_DEF(pj_status_t) pjsua_call_set_hold(pjsua_call_id call_id,
     if (status != PJ_SUCCESS)
 	goto on_return;
 
+    if ((options & PJSUA_CALL_UPDATE_CONTACT) &&
+	pjsua_acc_is_valid(call->acc_id))
+    {
+	new_contact = &pjsua_var.acc[call->acc_id].contact;
+    }
+
     /* Create re-INVITE with new offer */
-    status = pjsip_inv_reinvite( call->inv, NULL, sdp, &tdata);
+    status = pjsip_inv_reinvite( call->inv, new_contact, sdp, &tdata);
     if (status != PJ_SUCCESS) {
 	pjsua_perror(THIS_FILE, "Unable to create re-INVITE", status);
 	goto on_return;
@@ -2479,11 +2506,17 @@ PJ_DEF(pj_status_t) pjsua_call_update2(pjsua_call_id call_id,
     }
 
     /* Create SDP */
-    status = pjsua_media_channel_create_sdp(call->index, 
-					    call->inv->pool_prov, 
-					    NULL, &sdp, NULL);
+    if (call->local_hold && (call->opt.flag & PJSUA_CALL_UNHOLD)==0) {
+	status = create_sdp_of_call_hold(call, &sdp);
+    } else {
+	status = pjsua_media_channel_create_sdp(call->index,
+						call->inv->pool_prov,
+						NULL, &sdp, NULL);
+	call->local_hold = PJ_FALSE;
+    }
+
     if (status != PJ_SUCCESS) {
-	pjsua_perror(THIS_FILE, "Unable to get SDP from media endpoint", 
+	pjsua_perror(THIS_FILE, "Unable to get SDP from media endpoint",
 		     status);
 	goto on_return;
     }
@@ -2510,8 +2543,6 @@ PJ_DEF(pj_status_t) pjsua_call_update2(pjsua_call_id call_id,
 	pjsua_perror(THIS_FILE, "Unable to send UPDATE request", status);
 	goto on_return;
     }
-
-    call->local_hold = PJ_FALSE;
 
 on_return:
     if (dlg) pjsip_dlg_dec_lock(dlg);
@@ -3731,7 +3762,8 @@ on_return:
 /* Modify SDP for call hold. */
 static pj_status_t modify_sdp_of_call_hold(pjsua_call *call,
 					   pj_pool_t *pool,
-					   pjmedia_sdp_session *sdp)
+					   pjmedia_sdp_session *sdp,
+					   pj_bool_t as_answerer)
 {
     unsigned mi;
 
@@ -3782,7 +3814,11 @@ static pj_status_t modify_sdp_of_call_hold(pjsua_call *call,
 	    pjmedia_sdp_media_remove_all_attr(m, "recvonly");
 	    pjmedia_sdp_media_remove_all_attr(m, "inactive");
 
-	    if (call->media[mi].dir & PJMEDIA_DIR_ENCODING) {
+	    /* When as answerer, just simply set dir to "sendonly", note that
+	     * if the offer uses "sendonly" or "inactive", the SDP negotiator
+	     * will change our answer dir to "inactive".
+	     */
+	    if (as_answerer || (call->media[mi].dir & PJMEDIA_DIR_ENCODING)) {
 		/* Add sendonly attribute */
 		attr = pjmedia_sdp_attr_create(pool, "sendonly", NULL);
 		pjmedia_sdp_media_add_attr(m, attr);
@@ -3816,7 +3852,7 @@ static pj_status_t create_sdp_of_call_hold(pjsua_call *call,
 	return status;
     }
 
-    status = modify_sdp_of_call_hold(call, pool, sdp);
+    status = modify_sdp_of_call_hold(call, pool, sdp, PJ_FALSE);
     if (status != PJ_SUCCESS)
 	return status;
 
@@ -3906,7 +3942,7 @@ static void pjsua_call_on_rx_offer(pjsip_inv_session *inv,
 
     /* Check if call is on-hold */
     if (call->local_hold) {
-	modify_sdp_of_call_hold(call, call->inv->pool_prov, answer);
+	modify_sdp_of_call_hold(call, call->inv->pool_prov, answer, PJ_TRUE);
     }
 
     status = pjsip_inv_set_sdp_answer(call->inv, answer);
@@ -4525,6 +4561,20 @@ static void pjsua_call_on_tsx_state_changed(pjsip_inv_session *inv,
 	    PJ_LOG(3,(THIS_FILE, "Error putting call %d on hold (reason=%d)",
 		      call->index, tsx->status_code));
 	}
+    } else if (tsx->role == PJSIP_ROLE_UAC &&
+               (call->opt.flag & PJSUA_CALL_UNHOLD) &&
+               tsx->state >= PJSIP_TSX_STATE_COMPLETED)
+    {
+        /* Monitor the status of call unhold request */
+        if (tsx->status_code/100 != 2 &&
+            (tsx->status_code!=401 && tsx->status_code!=407))
+        {
+            /* Call unhold failed */
+            call->opt.flag &= ~PJSUA_CALL_UNHOLD;
+            call->local_hold = PJ_TRUE;
+	    PJ_LOG(3,(THIS_FILE, "Error releasing hold on call %d (reason=%d)",
+		      call->index, tsx->status_code));
+        }
     } else if (tsx->role==PJSIP_ROLE_UAS &&
 	tsx->state==PJSIP_TSX_STATE_TRYING &&
 	pjsip_method_cmp(&tsx->method, &pjsip_info_method)==0)

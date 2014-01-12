@@ -1,4 +1,4 @@
-/* $Id: _pjsua.c 3999 2012-03-30 07:10:13Z bennylp $ */
+/* $Id: _pjsua.c 4609 2013-10-02 03:19:54Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -131,25 +131,26 @@ static void cb_on_call_state(pjsua_call_id call_id, pjsip_event *e)
  * declares method on_incoming_call for callback struct
  */
 static void cb_on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id,
-                                pjsip_rx_data *rdata)
+				pjsip_rx_data *rdata)
 {
-    PJ_UNUSED_ARG(rdata);
-
     if (PyCallable_Check(g_obj_callback->on_incoming_call)) {
-	PyObject *obj;
-
+	PyObj_pjsip_rx_data *obj;
+	
 	ENTER_PYTHON();
+	
+	obj = (PyObj_pjsip_rx_data*)
+	      PyObj_pjsip_rx_data_new(&PyTyp_pjsip_rx_data,
+				      NULL, NULL);
+	PyObj_pjsip_rx_data_import(obj, rdata);
 
-	obj = Py_BuildValue("");
-
-        PyObject_CallFunction(
-                g_obj_callback->on_incoming_call,
-		"iiO",
-		acc_id,
-                call_id,
-		obj,
-		NULL
-        );
+	PyObject_CallFunction(
+	    g_obj_callback->on_incoming_call,
+	    "iiO",
+	    acc_id,
+	    call_id,
+	    obj,
+	    NULL
+	);
 
 	Py_DECREF(obj);
 
@@ -3105,14 +3106,15 @@ static PyObject *py_pjsua_call_make_call(PyObject *pSelf, PyObject *pArgs)
     int acc_id;
     pj_str_t dst_uri;
     PyObject *pDstUri, *pMsgData, *pUserData;
-    unsigned options;
+	pjsua_call_setting option;
     pjsua_msg_data msg_data;
     int call_id;
     pj_pool_t *pool = NULL;
 
     PJ_UNUSED_ARG(pSelf);
 
-    if (!PyArg_ParseTuple(pArgs, "iOIOO", &acc_id, &pDstUri, &options, 
+	pjsua_call_setting_default(&option);
+	if (!PyArg_ParseTuple(pArgs, "iOIOO", &acc_id, &pDstUri, &option.flag, 
 			  &pUserData, &pMsgData))
     {
         return NULL;
@@ -3135,7 +3137,7 @@ static PyObject *py_pjsua_call_make_call(PyObject *pSelf, PyObject *pArgs)
     Py_XINCREF(pUserData);
 
     status = pjsua_call_make_call(acc_id, &dst_uri, 
-				  options, (void*)pUserData, 
+				  &option, (void*)pUserData, 
 				  &msg_data, &call_id);	
     if (pool != NULL)
 	pj_pool_release(pool);
@@ -4452,6 +4454,9 @@ init_pjsua(void)
     PyTyp_pjsip_cred_info.tp_new = PyType_GenericNew;
     if (PyType_Ready(&PyTyp_pjsip_cred_info) < 0)
         return;
+    PyTyp_pjsip_rx_data.tp_new = PyType_GenericNew;
+    if (PyType_Ready(&PyTyp_pjsip_rx_data) < 0)
+        return;
 
     /* LIB TRANSPORT */
 
@@ -4534,6 +4539,11 @@ init_pjsua(void)
     Py_INCREF(&PyTyp_pjsip_cred_info);
     PyModule_AddObject(m, "Pjsip_Cred_Info",
         (PyObject *)&PyTyp_pjsip_cred_info
+    );
+
+    Py_INCREF(&PyTyp_pjsip_rx_data);
+    PyModule_AddObject(m, "Pjsip_Rx_Data",
+        (PyObject *)&PyTyp_pjsip_rx_data
     );
 
     /* LIB TRANSPORT */

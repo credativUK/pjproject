@@ -1,4 +1,4 @@
-/* $Id: errno.c 3553 2011-05-05 06:14:19Z nanang $ */
+/* $Id: errno.c 4613 2013-10-08 09:08:13Z bennylp $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -96,6 +96,16 @@ static const struct
     PJ_BUILD_ERR( PJLIB_UTIL_EHTTPINCHDR,	"Incomplete response header received"),
     PJ_BUILD_ERR( PJLIB_UTIL_EHTTPINSBUF,	"Insufficient buffer"),
     PJ_BUILD_ERR( PJLIB_UTIL_EHTTPLOST,	        "Connection lost"),
+
+    /* CLI */
+    PJ_BUILD_ERR( PJ_CLI_EEXIT,	                "Exit current session"),
+    PJ_BUILD_ERR( PJ_CLI_EMISSINGARG,	        "Missing argument"),
+    PJ_BUILD_ERR( PJ_CLI_ETOOMANYARGS,	        "Too many arguments"),
+    PJ_BUILD_ERR( PJ_CLI_EINVARG,	        "Invalid argument"),
+    PJ_BUILD_ERR( PJ_CLI_EBADNAME,	        "Command name already exists"),
+    PJ_BUILD_ERR( PJ_CLI_EBADID,	        "Command id already exists"),
+    PJ_BUILD_ERR( PJ_CLI_EBADXML,	        "Invalid XML format"),
+    PJ_BUILD_ERR( PJ_CLI_ETELNETLOST,	        "Connection lost"),
 };
 #endif	/* PJ_HAS_ERROR_STRING */
 
@@ -156,7 +166,8 @@ pj_str_t pjlib_util_strerror(pj_status_t statcode,
     errstr.slen = pj_ansi_snprintf(buf, bufsize, 
 				   "Unknown pjlib-util error %d",
 				   statcode);
-
+    if (errstr.slen < 1 || errstr.slen >= (pj_ssize_t)bufsize)
+	errstr.slen = bufsize - 1;
     return errstr;
 }
 

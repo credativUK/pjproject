@@ -1,4 +1,4 @@
-/* $Id: transport_srtp.c 4366 2013-02-21 20:41:31Z ming $ */
+/* $Id: transport_srtp.c 4701 2014-01-03 03:44:05Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -31,9 +31,9 @@
 #if defined(PJMEDIA_HAS_SRTP) && (PJMEDIA_HAS_SRTP != 0)
 
 #if defined(PJMEDIA_EXTERNAL_SRTP) && (PJMEDIA_EXTERNAL_SRTP != 0)
-#include <srtp/srtp.h>
+#  include <srtp/srtp.h>
 #else
-#include <srtp.h>
+#  include <srtp.h>
 #endif
 
 #define THIS_FILE   "transport_srtp.c"
@@ -280,6 +280,7 @@ static void pjmedia_srtp_deinit_lib(pjmedia_endpt *endpt);
 
 PJ_DEF(pj_status_t) pjmedia_srtp_init_lib(pjmedia_endpt *endpt)
 {
+#if PJMEDIA_LIBSRTP_AUTO_INIT_DEINIT
     if (libsrtp_initialized == PJ_FALSE) {
 	err_status_t err;
 
@@ -302,6 +303,9 @@ PJ_DEF(pj_status_t) pjmedia_srtp_init_lib(pjmedia_endpt *endpt)
 
 	libsrtp_initialized = PJ_TRUE;
     }
+#else
+    PJ_UNUSED_ARG(endpt);
+#endif
     
     return PJ_SUCCESS;
 }
@@ -319,15 +323,11 @@ static void pjmedia_srtp_deinit_lib(pjmedia_endpt *endpt)
 
     PJ_UNUSED_ARG(endpt);
 
-#if defined(PJMEDIA_EXTERNAL_SRTP) && (PJMEDIA_EXTERNAL_SRTP != 0)
-    PJ_UNUSED_ARG(err);
-#else
     err = srtp_deinit();
     if (err != err_status_ok) {
 	PJ_LOG(4, (THIS_FILE, "Failed to deinitialize libsrtp: %s", 
 		   get_libsrtp_errstr(err)));
     }
-#endif
 
     libsrtp_initialized = PJ_FALSE;
 }
@@ -809,7 +809,7 @@ static pj_status_t transport_send_rtp( pjmedia_transport *tp,
 {
     pj_status_t status;
     transport_srtp *srtp = (transport_srtp*) tp;
-    int len = size;
+    int len = (int)size;
     err_status_t err;
 
     if (srtp->bypass_srtp)
@@ -853,7 +853,7 @@ static pj_status_t transport_send_rtcp2(pjmedia_transport *tp,
 {
     pj_status_t status;
     transport_srtp *srtp = (transport_srtp*) tp;
-    int len = size;
+    int len = (int)size;
     err_status_t err;
 
     if (srtp->bypass_srtp) {
@@ -940,7 +940,7 @@ static void srtp_rtp_cb( void *user_data, void *pkt, pj_ssize_t size)
     }
 
     /* Make sure buffer is 32bit aligned */
-    PJ_ASSERT_ON_FAIL( (((long)pkt) & 0x03)==0, return );
+    PJ_ASSERT_ON_FAIL( (((pj_ssize_t)pkt) & 0x03)==0, return );
 
     if (srtp->probation_cnt > 0)
 	--srtp->probation_cnt;
@@ -1013,7 +1013,7 @@ static void srtp_rtcp_cb( void *user_data, void *pkt, pj_ssize_t size)
     }
 
     /* Make sure buffer is 32bit aligned */
-    PJ_ASSERT_ON_FAIL( (((long)pkt) & 0x03)==0, return );
+    PJ_ASSERT_ON_FAIL( (((pj_ssize_t)pkt) & 0x03)==0, return );
 
     pj_lock_acquire(srtp->mutex);
 
@@ -1051,6 +1051,7 @@ static pj_status_t generate_crypto_attr_value(pj_pool_t *pool,
     int cs_idx = get_crypto_idx(&crypto->name);
     char b64_key[PJ_BASE256_TO_BASE64_LEN(MAX_KEY_LEN)+1];
     int b64_key_len = sizeof(b64_key);
+    int print_len;
 
     if (cs_idx == -1)
 	return PJMEDIA_SRTP_ENOTSUPCRYPTO;
@@ -1109,10 +1110,14 @@ static pj_status_t generate_crypto_attr_value(pj_pool_t *pool,
 		     b64_key_len + 16), PJ_ETOOSMALL);
 
     /* Print the crypto attribute value. */
-    *buffer_len = pj_ansi_snprintf(buffer, *buffer_len, "%d %s inline:%s",
+    print_len = pj_ansi_snprintf(buffer, *buffer_len, "%d %s inline:%s",
 				   tag, 
 				   crypto_suites[cs_idx].name,
 				   b64_key);
+    if (print_len < 1 || print_len >= *buffer_len)
+	return PJ_ETOOSMALL;
+
+    *buffer_len = print_len;
 
     return PJ_SUCCESS;
 }
@@ -1125,7 +1130,7 @@ static pj_status_t parse_attr_crypto(pj_pool_t *pool,
 {
     pj_str_t input;
     char *token;
-    int token_len;
+    pj_size_t token_len;
     pj_str_t tmp;
     pj_status_t status;
     int itmp;
@@ -1689,7 +1694,7 @@ PJ_DEF(pj_status_t) pjmedia_transport_srtp_decrypt_pkt(pjmedia_transport *tp,
     PJ_ASSERT_RETURN(srtp->session_inited, PJ_EINVALIDOP);
 
     /* Make sure buffer is 32bit aligned */
-    PJ_ASSERT_ON_FAIL( (((long)pkt) & 0x03)==0, return PJ_EINVAL);
+    PJ_ASSERT_ON_FAIL( (((pj_ssize_t)pkt) & 0x03)==0, return PJ_EINVAL);
 
     pj_lock_acquire(srtp->mutex);
 

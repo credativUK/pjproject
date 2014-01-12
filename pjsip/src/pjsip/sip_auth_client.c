@@ -1,4 +1,4 @@
-/* $Id: sip_auth_client.c 4322 2013-01-17 10:09:09Z bennylp $ */
+/* $Id: sip_auth_client.c 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -36,7 +36,8 @@
 
 
 /* A macro just to get rid of type mismatch between char and unsigned char */
-#define MD5_APPEND(pms,buf,len)	pj_md5_update(pms, (const pj_uint8_t*)buf, len)
+#define MD5_APPEND(pms,buf,len)	pj_md5_update(pms, (const pj_uint8_t*)buf, \
+					      (unsigned)len)
 
 /* Logging. */
 #define THIS_FILE   "sip_auth_client.c"

@@ -1,4 +1,4 @@
-/* $Id: pool_buf.c 3553 2011-05-05 06:14:19Z nanang $ */
+/* $Id: pool_buf.c 4624 2013-10-21 06:37:30Z ming $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -83,7 +83,7 @@ PJ_DEF(pj_pool_t*) pj_pool_create_on_buf(const char *name,
 {
 #if PJ_HAS_POOL_ALT_API == 0
     struct creation_param param;
-    long align_diff;
+    pj_size_t align_diff;
 
     PJ_ASSERT_RETURN(buf && size, NULL);
 
@@ -94,7 +94,7 @@ PJ_DEF(pj_pool_t*) pj_pool_create_on_buf(const char *name,
     }
 
     /* Check and align buffer */
-    align_diff = (long)buf;
+    align_diff = (pj_size_t)buf;
     if (align_diff & (PJ_POOL_ALIGNMENT-1)) {
 	align_diff &= (PJ_POOL_ALIGNMENT-1);
 	buf = (void*) (((char*)buf) + align_diff);

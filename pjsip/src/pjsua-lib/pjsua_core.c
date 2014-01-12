@@ -1,4 +1,4 @@
-/* $Id: pjsua_core.c 4370 2013-02-26 05:30:00Z nanang $ */
+/* $Id: pjsua_core.c 4694 2013-12-17 09:01:21Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -85,7 +85,7 @@ PJ_DEF(void) pjsua_logging_config_default(pjsua_logging_config *cfg)
 		 PJ_LOG_HAS_MICRO_SEC | PJ_LOG_HAS_NEWLINE |
 		 PJ_LOG_HAS_SPACE | PJ_LOG_HAS_THREAD_SWC |
 		 PJ_LOG_HAS_INDENT;
-#if defined(PJ_WIN32) && PJ_WIN32 != 0
+#if (defined(PJ_WIN32) && PJ_WIN32 != 0) || (defined(PJ_WIN64) && PJ_WIN64 != 0)
     cfg->decor |= PJ_LOG_HAS_COLOR;
 #endif
 }
@@ -161,6 +161,8 @@ PJ_DEF(pjsua_msg_data*) pjsua_msg_data_clone(pj_pool_t *pool,
 
     msg_data = PJ_POOL_ZALLOC_T(pool, pjsua_msg_data);
     PJ_ASSERT_RETURN(msg_data != NULL, NULL);
+
+    pj_strdup(pool, &msg_data->target_uri, &rhs->target_uri);
 
     pj_list_init(&msg_data->hdr_list);
     hdr = rhs->hdr_list.next;
@@ -307,10 +309,23 @@ PJ_DEF(void) pjsua_buddy_config_default(pjsua_buddy_config *cfg)
 
 PJ_DEF(void) pjsua_media_config_default(pjsua_media_config *cfg)
 {
+    const pj_sys_info *si = pj_get_sys_info();
+    pj_str_t dev_model = {"iPhone5", 7};
+    
     pj_bzero(cfg, sizeof(*cfg));
 
     cfg->clock_rate = PJSUA_DEFAULT_CLOCK_RATE;
-    cfg->snd_clock_rate = 0;
+    /* It is reported that there may be some media server resampling problem
+     * with iPhone 5 devices running iOS 7, so we set the sound device's
+     * clock rate to 44100 to avoid resampling.
+     */
+    if (pj_stristr(&si->machine, &dev_model) &&
+        ((si->os_ver & 0xFF000000) >> 24) >= 7)
+    {
+        cfg->snd_clock_rate = 44100;
+    } else {
+        cfg->snd_clock_rate = 0;
+    }
     cfg->channel_count = 1;
     cfg->audio_frame_ptime = PJSUA_DEFAULT_AUDIO_FRAME_PTIME;
     cfg->max_media_ports = PJSUA_MAX_CONF_PORTS;
@@ -1489,6 +1504,14 @@ PJ_DEF(pj_status_t) pjsua_destroy2(unsigned flags)
 	    pjsua_call_hangup_all();
 	}
 
+	/* Deinit media channel of all calls (see #1717) */
+	for (i=0; i<(int)pjsua_var.ua_cfg.max_calls; ++i) {
+	    /* TODO: check if we're not allowed to send to network in the
+	     *       "flags", and if so do not do TURN allocation...
+	     */
+	    pjsua_media_channel_deinit(i);
+	}
+
 	/* Set all accounts to offline */
 	for (i=0; i<(int)PJ_ARRAY_SIZE(pjsua_var.acc); ++i) {
 	    if (!pjsua_var.acc[i].valid)
@@ -1499,9 +1522,6 @@ PJ_DEF(pj_status_t) pjsua_destroy2(unsigned flags)
 
 	/* Terminate all presence subscriptions. */
 	pjsua_pres_shutdown(flags);
-
-	/* Destroy media (to shutdown media transports etc) */
-	pjsua_media_subsys_destroy(flags);
 
 	/* Wait for sometime until all publish client sessions are done
 	 * (ticket #364)
@@ -1606,6 +1626,9 @@ PJ_DEF(pj_status_t) pjsua_destroy2(unsigned flags)
 
 	PJ_LOG(4,(THIS_FILE, "Destroying..."));
 
+	/* Destroy media (to shutdown media endpoint, etc) */
+	pjsua_media_subsys_destroy(flags);
+
 	/* Must destroy endpoint first before destroying pools in
 	 * buddies or accounts, since shutting down transaction layer
 	 * may emit events which trigger some buddy or account callbacks
@@ -1635,6 +1658,11 @@ PJ_DEF(pj_status_t) pjsua_destroy2(unsigned flags)
     if (pjsua_var.mutex) {
 	pj_mutex_destroy(pjsua_var.mutex);
 	pjsua_var.mutex = NULL;
+    }
+    
+    if (pjsua_var.timer_mutex) {
+        pj_mutex_destroy(pjsua_var.timer_mutex);
+        pjsua_var.timer_mutex = NULL;
     }
 
     /* Destroy pool and pool factory. */
@@ -2674,7 +2702,7 @@ PJ_DEF(pj_status_t) pjsua_verify_url(const char *c_url)
     pjsip_uri *p;
     pj_pool_t *pool;
     char *url;
-    int len = (c_url ? pj_ansi_strlen(c_url) : 0);
+    pj_size_t len = (c_url ? pj_ansi_strlen(c_url) : 0);
 
     if (!len) return PJSIP_EINVALIDURI;
 
@@ -2698,7 +2726,7 @@ PJ_DEF(pj_status_t) pjsua_verify_sip_url(const char *c_url)
     pjsip_uri *p;
     pj_pool_t *pool;
     char *url;
-    int len = (c_url ? pj_ansi_strlen(c_url) : 0);
+    pj_size_t len = (c_url ? pj_ansi_strlen(c_url) : 0);
 
     if (!len) return PJSIP_EINVALIDURI;
 

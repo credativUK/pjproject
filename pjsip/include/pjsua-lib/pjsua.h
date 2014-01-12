@@ -1,4 +1,4 @@
-/* $Id: pjsua.h 4347 2013-02-13 10:19:25Z nanang $ */
+/* $Id: pjsua.h 4667 2013-12-03 05:22:10Z bennylp $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -566,6 +566,39 @@ typedef enum pjsua_create_media_transport_flag
    PJSUA_MED_TP_CLOSE_MEMBER = 1
 
 } pjsua_create_media_transport_flag;
+
+
+/**
+ * This enumeration specifies the contact rewrite method.
+ */
+typedef enum pjsua_contact_rewrite_method
+{
+    /**
+      * The Contact update will be done by sending unregistration
+      * to the currently registered Contact, while simultaneously sending new
+      * registration (with different Call-ID) for the updated Contact.
+      */
+    PJSUA_CONTACT_REWRITE_UNREGISTER = 1,
+
+    /**
+      * The Contact update will be done in a single, current
+      * registration session, by removing the current binding (by setting its
+      * Contact's expires parameter to zero) and adding a new Contact binding,
+      * all done in a single request.
+      */
+    PJSUA_CONTACT_REWRITE_NO_UNREG = 2,
+
+    /**
+      * The Contact update will be done when receiving any registration final
+      * response. If this flag is not specified, contact update will only be
+      * done upon receiving 2xx response. This flag MUST be used with
+      * PJSUA_CONTACT_REWRITE_UNREGISTER or PJSUA_CONTACT_REWRITE_NO_UNREG
+      * above to specify how the Contact update should be performed when
+      * receiving 2xx response.
+      */
+    PJSUA_CONTACT_REWRITE_ALWAYS_UPDATE = 4
+
+} pjsua_contact_rewrite_method;
 
 
 /**
@@ -1276,6 +1309,27 @@ typedef struct pjsua_callback
                                                     pjmedia_transport *base_tp,
                                                     unsigned flags);
 
+    /**
+     * This callback can be used by application to override the account
+     * to be used to handle an incoming message. Initially, the account to
+     * be used will be calculated automatically by the library. This initial
+     * account will be used if application does not implement this callback,
+     * or application sets an invalid account upon returning from this
+     * callback.
+     *
+     * Note that currently the incoming messages requiring account assignment
+     * are INVITE, MESSAGE, SUBSCRIBE, and unsolicited NOTIFY. This callback
+     * may be called before the callback of the SIP event itself, i.e:
+     * incoming call, pager, subscription, or unsolicited-event.
+     *
+     * @param rdata	The incoming message.
+     * @param acc_id 	On input, initial account ID calculated automatically
+     *			by the library. On output, the account ID prefered
+     *			by application to handle the incoming message.
+     */
+    void (*on_acc_find_for_incoming)(const pjsip_rx_data *rdata,
+				     pjsua_acc_id* acc_id);
+
 } pjsua_callback;
 
 
@@ -1663,6 +1717,13 @@ PJ_DECL(void) pjsua_config_dup(pj_pool_t *pool,
  */
 struct pjsua_msg_data
 {
+    /**
+     * Optional remote target URI (i.e. Target header). If NULL, the target
+     * will be set to the remote URI (To header). At the moment this field
+     * is only used by #pjsua_call_make_call() and #pjsua_im_send().
+     */
+    pj_str_t    target_uri;
+
     /**
      * Additional message headers as linked list. Application can add
      * headers to the list by creating the header, either from the heap/pool
@@ -2473,16 +2534,6 @@ PJ_DECL(pj_status_t) pjsua_transport_close( pjsua_transport_id id,
 
 
 /**
- * This macro specifies the URI scheme to use in Contact header
- * when secure transport such as TLS is used. Application can specify
- * either "sip" or "sips".
- */
-#ifndef PJSUA_SECURE_SCHEME
-#   define PJSUA_SECURE_SCHEME		"sip"
-#endif
-
-
-/**
  * Maximum time to wait for unpublication transaction(s) to complete
  * during shutdown process, before sending unregistration. The library
  * tries to wait for the unpublication (un-PUBLISH) to complete before
@@ -2512,25 +2563,18 @@ PJ_DECL(pj_status_t) pjsua_transport_close( pjsua_transport_id id,
 
 /**
  * This macro specifies the default value for \a contact_rewrite_method
- * field in pjsua_acc_config. I specifies  how Contact update will be
+ * field in pjsua_acc_config. It specifies how Contact update will be
  * done with the registration, if \a allow_contact_rewrite is enabled in
- *  the account config.
+ * the account config. See \a pjsua_contact_rewrite_method for the options.
  *
- * If set to 1, the Contact update will be done by sending unregistration
- * to the currently registered Contact, while simultaneously sending new
- * registration (with different Call-ID) for the updated Contact.
+ * Value PJSUA_CONTACT_REWRITE_UNREGISTER(1) is the legacy behavior.
  *
- * If set to 2, the Contact update will be done in a single, current
- * registration session, by removing the current binding (by setting its
- * Contact's expires parameter to zero) and adding a new Contact binding,
- * all done in a single request.
- *
- * Value 1 is the legacy behavior.
- *
- * Default value: 2
+ * Default value: PJSUA_CONTACT_REWRITE_NO_UNREG(2) |
+ *                PJSUA_CONTACT_REWRITE_ALWAYS_UPDATE(4)
  */
 #ifndef PJSUA_CONTACT_REWRITE_METHOD
-#   define PJSUA_CONTACT_REWRITE_METHOD		2
+#   define PJSUA_CONTACT_REWRITE_METHOD	   (PJSUA_CONTACT_REWRITE_NO_UNREG | \
+                                           PJSUA_CONTACT_REWRITE_ALWAYS_UPDATE)
 #endif
 
 
@@ -2982,20 +3026,13 @@ typedef struct pjsua_acc_config
 
     /**
      * Specify how Contact update will be done with the registration, if
-     * \a allow_contact_rewrite is enabled.
+     * \a allow_contact_rewrite is enabled. The value is bitmask combination of
+     * \a pjsua_contact_rewrite_method. See also pjsua_contact_rewrite_method.
      *
-     * If set to 1, the Contact update will be done by sending unregistration
-     * to the currently registered Contact, while simultaneously sending new
-     * registration (with different Call-ID) for the updated Contact.
+     * Value PJSUA_CONTACT_REWRITE_UNREGISTER(1) is the legacy behavior.
      *
-     * If set to 2, the Contact update will be done in a single, current
-     * registration session, by removing the current binding (by setting its
-     * Contact's expires parameter to zero) and adding a new Contact binding,
-     * all done in a single request.
-     *
-     * Value 1 is the legacy behavior.
-     *
-     * Default value: PJSUA_CONTACT_REWRITE_METHOD (2)
+     * Default value: PJSUA_CONTACT_REWRITE_METHOD
+     * (PJSUA_CONTACT_REWRITE_NO_UNREG | PJSUA_CONTACT_REWRITE_ALWAYS_UPDATE)
      */
     int		     contact_rewrite_method;
 
@@ -3008,6 +3045,18 @@ typedef struct pjsua_acc_config
      * Default: 1 (yes)
      */
     pj_bool_t        allow_via_rewrite;
+
+    /**
+     * This option controls whether the IP address in SDP should be replaced
+     * with the IP address found in Via header of the REGISTER response, ONLY
+     * when STUN and ICE are not used. If the value is FALSE (the original
+     * behavior), then the local IP address will be used. If TRUE, and when
+     * STUN and ICE are disabled, then the IP address found in registration
+     * response will be used.
+     *
+     * Default: PJ_FALSE (no)
+     */
+    pj_bool_t        allow_sdp_nat_rewrite;
 
     /**
      * Control the use of SIP outbound feature. SIP outbound is described in
@@ -3549,11 +3598,13 @@ PJ_DECL(pj_status_t) pjsua_acc_del(pjsua_acc_id acc_id);
  * data is only valid until the account is destroyed.
  *
  * @param acc_id	The account ID.
+ * @param pool		Pool to duplicate the config.
  * @param acc_cfg	Structure to receive the settings.
  *
  * @return		PJ_SUCCESS on success, or the appropriate error code.
  */
 PJ_DECL(pj_status_t) pjsua_acc_get_config(pjsua_acc_id acc_id,
+                                          pj_pool_t *pool,
                                           pjsua_acc_config *acc_cfg);
 
 
@@ -4009,12 +4060,12 @@ typedef enum pjsua_call_flag
 
     /**
      * Update the local invite session's contact with the contact URI from
-     * the account. This flag is only valid for #pjsua_call_reinvite() and
-     * #pjsua_call_update(). This flag is useful in IP address change
-     * situation, after the local account's Contact has been updated
-     * (typically with re-registration) use this flag to update the invite
-     * session with the new Contact and to inform this new Contact to the
-     * remote peer with the outgoing re-INVITE or UPDATE
+     * the account. This flag is only valid for #pjsua_call_set_hold2(),
+     * #pjsua_call_reinvite() and #pjsua_call_update(). This flag is useful
+     * in IP address change situation, after the local account's Contact has
+     * been updated (typically with re-registration) use this flag to update
+     * the invite session with the new Contact and to inform this new Contact
+     * to the remote peer with the outgoing re-INVITE or UPDATE.
      */
     PJSUA_CALL_UPDATE_CONTACT = 2,
 
@@ -4367,7 +4418,9 @@ PJ_DECL(pj_status_t) pjsua_call_get_rem_nat_type(pjsua_call_id call_id,
  * @param reason	Optional reason phrase. If NULL, default text
  *			will be used.
  * @param msg_data	Optional list of headers etc to be added to outgoing
- *			response message.
+ *			response message. Note that this message data will
+ *			be persistent in all next answers/responses for this
+ *			INVITE request.
  *
  * @return		PJ_SUCCESS on success, or the appropriate error code.
  */
@@ -4396,7 +4449,9 @@ PJ_DECL(pj_status_t) pjsua_call_answer(pjsua_call_id call_id,
  * @param reason	Optional reason phrase. If NULL, default text
  *			will be used.
  * @param msg_data	Optional list of headers etc to be added to outgoing
- *			response message.
+ *			response message. Note that this message data will
+ *			be persistent in all next answers/responses for this
+ *			INVITE request.
  *
  * @return		PJ_SUCCESS on success, or the appropriate error code.
  */
@@ -4474,6 +4529,24 @@ PJ_DECL(pj_status_t) pjsua_call_process_redirect(pjsua_call_id call_id,
 PJ_DECL(pj_status_t) pjsua_call_set_hold(pjsua_call_id call_id,
 					 const pjsua_msg_data *msg_data);
 
+/**
+ * Put the specified call on hold. This will send re-INVITE with the
+ * appropriate SDP to inform remote that the call is being put on hold.
+ * The final status of the request itself will be reported on the
+ * \a on_call_media_state() callback, which inform the application that
+ * the media state of the call has changed.
+ *
+ * @param call_id	Call identification.
+ * @param options	Bitmask of pjsua_call_flag constants. Currently, only
+ *                      the flag PJSUA_CALL_UPDATE_CONTACT can be used.
+ * @param msg_data	Optional message components to be sent with
+ *			the request.
+ *
+ * @return		PJ_SUCCESS on success, or the appropriate error code.
+ */
+PJ_DECL(pj_status_t) pjsua_call_set_hold2(pjsua_call_id call_id,
+                                          unsigned options,
+					  const pjsua_msg_data *msg_data);
 
 /**
  * Send re-INVITE to release hold.
@@ -5520,9 +5593,10 @@ struct pjsua_media_config
 
     /** 
      * Jitter buffer initial prefetch delay in msec. The value must be
-     * between jb_min_pre and jb_max_pre below.
+     * between jb_min_pre and jb_max_pre below. If the value is 0,
+     * prefetching will be disabled.
      *
-     * Default: -1 (to use default stream settings, currently 150 msec)
+     * Default: -1 (to use default stream settings, currently 0)
      */
     int			jb_init;
 
@@ -5639,6 +5713,17 @@ struct pjsua_media_config
      * Default: PJ_FALSE
      */
     pj_bool_t no_smart_media_update;
+
+    /**
+     * Omit RTCP SDES and BYE in outgoing RTCP packet, this setting will be
+     * applied for both audio and video streams. Note that, when RTCP SDES
+     * and BYE are set to be omitted, RTCP SDES will still be sent once when
+     * the stream starts/stops and RTCP BYE will be sent once when the stream
+     * stops.
+     *
+     * Default: PJ_FALSE
+     */
+    pj_bool_t no_rtcp_sdes_bye;
 };
 
 
