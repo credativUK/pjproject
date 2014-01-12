@@ -1,4 +1,4 @@
-/* $Id: uri_test.c 4210 2012-07-19 01:00:07Z ming $ */
+/* $Id: uri_test.c 4641 2013-11-04 09:05:43Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -83,6 +83,7 @@ static pjsip_uri *create_uri36( pj_pool_t *pool );
 static pjsip_uri *create_uri37( pj_pool_t *pool );
 static pjsip_uri *create_uri38( pj_pool_t *pool );
 static pjsip_uri *create_uri39( pj_pool_t *pool );
+static pjsip_uri *create_uri40( pj_pool_t *pool );
 static pjsip_uri *create_dummy( pj_pool_t *pool );
 
 #define ERR_NOT_EQUAL	-1001
@@ -357,6 +358,12 @@ struct uri_test
 	PJ_SUCCESS,
 	"\"User\\\\\" <sip:localhost>",
 	&create_uri39,
+    },
+    {
+	/* Quoted display name. */
+	PJ_SUCCESS,
+	"\"\\\"User\\\"\" <sip:localhost>",
+	&create_uri40,
     }
 
 };
@@ -781,6 +788,20 @@ static pjsip_uri *create_uri39(pj_pool_t *pool)
     return (pjsip_uri*)name_addr;
 }
 
+/* "\"\\\"User\\\"\" <sip:localhost>" */
+static pjsip_uri *create_uri40(pj_pool_t *pool)
+{
+    pjsip_name_addr *name_addr = pjsip_name_addr_create(pool);
+    pjsip_sip_uri *url;
+
+    url = pjsip_sip_uri_create(pool, 0);
+    name_addr->uri = (pjsip_uri*) url;
+
+    pj_strdup2(pool, &name_addr->display, "\\\"User\\\"");
+    pj_strdup2(pool, &url->host, "localhost");
+    return (pjsip_uri*)name_addr;
+}
+
 static pjsip_uri *create_dummy(pj_pool_t *pool)
 {
     PJ_UNUSED_ARG(pool);
@@ -1039,7 +1060,8 @@ int uri_test(void)
 	unsigned print;
 	unsigned cmp;
     } run[COUNT];
-    unsigned i, max, avg_len;
+    unsigned i, max;
+    pj_ssize_t avg_len;
     char desc[200];
     pj_status_t status;
 
@@ -1074,12 +1096,12 @@ int uri_test(void)
 			  "<tt>pjsip_parse_uri()</tt> per second "
 			  "(tested with %d URI set, with average length of "
 			  "%d chars)",
-			  (int)PJ_ARRAY_SIZE(uri_test_array), avg_len);
+			  (int)PJ_ARRAY_SIZE(uri_test_array), (int)avg_len);
 
     report_ival("uri-parse-per-sec", max, "URI/sec", desc);
 
     /* URI parsing bandwidth */
-    report_ival("uri-parse-bandwidth-mb", avg_len*max/1000000, "MB/sec",
+    report_ival("uri-parse-bandwidth-mb", (int)avg_len*max/1000000, "MB/sec",
 	        "URI parsing bandwidth in megabytes (number of megabytes "
 		"worth of URI that can be parsed per second)");
 
@@ -1094,7 +1116,7 @@ int uri_test(void)
 			  "<tt>pjsip_uri_print()</tt> per second "
 			  "(tested with %d URI set, with average length of "
 			  "%d chars)",
-			  (int)PJ_ARRAY_SIZE(uri_test_array), avg_len);
+			  (int)PJ_ARRAY_SIZE(uri_test_array), (int)avg_len);
 
     report_ival("uri-print-per-sec", max, "URI/sec", desc);
 
@@ -1108,7 +1130,7 @@ int uri_test(void)
 			  "<tt>pjsip_uri_cmp()</tt> per second "
 			  "(tested with %d URI set, with average length of "
 			  "%d chars)",
-			  (int)PJ_ARRAY_SIZE(uri_test_array), avg_len);
+			  (int)PJ_ARRAY_SIZE(uri_test_array), (int)avg_len);
 
     report_ival("uri-cmp-per-sec", max, "URI/sec", desc);
 

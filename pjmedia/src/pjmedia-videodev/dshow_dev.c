@@ -1,4 +1,4 @@
-/* $Id: dshow_dev.c 4253 2012-09-13 08:35:24Z ming $ */
+/* $Id: dshow_dev.c 4537 2013-06-19 06:47:43Z riza $ */
 /*
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -633,7 +633,7 @@ static pj_status_t dshow_stream_put_frame(pjmedia_vid_dev_stream *strm,
     }
 
     hr = SourceFilter_Deliver(stream->dgraph.csource_filter,
-                              frame->buf, frame->size);
+                              frame->buf, (long)frame->size);
     if (FAILED(hr))
         return hr;
 

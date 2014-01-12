@@ -1,4 +1,4 @@
-/* $Id: config.h 4415 2013-03-05 08:34:45Z ming $ */
+/* $Id: config.h 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -77,10 +77,15 @@
 #   define PJ_WIN32 1
 
 #elif defined(PJ_WIN32) || defined(_WIN32) || defined(__WIN32__) || \
-	defined(_WIN64) || defined(WIN32) || defined(__TOS_WIN__)
-    /*
-     * Win32
-     */
+	defined(WIN32) || defined(PJ_WIN64) || defined(_WIN64) || \
+	defined(WIN64) || defined(__TOS_WIN__) 
+#   if defined(PJ_WIN64) || defined(_WIN64) || defined(WIN64)
+	/*
+	 * Win64
+	 */
+#	undef PJ_WIN64
+#	define PJ_WIN64 1
+#   endif
 #   undef PJ_WIN32
 #   define PJ_WIN32 1
 #   include <pj/compat/os_win32.h>
@@ -1192,7 +1197,7 @@ PJ_BEGIN_DECL
  * Extra suffix for the version (e.g. "-trunk"), or empty for
  * web release version.
  */
-#define PJ_VERSION_NUM_EXTRA	""
+#define PJ_VERSION_NUM_EXTRA	"-svn"
 
 /**
  * PJLIB version number consists of three bytes with the following format:

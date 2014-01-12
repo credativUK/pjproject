@@ -1,4 +1,4 @@
-/* $Id: sip_timer.c 4213 2012-07-23 13:31:26Z nanang $ */
+/* $Id: sip_timer.c 4695 2013-12-18 07:10:12Z nanang $ */
 /* 
  * Copyright (C) 2009-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -117,7 +117,7 @@ static int se_hdr_print(pjsip_sess_expires_hdr *hdr,
 {
     char *p = buf;
     char *endbuf = buf+size;
-    int printed;
+    pj_ssize_t printed;
     const pjsip_parser_const_t *pc = pjsip_parser_const();
     const pj_str_t *hname = pjsip_use_compact_form? &hdr->sname : &hdr->name;
 
@@ -149,10 +149,10 @@ static int se_hdr_print(pjsip_sess_expires_hdr *hdr,
 				   &pc->pjsip_TOKEN_SPEC, 
 				   &pc->pjsip_TOKEN_SPEC, ';');
     if (printed < 0)
-	return printed;
+	return (int)printed;
 
     p += printed;
-    return p - buf;
+    return (int)(p - buf);
 }
 
 static pjsip_sess_expires_hdr* se_hdr_clone(pj_pool_t *pool, 
@@ -183,7 +183,7 @@ static int min_se_hdr_print(pjsip_min_se_hdr *hdr,
 {
     char *p = buf;
     char *endbuf = buf+size;
-    int printed;
+    pj_ssize_t printed;
     const pjsip_parser_const_t *pc = pjsip_parser_const();
 
     /* Print header name and value */
@@ -202,10 +202,10 @@ static int min_se_hdr_print(pjsip_min_se_hdr *hdr,
 				   &pc->pjsip_TOKEN_SPEC, 
 				   &pc->pjsip_TOKEN_SPEC, ';');
     if (printed < 0)
-	return printed;
+	return (int)printed;
 
     p += printed;
-    return p - buf;
+    return (int)(p - buf);
 }
 
 static pjsip_min_se_hdr* min_se_hdr_clone(pj_pool_t *pool, 
@@ -723,8 +723,13 @@ PJ_DEF(pj_status_t) pjsip_timer_process_resp(pjsip_inv_session *inv,
 	min_se_hdr = (pjsip_min_se_hdr*) 
 		     pjsip_msg_find_hdr_by_name(msg, &STR_MIN_SE, NULL);
 	if (min_se_hdr == NULL) {
-	    /* Response 422 should contain Min-SE header */
-	    return PJ_SUCCESS;
+	    /* Response 422 MUST contain Min-SE header */
+	    PJ_LOG(3, (inv->pool->obj_name, 
+		       "Received 422 (Session Interval Too Small) response "
+		       "without Min-SE header!"));
+
+	    pjsip_timer_end_session(inv);
+	    return PJSIP_EMISSINGHDR;
 	}
 
 	/* Session Timers should have been initialized here */

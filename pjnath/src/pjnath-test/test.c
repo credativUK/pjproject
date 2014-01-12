@@ -1,4 +1,4 @@
-/* $Id: test.c 4360 2013-02-21 11:26:35Z bennylp $ */
+/* $Id: test.c 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -107,10 +107,10 @@ void capture_pjlib_state(pj_stun_config *cfg, struct pjlib_state *st)
 {
     pj_caching_pool *cp;
 
-    st->timer_cnt = pj_timer_heap_count(cfg->timer_heap);
+    st->timer_cnt = (unsigned)pj_timer_heap_count(cfg->timer_heap);
     
     cp = (pj_caching_pool*)cfg->pf;
-    st->pool_used_cnt = cp->used_count;
+    st->pool_used_cnt = (unsigned)cp->used_count;
 }
 
 int check_pjlib_state(pj_stun_config *cfg, 

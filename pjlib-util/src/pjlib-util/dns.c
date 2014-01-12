@@ -1,4 +1,4 @@
-/* $Id: dns.c 3553 2011-05-05 06:14:19Z nanang $ */
+/* $Id: dns.c 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -61,7 +61,7 @@ PJ_DEF(pj_status_t) pj_dns_make_query( void *packet,
 {
     pj_uint8_t *query, *p = (pj_uint8_t*)packet;
     const char *startlabel, *endlabel, *endname;
-    unsigned d;
+    pj_size_t d;
 
     /* Sanity check */
     PJ_ASSERT_RETURN(packet && size && qtype && name, PJ_EINVAL);
@@ -106,7 +106,7 @@ PJ_DEF(pj_status_t) pj_dns_make_query( void *packet,
     p += 2;
 
     /* Done, calculate length */
-    *size = p - (pj_uint8_t*)packet;
+    *size = (unsigned)(p - (pj_uint8_t*)packet);
 
     return 0;
 }

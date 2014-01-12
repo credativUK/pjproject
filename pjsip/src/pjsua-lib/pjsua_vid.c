@@ -1,4 +1,4 @@
-/* $Id: pjsua_vid.c 4341 2013-02-05 12:21:30Z nanang $ */
+/* $Id: pjsua_vid.c 4560 2013-07-12 13:50:52Z ming $ */
 /* 
  * Copyright (C) 2011-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -729,7 +729,7 @@ pj_status_t pjsua_vid_channel_update(pjsua_call_media *call_med,
     PJ_LOG(4,(THIS_FILE, "Video channel update.."));
     pj_log_push_indent();
 
-    si->rtcp_sdes_bye_disabled = PJ_TRUE;
+    si->rtcp_sdes_bye_disabled = pjsua_var.media_cfg.no_rtcp_sdes_bye;;
 
     /* Check if no media is active */
     if (si->dir != PJMEDIA_DIR_NONE) {
@@ -803,6 +803,9 @@ pj_status_t pjsua_vid_channel_update(pjsua_call_media *call_med,
 	status = pjmedia_vid_stream_start(call_med->strm.v.stream);
 	if (status != PJ_SUCCESS)
 	    goto on_error;
+
+        if (call_med->prev_state == PJSUA_CALL_MEDIA_NONE)
+            pjmedia_vid_stream_send_rtcp_sdes(call_med->strm.v.stream);
 
 	/* Setup decoding direction */
 	if (si->dir & PJMEDIA_DIR_DECODING)
@@ -966,6 +969,8 @@ void pjsua_vid_stop_stream(pjsua_call_media *call_med)
 
     PJ_LOG(4,(THIS_FILE, "Stopping video stream.."));
     pj_log_push_indent();
+    
+    pjmedia_vid_stream_send_rtcp_bye(strm);
 
     if (call_med->strm.v.cap_win_id != PJSUA_INVALID_ID) {
 	pjmedia_port *media_port;
@@ -2036,7 +2041,7 @@ PJ_DEF(pj_status_t) pjsua_call_set_vid_strm (
 				const pjsua_call_vid_strm_op_param *param)
 {
     pjsua_call *call;
-    pjsip_dialog *dlg;
+    pjsip_dialog *dlg = NULL;
     pjsua_call_vid_strm_op_param param_;
     pj_status_t status;
 

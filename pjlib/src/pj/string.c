@@ -1,4 +1,4 @@
-/* $Id: string.c 3553 2011-05-05 06:14:19Z nanang $ */
+/* $Id: string.c 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -109,6 +109,19 @@ PJ_DEF(char*) pj_create_random_string(char *str, pj_size_t len)
     return str;
 }
 
+PJ_DEF(long) pj_strtol(const pj_str_t *str)
+{
+    PJ_CHECK_STACK();
+
+    if (str->slen > 0 && (str->ptr[0] == '+' || str->ptr[0] == '-')) {
+        pj_str_t s;
+        
+        s.ptr = str->ptr + 1;
+        s.slen = str->slen - 1;
+        return (str->ptr[0] == '-'? -(long)pj_strtoul(&s) : pj_strtoul(&s));
+    } else
+        return pj_strtoul(str);
+}
 
 PJ_DEF(unsigned long) pj_strtoul(const pj_str_t *str)
 {
@@ -181,7 +194,7 @@ PJ_DEF(int) pj_utoa_pad( unsigned long val, char *buf, int min_dig, int pad)
         *p++ = (char) (digval + '0');
     } while (val > 0);
 
-    len = p-buf;
+    len = (int)(p-buf);
     while (len < min_dig) {
 	*p++ = (char)pad;
 	++len;

@@ -66,6 +66,7 @@ export PJSIP_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 		sip_transaction.o sip_util_statefull.o \
 		sip_dialog.o sip_ua_layer.o
 export PJSIP_CFLAGS += $(_CFLAGS)
+export PJSIP_CXXFLAGS += $(_CXXFLAGS)
 export PJSIP_LDFLAGS += $(PJLIB_UTIL_LDLIB) \
 			$(PJLIB_LDLIB) \
 			$(_LDFLAGS)
@@ -78,6 +79,7 @@ export PJSIP_UA_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 			sip_inv.o sip_reg.o sip_replaces.o sip_xfer.o \
 			sip_100rel.o sip_timer.o
 export PJSIP_UA_CFLAGS += $(_CFLAGS)
+export PJSIP_UA_CXXFLAGS += $(_CXXFLAGS)
 export PJSIP_UA_LDFLAGS += $(PJSIP_SIMPLE_LDLIB) \
 			   $(PJSIP_LDLIB) \
 			   $(PJMEDIA_LDLIB) \
@@ -95,6 +97,7 @@ export PJSIP_SIMPLE_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 			mwi.o pidf.o presence.o presence_body.o publishc.o \
 			rpid.o xpidf.o
 export PJSIP_SIMPLE_CFLAGS += $(_CFLAGS)
+export PJSIP_SIMPLE_CXXFLAGS += $(_CXXFLAGS)
 export PJSIP_SIMPLE_LDFLAGS += $(PJSIP_LDLIB) \
 			       $(PJLIB_UTIL_LDLIB) \
 			       $(PJLIB_LDLIB) \
@@ -110,6 +113,7 @@ export PJSUA_LIB_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 			pjsua_im.o pjsua_media.o pjsua_pres.o \
 			pjsua_dump.o pjsua_aud.o pjsua_vid.o
 export PJSUA_LIB_CFLAGS += $(_CFLAGS) $(PJ_VIDEO_CFLAGS)
+export PJSUA_LIB_CXXFLAGS += $(_CXXFLAGS) $(PJ_VIDEO_CFLAGS)
 export PJSUA_LIB_LDFLAGS += $(PJSIP_UA_LDLIB) \
 			    $(PJSIP_SIMPLE_LDLIB) \
 			    $(PJSIP_LDLIB) \
@@ -137,6 +141,7 @@ export TEST_OBJS += dlg_core_test.o dns_test.o msg_err_test.o \
 		    tsx_uas_test.o txdata_test.o uri_test.o \
 		    inv_offer_answer_test.o
 export TEST_CFLAGS += $(_CFLAGS)
+export TEST_CXXFLAGS += $(_CXXFLAGS)
 export TEST_LDFLAGS += $(PJSIP_LDLIB) \
 		       $(PJSIP_UA_LDLIB) \
 		       $(PJSIP_SIMPLE_LDLIB) \

@@ -1,4 +1,4 @@
-/* $Id: rtcp.c 4283 2012-10-12 06:19:32Z ming $ */
+/* $Id: rtcp.c 4537 2013-06-19 06:47:43Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -84,6 +84,7 @@ PJ_DEF(pj_status_t) pjmedia_rtcp_get_ntp_time(const pjmedia_rtcp_session *sess,
 
 
 #if (defined(PJ_WIN32) && PJ_WIN32!=0) || \
+    (defined(PJ_WIN64) && PJ_WIN64!=0) || \
     (defined(PJ_WIN32_WINCE) && PJ_WIN32_WINCE!=0)
 
     /* On Win32, since we use QueryPerformanceCounter() as the backend
@@ -963,7 +964,7 @@ PJ_DEF(pj_status_t) pjmedia_rtcp_build_rtcp_sdes(
 {
     pjmedia_rtcp_common *hdr;
     pj_uint8_t *p;
-    unsigned len;
+    pj_size_t len;
 
     PJ_ASSERT_RETURN(session && buf && length && sdes, PJ_EINVAL);
 
@@ -1036,7 +1037,7 @@ PJ_DEF(pj_status_t) pjmedia_rtcp_build_rtcp_bye(pjmedia_rtcp_session *session,
 {
     pjmedia_rtcp_common *hdr;
     pj_uint8_t *p;
-    unsigned len;
+    pj_size_t len;
 
     PJ_ASSERT_RETURN(session && buf && length, PJ_EINVAL);
 

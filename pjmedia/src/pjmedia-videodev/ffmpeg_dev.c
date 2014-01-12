@@ -1,4 +1,4 @@
-/* $Id: ffmpeg_dev.c 3893 2011-12-01 10:49:07Z ming $ */
+/* $Id: ffmpeg_dev.c 4537 2013-06-19 06:47:43Z riza $ */
 /*
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -278,7 +278,8 @@ static pj_status_t ffmpeg_factory_refresh(pjmedia_vid_dev_factory *f)
 
             info->host_api = p;
 
-#if defined(PJ_WIN32) && PJ_WIN32!=0
+#if (defined(PJ_WIN32) && PJ_WIN32!=0) || \
+    (defined(PJ_WIN64) && PJ_WIN64!=0)
             info->def_devname = "0";
 #elif defined(PJ_LINUX) && PJ_LINUX!=0
             info->def_devname = "/dev/video0";

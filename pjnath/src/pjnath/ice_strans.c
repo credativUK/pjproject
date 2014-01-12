@@ -1,4 +1,4 @@
-/* $Id: ice_strans.c 4412 2013-03-05 03:12:32Z riza $ */
+/* $Id: ice_strans.c 4606 2013-10-01 05:00:57Z ming $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -65,7 +65,7 @@ enum tp_type
 
 
 /* The candidate type preference when STUN candidate is used */
-static pj_uint8_t srflx_pref_table[4] = 
+static pj_uint8_t srflx_pref_table[PJ_ICE_CAND_TYPE_MAX] = 
 {
 #if PJNATH_ICE_PRIO_STD
     100,    /**< PJ_ICE_HOST_PREF	    */
@@ -296,6 +296,16 @@ static pj_status_t add_update_turn(pj_ice_strans *ice_st,
 		  sizeof(ice_st->cfg.turn.cfg.qos_params));
     }
 
+    /* Override with component specific socket buffer size settings, if any */
+    if (ice_st->cfg.comp[comp->comp_id-1].so_rcvbuf_size > 0) {
+	ice_st->cfg.turn.cfg.so_rcvbuf_size = 
+	    ice_st->cfg.comp[comp->comp_id-1].so_rcvbuf_size;
+    }
+    if (ice_st->cfg.comp[comp->comp_id-1].so_sndbuf_size > 0) {
+	ice_st->cfg.turn.cfg.so_sndbuf_size = 
+	    ice_st->cfg.comp[comp->comp_id-1].so_sndbuf_size;
+    }
+
     /* Create the TURN transport */
     status = pj_turn_sock_create(&ice_st->cfg.stun_cfg, ice_st->cfg.af,
 				 ice_st->cfg.turn.conn_type,
@@ -383,6 +393,16 @@ static pj_status_t create_comp(pj_ice_strans *ice_st, unsigned comp_id)
 		      sizeof(ice_st->cfg.stun.cfg.qos_params));
 	}
 
+	/* Override component specific socket buffer size settings, if any */
+	if (ice_st->cfg.comp[comp_id-1].so_rcvbuf_size > 0) {
+	    ice_st->cfg.stun.cfg.so_rcvbuf_size = 
+		ice_st->cfg.comp[comp_id-1].so_rcvbuf_size;
+	}
+	if (ice_st->cfg.comp[comp_id-1].so_sndbuf_size > 0) {
+	    ice_st->cfg.stun.cfg.so_sndbuf_size = 
+		ice_st->cfg.comp[comp_id-1].so_sndbuf_size;
+	}
+
 	/* Create the STUN transport */
 	status = pj_stun_sock_create(&ice_st->cfg.stun_cfg, NULL,
 				     ice_st->cfg.af, &stun_sock_cb,
@@ -438,7 +458,7 @@ static pj_status_t create_comp(pj_ice_strans *ice_st, unsigned comp_id)
 				   cand->type, &cand->base_addr);
 
 	    /* Set default candidate to srflx */
-	    comp->default_cand = cand - comp->cand_list;
+	    comp->default_cand = (unsigned)(cand - comp->cand_list);
 
 	    pj_log_pop_indent();
 	}
@@ -775,6 +795,15 @@ PJ_DEF(pj_status_t) pj_ice_strans_set_options(pj_ice_strans *ice_st,
     if (ice_st->ice)
 	pj_ice_sess_set_options(ice_st->ice, &ice_st->cfg.opt);
     return PJ_SUCCESS;
+}
+
+/**
+ * Get the group lock for this ICE stream transport.
+ */
+PJ_DEF(pj_grp_lock_t *) pj_ice_strans_get_grp_lock(pj_ice_strans *ice_st)
+{
+    PJ_ASSERT_RETURN(ice_st, NULL);
+    return ice_st->grp_lock;
 }
 
 /*
@@ -1162,7 +1191,7 @@ PJ_DEF(pj_status_t) pj_ice_strans_sendto( pj_ice_strans *ice_st,
      * https://trac.pjsip.org/repos/ticket/1416:
      * Once ICE has failed, also send data with the default candidate.
      */
-    if (ice_st->ice && ice_st->state < PJ_ICE_STRANS_STATE_FAILED) {
+    if (ice_st->ice && ice_st->state == PJ_ICE_STRANS_STATE_RUNNING) {
 	if (comp->turn_sock) {
 	    pj_turn_sock_lock(comp->turn_sock);
 	}
@@ -1197,14 +1226,17 @@ PJ_DEF(pj_status_t) pj_ice_strans_sendto( pj_ice_strans *ice_st,
 		comp->turn_log_off = PJ_TRUE;
 	    }
 
-	    status = pj_turn_sock_sendto(comp->turn_sock, (const pj_uint8_t*)data, data_len,
+	    status = pj_turn_sock_sendto(comp->turn_sock, 
+					 (const pj_uint8_t*)data, 
+					 (unsigned)data_len,
 					 dst_addr, dst_addr_len);
 	    return (status==PJ_SUCCESS||status==PJ_EPENDING) ? 
 		    PJ_SUCCESS : status;
 	} else {
 	    pkt_size = data_len;
 	    status = pj_stun_sock_sendto(comp->stun_sock, NULL, data, 
-					 data_len, 0, dst_addr, dst_addr_len);
+					 (unsigned)data_len, 0, dst_addr, 
+					 dst_addr_len);
 	    return (status==PJ_SUCCESS||status==PJ_EPENDING) ? 
 		    PJ_SUCCESS : status;
 	}
@@ -1339,14 +1371,15 @@ static pj_status_t ice_tx_pkt(pj_ice_sess *ice,
     if (transport_id == TP_TURN) {
 	if (comp->turn_sock) {
 	    status = pj_turn_sock_sendto(comp->turn_sock, 
-					 (const pj_uint8_t*)pkt, size,
+					 (const pj_uint8_t*)pkt, 
+					 (unsigned)size,
 					 dst_addr, dst_addr_len);
 	} else {
 	    status = PJ_EINVALIDOP;
 	}
     } else if (transport_id == TP_STUN) {
 	status = pj_stun_sock_sendto(comp->stun_sock, NULL, 
-				     pkt, size, 0,
+				     pkt, (unsigned)size, 0,
 				     dst_addr, dst_addr_len);
     } else {
 	pj_assert(!"Invalid transport ID");
@@ -1520,7 +1553,7 @@ static pj_bool_t stun_on_status(pj_stun_sock *stun_sock,
 
 		if (dup) {
 		    /* Duplicate found, remove the srflx candidate */
-		    unsigned idx = cand - comp->cand_list;
+		    unsigned idx = (unsigned)(cand - comp->cand_list);
 
 		    /* Update default candidate index */
 		    if (comp->default_cand > idx) {
@@ -1563,7 +1596,7 @@ static pj_bool_t stun_on_status(pj_stun_sock *stun_sock,
 			  comp->comp_id));
 
 		if (cand) {
-		    unsigned idx = cand - comp->cand_list;
+		    unsigned idx = (unsigned)(cand - comp->cand_list);
 
 		    /* Update default candidate index */
 		    if (comp->default_cand == idx) {
@@ -1694,7 +1727,7 @@ static void turn_on_state(pj_turn_sock *turn_sock, pj_turn_state_t old_state,
 	cand->status = PJ_SUCCESS;
 
 	/* Set default candidate to relay */
-	comp->default_cand = cand - comp->cand_list;
+	comp->default_cand = (unsigned)(cand - comp->cand_list);
 
 	PJ_LOG(4,(comp->ice_st->obj_name, 
 		  "Comp %d: TURN allocation complete, relay address is %s",

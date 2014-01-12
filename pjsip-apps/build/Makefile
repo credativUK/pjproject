@@ -37,8 +37,10 @@ export _LDFLAGS := $(CC_LDFLAGS) $(OS_LDFLAGS) $(M_LDFLAGS) $(HOST_LDFLAGS) \
 #
 export PJSUA_SRCDIR = ../src/pjsua
 export PJSUA_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
-			main.o pjsua_app.o
+            main.o pjsua_app.o pjsua_app_cli.o pjsua_app_common.o \
+            pjsua_app_config.o pjsua_app_legacy.o
 export PJSUA_CFLAGS += $(_CFLAGS)
+export PJSUA_CXXFLAGS += $(_CXXFLAGS)
 export PJSUA_LDFLAGS += $(_LDFLAGS)
 export PJSUA_EXE:=pjsua-$(TARGET_NAME)$(HOST_EXE)
 
@@ -50,6 +52,7 @@ export PJSYSTEST_SRCDIR = ../src/pjsystest
 export PJSYSTEST_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 			systest.o main_console.o
 export PJSYSTEST_CFLAGS += $(_CFLAGS)
+export PJSYSTEST_CXXFLAGS += $(_CXXFLAGS)
 export PJSYSTEST_LDFLAGS += $(_LDFLAGS)
 export PJSYSTEST_EXE:=pjsystest-$(TARGET_NAME)$(HOST_EXE)
 
