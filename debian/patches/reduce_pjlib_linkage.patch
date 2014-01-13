@@ -23,7 +23,7 @@ libcrypto, libssl and libuuid, but only libpj needs them.
 @@ -7299,7 +7300,7 @@ fi
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_ERR_load_BIO_strings" >&5
  $as_echo "$ac_cv_lib_crypto_ERR_load_BIO_strings" >&6; }
- if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = x""yes; then :
+ if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
 -  libcrypto_present=1 && LIBS="$LIBS -lcrypto"
 +  libcrypto_present=1 && PJLIB_EXT="$PJLIB_EXT -lcrypto"
  fi
@@ -32,7 +32,7 @@ libcrypto, libssl and libuuid, but only libpj needs them.
 @@ -7339,7 +7340,7 @@ fi
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_SSL_library_init" >&5
  $as_echo "$ac_cv_lib_ssl_SSL_library_init" >&6; }
- if test "x$ac_cv_lib_ssl_SSL_library_init" = x""yes; then :
+ if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
 -  libssl_present=1 && LIBS="$LIBS -lssl"
 +  libssl_present=1 && PJLIB_EXT="$PJLIB_EXT -lssl"
  fi
@@ -52,9 +52,9 @@ libcrypto, libssl and libuuid, but only libpj needs them.
 --- a/pjlib/build/Makefile
 +++ b/pjlib/build/Makefile
 @@ -38,7 +38,7 @@ export PJLIB_OBJS += $(OS_OBJS) $(M_OBJS
- 	ssl_sock_common.o ssl_sock_ossl.o ssl_sock_dump.o \
  	string.o timer.o types.o
  export PJLIB_CFLAGS += $(_CFLAGS)
+ export PJLIB_CXXFLAGS += $(_CXXFLAGS)
 -export PJLIB_LDFLAGS += $(_LDFLAGS)
 +export PJLIB_LDFLAGS += $(PJLIB_EXT) $(_LDFLAGS)
  

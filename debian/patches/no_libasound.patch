@@ -7,7 +7,7 @@ but it was not being used anywhere.
 --- a/aconfigure
 +++ b/aconfigure
 @@ -5994,8 +5994,6 @@ $as_echo "Checking sound device backend.
- if test "x$ac_cv_header_alsa_version_h" = x""yes; then :
+ if test "x$ac_cv_header_alsa_version_h" = xyes; then :
    ac_pa_use_alsa=1
  
 -			 LIBS="$LIBS -lasound"

@@ -34,7 +34,7 @@ needs them.
  ifeq ($(PJ_SHARED_LIBRARIES),)
 --- a/pjmedia/build/Makefile
 +++ b/pjmedia/build/Makefile
-@@ -83,6 +83,7 @@ export PJMEDIA_LDFLAGS += $(PJMEDIA_VIDE
+@@ -84,6 +84,7 @@ export PJMEDIA_LDFLAGS += $(PJMEDIA_VIDE
  			  $(PJLIB_LDLIB) \
  			  $(PJLIB_UTIL_LDLIB) \
  			  $(PJNATH_LDLIB) \
@@ -42,15 +42,15 @@ needs them.
  			  $(_LDFLAGS)
  
  
-@@ -95,6 +96,7 @@ export PJMEDIA_AUDIODEV_OBJS +=  audiode
- 				 alsa_dev.o bb10_dev.o
+@@ -98,6 +99,7 @@ export PJMEDIA_AUDIODEV_OBJS +=  audiode
  export PJMEDIA_AUDIODEV_CFLAGS += $(_CFLAGS)
+ export PJMEDIA_AUDIODEV_CXXFLAGS += $(_CXXFLAGS)
  export PJMEDIA_AUDIODEV_LDFLAGS += $(PJLIB_LDLIB) \
 +				   $(PJMEDIA_AUDIODEV_EXT) \
  				   $(_LDFLAGS)
  
  
-@@ -138,6 +140,7 @@ export PJMEDIA_CODEC_CFLAGS += $(_CFLAGS
+@@ -145,6 +147,7 @@ export PJMEDIA_CODEC_CXXFLAGS += $(_CXXF
  			$(ILBC_CFLAGS) $(IPP_CFLAGS) $(G7221_CFLAGS)
  export PJMEDIA_CODEC_LDFLAGS += $(PJMEDIA_LDLIB) \
  				$(PJLIB_LDLIB) \

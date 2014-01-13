@@ -3,17 +3,28 @@ Description: Fix some typos in the code
 
 Credit to Lintian
 
---- a/pjsip-apps/src/pjsua/pjsua_app.c
-+++ b/pjsip-apps/src/pjsua/pjsua_app.c
-@@ -4890,7 +4890,7 @@ void console_app_main(const pj_str_t *ur
- 		pjsua_call_info ci;
+--- a/pjsip-apps/src/pjsua/pjsua_app_cli.c
++++ b/pjsip-apps/src/pjsua/pjsua_app_cli.c
+@@ -1685,7 +1685,7 @@ static pj_status_t cmd_transfer_call(pj_
+ 	pjsua_call_get_info(current_call, &ci);
+ 	pj_ansi_snprintf(out_str, 
+ 			 sizeof(out_str), 
+-			 "Transfering current call [%d] %.*s\n",
++			 "Transferring current call [%d] %.*s\n",
+ 			 current_call,
+ 			 (int)ci.remote_info.slen, 
+ 			 ci.remote_info.ptr);
+--- a/pjsip-apps/src/pjsua/pjsua_app_legacy.c
++++ b/pjsip-apps/src/pjsua/pjsua_app_legacy.c
+@@ -1068,7 +1068,7 @@ static void ui_call_transfer(pj_bool_t n
+ 	pjsua_msg_data msg_data;
  
- 		pjsua_call_get_info(current_call, &ci);
--		printf("Transfering current call [%d] %.*s\n",
-+		printf("Transferring current call [%d] %.*s\n",
- 		       current_call,
- 		       (int)ci.remote_info.slen, ci.remote_info.ptr);
+ 	pjsua_call_get_info(current_call, &ci);
+-	printf("Transfering current call [%d] %.*s\n", current_call,
++	printf("Transferring current call [%d] %.*s\n", current_call,
+ 	       (int)ci.remote_info.slen, ci.remote_info.ptr);
  
+ 	ui_input_url("Transfer to URL", buf, sizeof(buf), &result);
 --- a/pjsip-apps/src/py_pjsua/pjsua_app.py
 +++ b/pjsip-apps/src/py_pjsua/pjsua_app.py
 @@ -411,7 +411,7 @@ def xfer_call():

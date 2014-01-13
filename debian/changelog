@@ -1,8 +1,10 @@
-pjproject (2.1.0.0.ast20130823-2) UNRELEASED; urgency=low
+pjproject (2.2~svn.4703~dfsg-1) UNRELEASED; urgency=low
 
   * -dev package: depend explicitly on libsrtp0-dev due to -lsrtp in
     the pkg-config file.
   * Add README.Debian to explain what exactly we package (Closes: #725326).
+  * Switch to upstream subversion snapshots.
+  * explicit dfsg in version number as we remove some files (see copyright).
 
  -- Tzafrir Cohen <tzafrir@debian.org>  Wed, 02 Oct 2013 19:51:32 +0300
 
