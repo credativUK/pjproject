@@ -1,4 +1,4 @@
-/* $Id: transport_srtp.c 4701 2014-01-03 03:44:05Z nanang $ */
+/* $Id: transport_srtp.c 4723 2014-01-30 04:33:27Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -323,7 +323,19 @@ static void pjmedia_srtp_deinit_lib(pjmedia_endpt *endpt)
 
     PJ_UNUSED_ARG(endpt);
 
+#if defined(PJMEDIA_EXTERNAL_SRTP) && (PJMEDIA_EXTERNAL_SRTP != 0)
+
+# if defined(PJMEDIA_SRTP_HAS_DEINIT) && PJMEDIA_SRTP_HAS_DEINIT!=0
     err = srtp_deinit();
+# elif defined(PJMEDIA_SRTP_HAS_SHUTDOWN) && PJMEDIA_SRTP_HAS_SHUTDOWN!=0
+    err = srtp_shutdown();
+# else
+    err = err_status_ok;
+# endif
+
+#else
+    err = srtp_deinit();
+#endif
     if (err != err_status_ok) {
 	PJ_LOG(4, (THIS_FILE, "Failed to deinitialize libsrtp: %s", 
 		   get_libsrtp_errstr(err)));

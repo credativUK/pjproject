@@ -1,4 +1,4 @@
-/* $Id: v4l2_dev.c 4310 2012-12-19 05:38:28Z nanang $ */
+/* $Id: v4l2_dev.c 4722 2014-01-29 10:40:40Z nanang $ */
 /*
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -25,7 +25,8 @@
 #include <pj/os.h>
 #include <pj/rand.h>
 
-#if PJMEDIA_VIDEO_DEV_HAS_V4L2
+#if defined(PJMEDIA_HAS_VIDEO) && PJMEDIA_HAS_VIDEO != 0 && \
+    defined(PJMEDIA_VIDEO_DEV_HAS_V4L2) && PJMEDIA_VIDEO_DEV_HAS_V4L2 != 0
 
 #include <linux/videodev2.h>
 #include <libv4l2.h>

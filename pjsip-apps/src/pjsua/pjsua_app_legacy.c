@@ -1,4 +1,4 @@
-/* $Id: pjsua_app_legacy.c 4580 2013-08-06 08:02:24Z bennylp $ */
+/* $Id: pjsua_app_legacy.c 4714 2014-01-23 08:15:34Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -1068,7 +1068,7 @@ static void ui_call_transfer(pj_bool_t no_refersub)
 	pjsua_msg_data msg_data;
 
 	pjsua_call_get_info(current_call, &ci);
-	printf("Transfering current call [%d] %.*s\n", current_call,
+	printf("Transferring current call [%d] %.*s\n", current_call,
 	       (int)ci.remote_info.slen, ci.remote_info.ptr);
 
 	ui_input_url("Transfer to URL", buf, sizeof(buf), &result);
@@ -1137,7 +1137,7 @@ static void ui_call_transfer_replaces(pj_bool_t no_refersub)
 	    pjsua_call_info call_info;
 
 	    if (ids[i] == call)
-		return;
+		continue;
 
 	    pjsua_call_get_info(ids[i], &call_info);
 	    printf("%d  %.*s [%.*s]\n",

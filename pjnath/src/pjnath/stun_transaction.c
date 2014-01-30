@@ -1,4 +1,4 @@
-/* $Id: stun_transaction.c 4652 2013-11-14 09:36:05Z ming $ */
+/* $Id: stun_transaction.c 4717 2014-01-29 06:33:38Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -201,7 +201,7 @@ static pj_status_t tsx_transmit_msg(pj_stun_client_tsx *tsx,
     pj_status_t status;
 
     PJ_ASSERT_RETURN(tsx->retransmit_timer.id == TIMER_INACTIVE ||
-		     !tsx->require_retransmit, PJ_EBUSY);
+		     !tsx->require_retransmit || !mod_count, PJ_EBUSY);
 
     if (tsx->require_retransmit && mod_count) {
 	/* Calculate retransmit/timeout delay */
