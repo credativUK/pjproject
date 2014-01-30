@@ -1,4 +1,4 @@
-/* $Id: sip_config.h 4537 2013-06-19 06:47:43Z riza $ */
+/* $Id: sip_config.h 4720 2014-01-29 09:53:06Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -941,6 +941,9 @@ PJ_INLINE(pjsip_cfg_t*) pjsip_cfg(void)
 /**
  * Specify support for IMS/3GPP digest AKA authentication version 1 and 2
  * (AKAv1-MD5 and AKAv2-MD5 respectively).
+ *
+ * Note that if this is enabled, application would need to link with
+ * <b>libmilenage</b> library from \a third_party directory.
  *
  * Default: 0 (for now)
  */
