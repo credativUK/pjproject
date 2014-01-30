@@ -1,3 +1,6 @@
+Author: Jeremy Lainé <jeremy.laine@m4x.org>
+Description: Reduce number of libraries linked with pjmedia
+
 All libraries and applications were gratuitously linked against
 libgsm, libportaudio, libspeex and libspeexdsp but only pjmedia
 needs them.

@@ -1,5 +1,11 @@
+Author: Jeremy Lainé <jeremy.laine@m4x.org>
+Description: Remove pointless linking with libnsl
+Upstream: no
+
 All libraries and applications were being linked against libnsl,
 but it was not being used anywhere.
+
+Upstream says: this cannot be merged as-is.
 
 diff --git a/aconfigure b/aconfigure
 index 57eb0bc..919ea75 100755

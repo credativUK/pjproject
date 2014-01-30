@@ -1,4 +1,4 @@
-pjproject (2.2~svn.4703~dfsg-1) UNRELEASED; urgency=low
+pjproject (2.2~svn.4723~dfsg-1) UNRELEASED; urgency=low
 
   * -dev package: depend explicitly on libsrtp0-dev due to -lsrtp in
     the pkg-config file.

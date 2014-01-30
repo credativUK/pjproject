@@ -1,8 +1,11 @@
 Author: Jeremy Lainé <jeremy.laine@m4x.org>
 Description: Remove pointless linking with libasound
+Upstream: no
 
 All libraries and applications were being linked against libasound,
 but it was not being used anywhere.
+
+Upstream says: this cannot be merged as-is.
 
 --- a/aconfigure
 +++ b/aconfigure
