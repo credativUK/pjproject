@@ -1,5 +1,3 @@
 no_libasound.patch
-no_libnsl.patch
-#srtp_deinit.patch
 reduce_pjlib_linkage.patch
 reduce_pjmedia_linkage.patch
