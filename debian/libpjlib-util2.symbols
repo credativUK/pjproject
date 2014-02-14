@@ -1,4 +1,5 @@
 libpjlib-util.so.2 libpjlib-util2 #MINVER#
+ arg_type@Base 2.2~svn.4723~dfsg
  pj_base64_decode@Base 2.1.0~ast20130801
  pj_base64_encode@Base 2.1.0~ast20130801
  pj_cis_add_alpha@Base 2.1.0~ast20130801
@@ -12,6 +13,28 @@ libpjlib-util.so.2 libpjlib-util2 #MINVER#
  pj_cis_dup@Base 2.1.0~ast20130801
  pj_cis_init@Base 2.1.0~ast20130801
  pj_cis_invert@Base 2.1.0~ast20130801
+ pj_cli_add_cmd_from_xml@Base 2.2~svn.4723~dfsg
+ pj_cli_cfg_default@Base 2.2~svn.4723~dfsg
+ pj_cli_console_cfg_default@Base 2.2~svn.4723~dfsg
+ pj_cli_console_create@Base 2.2~svn.4723~dfsg
+ pj_cli_console_process@Base 2.2~svn.4723~dfsg
+ pj_cli_create@Base 2.2~svn.4723~dfsg
+ pj_cli_destroy@Base 2.2~svn.4723~dfsg
+ pj_cli_exec_info_default@Base 2.2~svn.4723~dfsg
+ pj_cli_get_cmd_id@Base 2.2~svn.4723~dfsg
+ pj_cli_get_param@Base 2.2~svn.4723~dfsg
+ pj_cli_is_quitting@Base 2.2~svn.4723~dfsg
+ pj_cli_is_restarting@Base 2.2~svn.4723~dfsg
+ pj_cli_quit@Base 2.2~svn.4723~dfsg
+ pj_cli_register_front_end@Base 2.2~svn.4723~dfsg
+ pj_cli_sess_end_session@Base 2.2~svn.4723~dfsg
+ pj_cli_sess_exec@Base 2.2~svn.4723~dfsg
+ pj_cli_sess_parse@Base 2.2~svn.4723~dfsg
+ pj_cli_sess_write_msg@Base 2.2~svn.4723~dfsg
+ pj_cli_telnet_cfg_default@Base 2.2~svn.4723~dfsg
+ pj_cli_telnet_create@Base 2.2~svn.4723~dfsg
+ pj_cli_telnet_get_info@Base 2.2~svn.4723~dfsg
+ pj_cli_write_log@Base 2.2~svn.4723~dfsg
  pj_crc32_calc@Base 2.1.0~ast20130801
  pj_crc32_final@Base 2.1.0~ast20130801
  pj_crc32_init@Base 2.1.0~ast20130801
@@ -64,6 +87,16 @@ libpjlib-util.so.2 libpjlib-util2 #MINVER#
  pj_http_req_parse_url@Base 2.1.0~ast20130801
  pj_http_req_set_timeout@Base 2.1.0~ast20130801
  pj_http_req_start@Base 2.1.0~ast20130801
+ pj_json_elem_add@Base 2.2~svn.4723~dfsg
+ pj_json_elem_array@Base 2.2~svn.4723~dfsg
+ pj_json_elem_bool@Base 2.2~svn.4723~dfsg
+ pj_json_elem_null@Base 2.2~svn.4723~dfsg
+ pj_json_elem_number@Base 2.2~svn.4723~dfsg
+ pj_json_elem_obj@Base 2.2~svn.4723~dfsg
+ pj_json_elem_string@Base 2.2~svn.4723~dfsg
+ pj_json_parse@Base 2.2~svn.4723~dfsg
+ pj_json_write@Base 2.2~svn.4723~dfsg
+ pj_json_writef@Base 2.2~svn.4723~dfsg
  pj_md5_final@Base 2.1.0~ast20130801
  pj_md5_init@Base 2.1.0~ast20130801
  pj_md5_update@Base 2.1.0~ast20130801

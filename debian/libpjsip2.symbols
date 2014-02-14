@@ -220,6 +220,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_param_print_on@Base 2.1.0~ast20130801
  pjsip_param_shallow_clone@Base 2.1.0~ast20130801
  pjsip_parse_end_hdr_imp@Base 2.1.0~ast20130801
+ pjsip_parse_generic_array_hdr_imp@Base 2.2~svn.4723~dfsg
  pjsip_parse_hdr@Base 2.1.0~ast20130801
  pjsip_parse_headers@Base 2.1.0~ast20130801
  pjsip_parse_msg@Base 2.1.0~ast20130801
@@ -317,7 +318,9 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_transport_shutdown@Base 2.1.0~ast20130801
  pjsip_transport_type_get_af@Base 2.1.0~ast20130801
  pjsip_tsx_create_key@Base 2.1.0~ast20130801
+ pjsip_tsx_create_uac2@Base 2.2~svn.4723~dfsg
  pjsip_tsx_create_uac@Base 2.1.0~ast20130801
+ pjsip_tsx_create_uas2@Base 2.2~svn.4723~dfsg
  pjsip_tsx_create_uas@Base 2.1.0~ast20130801
  pjsip_tsx_get_dlg@Base 2.1.0~ast20130801
  pjsip_tsx_layer_destroy@Base 2.1.0~ast20130801

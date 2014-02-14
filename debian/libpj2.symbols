@@ -320,6 +320,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_sock_set_qos_params@Base 2.1.0~ast20130801
  pj_sock_set_qos_type@Base 2.1.0~ast20130801
  pj_sock_setsockopt@Base 2.1.0~ast20130801
+ pj_sock_setsockopt_sobuf@Base 2.2~svn.4723~dfsg
  pj_sock_shutdown@Base 2.1.0~ast20130801
  pj_sock_socket@Base 2.1.0~ast20130801
  pj_sockaddr_cmp@Base 2.1.0~ast20130801
@@ -391,6 +392,8 @@ libpj.so.2 libpj2 #MINVER#
  pj_strnicmp@Base 2.1.0~ast20130801
  pj_strrtrim@Base 2.1.0~ast20130801
  pj_strstr@Base 2.1.0~ast20130801
+ pj_strtof@Base 2.2~svn.4723~dfsg
+ pj_strtol@Base 2.2~svn.4723~dfsg
  pj_strtoul2@Base 2.1.0~ast20130801
  pj_strtoul@Base 2.1.0~ast20130801
  pj_strtrim@Base 2.1.0~ast20130801
@@ -422,6 +425,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_time_local_to_gmt@Base 2.1.0~ast20130801
  pj_time_val_normalize@Base 2.1.0~ast20130801
  pj_timer_entry_init@Base 2.1.0~ast20130801
+ pj_timer_entry_running@Base 2.2~svn.4723~dfsg
  pj_timer_heap_cancel@Base 2.1.0~ast20130801
  pj_timer_heap_cancel_if_active@Base 2.1.0~ast20130801
  pj_timer_heap_count@Base 2.1.0~ast20130801

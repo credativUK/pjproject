@@ -23,6 +23,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_ice_strans_enum_cands@Base 2.1.0~ast20130801
  pj_ice_strans_get_cands_count@Base 2.1.0~ast20130801
  pj_ice_strans_get_def_cand@Base 2.1.0~ast20130801
+ pj_ice_strans_get_grp_lock@Base 2.2~svn.4723~dfsg
  pj_ice_strans_get_options@Base 2.1.0~ast20130801
  pj_ice_strans_get_role@Base 2.1.0~ast20130801
  pj_ice_strans_get_running_comp_cnt@Base 2.1.0~ast20130801
@@ -92,6 +93,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_stun_session_create_req@Base 2.1.0~ast20130801
  pj_stun_session_create_res@Base 2.1.0~ast20130801
  pj_stun_session_destroy@Base 2.1.0~ast20130801
+ pj_stun_session_get_grp_lock@Base 2.2~svn.4723~dfsg
  pj_stun_session_get_user_data@Base 2.1.0~ast20130801
  pj_stun_session_on_rx_pkt@Base 2.1.0~ast20130801
  pj_stun_session_respond@Base 2.1.0~ast20130801
@@ -106,6 +108,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_stun_sock_cfg_default@Base 2.1.0~ast20130801
  pj_stun_sock_create@Base 2.1.0~ast20130801
  pj_stun_sock_destroy@Base 2.1.0~ast20130801
+ pj_stun_sock_get_grp_lock@Base 2.2~svn.4723~dfsg
  pj_stun_sock_get_info@Base 2.1.0~ast20130801
  pj_stun_sock_get_user_data@Base 2.1.0~ast20130801
  pj_stun_sock_op_name@Base 2.1.0~ast20130801
@@ -125,6 +128,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_turn_session_bind_channel@Base 2.1.0~ast20130801
  pj_turn_session_create@Base 2.1.0~ast20130801
  pj_turn_session_destroy@Base 2.1.0~ast20130801
+ pj_turn_session_get_grp_lock@Base 2.2~svn.4723~dfsg
  pj_turn_session_get_info@Base 2.1.0~ast20130801
  pj_turn_session_get_user_data@Base 2.1.0~ast20130801
  pj_turn_session_on_rx_pkt@Base 2.1.0~ast20130801
@@ -141,6 +145,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_turn_sock_cfg_default@Base 2.1.0~ast20130801
  pj_turn_sock_create@Base 2.1.0~ast20130801
  pj_turn_sock_destroy@Base 2.1.0~ast20130801
+ pj_turn_sock_get_grp_lock@Base 2.2~svn.4723~dfsg
  pj_turn_sock_get_info@Base 2.1.0~ast20130801
  pj_turn_sock_get_user_data@Base 2.1.0~ast20130801
  pj_turn_sock_lock@Base 2.1.0~ast20130801

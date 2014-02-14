@@ -91,6 +91,7 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_endpt_get_thread@Base 2.1.0~ast20130801
  pjmedia_endpt_get_thread_count@Base 2.1.0~ast20130801
  pjmedia_endpt_set_flag@Base 2.1.0~ast20130801
+ pjmedia_endpt_stop_threads@Base 2.2~svn.4723~dfsg
  pjmedia_event_init@Base 2.1.0~ast20130801
  pjmedia_event_mgr_create@Base 2.1.0~ast20130801
  pjmedia_event_mgr_destroy@Base 2.1.0~ast20130801
@@ -105,6 +106,7 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_ice_create2@Base 2.1.0~ast20130801
  pjmedia_ice_create3@Base 2.1.0~ast20130801
  pjmedia_ice_create@Base 2.1.0~ast20130801
+ pjmedia_ice_get_grp_lock@Base 2.2~svn.4723~dfsg
  pjmedia_jbuf_create@Base 2.1.0~ast20130801
  pjmedia_jbuf_destroy@Base 2.1.0~ast20130801
  pjmedia_jbuf_get_frame2@Base 2.1.0~ast20130801
@@ -354,6 +356,8 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_wsola_save@Base 2.1.0~ast20130801
  pjmedia_wsola_set_max_expand@Base 2.1.0~ast20130801
  speex_aec_cancel_echo@Base 2.1.0~ast20130801
+ speex_aec_capture@Base 2.2~svn.4723~dfsg
  speex_aec_create@Base 2.1.0~ast20130801
  speex_aec_destroy@Base 2.1.0~ast20130801
+ speex_aec_playback@Base 2.2~svn.4723~dfsg
  speex_aec_reset@Base 2.1.0~ast20130801

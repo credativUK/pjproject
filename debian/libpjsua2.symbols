@@ -75,6 +75,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_call_send_im@Base 2.1.0~ast20130801
  pjsua_call_send_request@Base 2.1.0~ast20130801
  pjsua_call_send_typing_ind@Base 2.1.0~ast20130801
+ pjsua_call_set_hold2@Base 2.2~svn.4723~dfsg
  pjsua_call_set_hold@Base 2.1.0~ast20130801
  pjsua_call_set_user_data@Base 2.1.0~ast20130801
  pjsua_call_setting_default@Base 2.1.0~ast20130801
@@ -174,6 +175,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_recorder_destroy@Base 2.1.0~ast20130801
  pjsua_recorder_get_conf_port@Base 2.1.0~ast20130801
  pjsua_recorder_get_port@Base 2.1.0~ast20130801
+ pjsua_register_worker_thread@Base 2.2~svn.4723~dfsg
  pjsua_resolve_stun_servers@Base 2.1.0~ast20130801
  pjsua_schedule_timer2@Base 2.1.0~ast20130801
  pjsua_schedule_timer@Base 2.1.0~ast20130801
@@ -190,6 +192,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_snd_set_setting@Base 2.1.0~ast20130801
  pjsua_start@Base 2.1.0~ast20130801
  pjsua_start_mwi@Base 2.1.0~ast20130801
+ pjsua_stop_worker_threads@Base 2.2~svn.4723~dfsg
  pjsua_transport_close@Base 2.1.0~ast20130801
  pjsua_transport_config_default@Base 2.1.0~ast20130801
  pjsua_transport_config_dup@Base 2.1.0~ast20130801

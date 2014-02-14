@@ -12,6 +12,7 @@ libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
  pjsip_get_prack_method@Base 2.1.0~ast20130801
  pjsip_get_refer_method@Base 2.1.0~ast20130801
  pjsip_inv_answer@Base 2.1.0~ast20130801
+ pjsip_inv_cancel_reinvite@Base 2.2~svn.4723~dfsg
  pjsip_inv_create_ack@Base 2.1.0~ast20130801
  pjsip_inv_create_uac@Base 2.1.0~ast20130801
  pjsip_inv_create_uas@Base 2.1.0~ast20130801
@@ -48,6 +49,7 @@ libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
  pjsip_regc_set_credentials@Base 2.1.0~ast20130801
  pjsip_regc_set_delay_before_refresh@Base 2.1.0~ast20130801
  pjsip_regc_set_prefs@Base 2.1.0~ast20130801
+ pjsip_regc_set_reg_tsx_cb@Base 2.2~svn.4723~dfsg
  pjsip_regc_set_route_set@Base 2.1.0~ast20130801
  pjsip_regc_set_transport@Base 2.1.0~ast20130801
  pjsip_regc_set_via_sent_by@Base 2.1.0~ast20130801
@@ -60,6 +62,7 @@ libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
  pjsip_replaces_verify_request@Base 2.1.0~ast20130801
  pjsip_sess_expires_hdr_create@Base 2.1.0~ast20130801
  pjsip_timer_end_session@Base 2.1.0~ast20130801
+ pjsip_timer_handle_refresh_error@Base 2.2~svn.4723~dfsg
  pjsip_timer_init_module@Base 2.1.0~ast20130801
  pjsip_timer_init_session@Base 2.1.0~ast20130801
  pjsip_timer_process_req@Base 2.1.0~ast20130801
