@@ -17,6 +17,7 @@ override_dh_auto_clean:
 	if test -f build.mak; then make distclean; fi
 
 override_dh_auto_configure:
+	cp debian/config_site.h pjlib/include/
 ifneq (,$(wildcard third-party/ilbc/iLBC_decode.c))
 	# Sanity check for one of the third party libraries we need to
 	# remove from the source tree
