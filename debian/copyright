@@ -11,6 +11,12 @@ Comment: Currently packaging the Asterisk fork of PJProject, as it supports
  * third_party/milenage - non distributable
  * third_party/BaseClasses - non distributable (?)
  * pjmedia/src/pjmedia-audiodev/s60_g729_bitstream.h - non distributable
+Files-Excluded:
+ third_party/g7221
+ third_party/ilbc
+ third_party/milenage
+ third_party/BaseClasses
+ pjmedia/src/pjmedia-audiodev/s60_g729_bitstream.h
 
 Files: *
 Copyright:

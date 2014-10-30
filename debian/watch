@@ -1,0 +1,3 @@
+version=3
+opts=repacksuffix=~dfsg \
+	http://www.pjsip.org/download.htm /release/.*/pjproject-(.*).tar.bz2
