@@ -1,0 +1,36 @@
+From ca970e9849cd932fea5c3b27609b0dfba7d2c628 Mon Sep 17 00:00:00 2001
+From: Tzafrir Cohen <tzafrir@debian.org>
+Date: Thu, 30 Oct 2014 09:15:03 +0200
+Subject: CODEC_ID_* changed to AV_CODEC_ID_*
+
+---
+ pjmedia/src/pjmedia/ffmpeg_util.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/pjmedia/src/pjmedia/ffmpeg_util.c b/pjmedia/src/pjmedia/ffmpeg_util.c
+index ba01a3c..300bad3 100644
+--- a/pjmedia/src/pjmedia/ffmpeg_util.c
++++ b/pjmedia/src/pjmedia/ffmpeg_util.c
+@@ -68,14 +68,14 @@ static const struct ffmpeg_codec_table_t
+     unsigned		codec_id;
+ } ffmpeg_codec_table[] =
+ {
+-    {PJMEDIA_FORMAT_H261,	CODEC_ID_H261},
+-    {PJMEDIA_FORMAT_H263,	CODEC_ID_H263},
+-    {PJMEDIA_FORMAT_H263P,	CODEC_ID_H263P},
+-    {PJMEDIA_FORMAT_H264,	CODEC_ID_H264},
+-    {PJMEDIA_FORMAT_MPEG1VIDEO,	CODEC_ID_MPEG1VIDEO},
+-    {PJMEDIA_FORMAT_MPEG2VIDEO, CODEC_ID_MPEG2VIDEO},
+-    {PJMEDIA_FORMAT_MPEG4,	CODEC_ID_MPEG4},
+-    {PJMEDIA_FORMAT_MJPEG,	CODEC_ID_MJPEG}
++    {PJMEDIA_FORMAT_H261,	AV_CODEC_ID_H261},
++    {PJMEDIA_FORMAT_H263,	AV_CODEC_ID_H263},
++    {PJMEDIA_FORMAT_H263P,	AV_CODEC_ID_H263P},
++    {PJMEDIA_FORMAT_H264,	AV_CODEC_ID_H264},
++    {PJMEDIA_FORMAT_MPEG1VIDEO,	AV_CODEC_ID_MPEG1VIDEO},
++    {PJMEDIA_FORMAT_MPEG2VIDEO, AV_CODEC_ID_MPEG2VIDEO},
++    {PJMEDIA_FORMAT_MPEG4,	AV_CODEC_ID_MPEG4},
++    {PJMEDIA_FORMAT_MJPEG,	AV_CODEC_ID_MJPEG}
+ };
+ 
+ static int pjmedia_ffmpeg_ref_cnt;
