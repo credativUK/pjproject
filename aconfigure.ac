@@ -654,7 +654,6 @@ else
 	ac_pjmedia_snd=pa_unix
 	AC_CHECK_HEADER(alsa/version.h,
 			[AC_SUBST(ac_pa_use_alsa,1)
-			 LIBS="$LIBS -lasound"
 			],
 		        [AC_SUBST(ac_pa_use_alsa,0)])
 	AC_MSG_RESULT([Checking sound device backend... unix])
