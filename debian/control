@@ -9,6 +9,8 @@ Build-Depends: debhelper (>= 8),
  libspeex-dev, libspeexdsp-dev,
  portaudio19-dev,
  libgsm1-dev,
+ libopencore-amrnb-dev,
+ libopencore-amrwb-dev,
  uuid-dev,
  libsrtp0-dev,
  libssl-dev
