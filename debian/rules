@@ -29,7 +29,7 @@ endif
 		--with-external-srtp --disable-opencore-amr
 
 override_dh_auto_build:
-	dh_auto_build
+	dh_auto_build -- dep all
 	cd pjsip-apps/src/python && python setup.py build
 
 override_dh_auto_install:
