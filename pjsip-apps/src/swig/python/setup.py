@@ -1,4 +1,4 @@
-# $Id: setup.py 4704 2014-01-16 05:30:46Z ming $
+# $Id: setup.py 4756 2014-02-21 07:49:37Z nanang $
 #
 # pjsua2 Setup script.
 #
@@ -66,49 +66,40 @@ f = os.popen("make --no-print-directory -f helper.mak target_name")
 pj_target_name = f.read().rstrip("\r\n")
 f.close()
 
-# Fill in pj_inc_dirs
-pj_inc_dirs = []
-f = os.popen("make --no-print-directory -f helper.mak inc_dir")
+# Fill in extra_compile_args
+extra_compile_args = []
+f = os.popen("make --no-print-directory -f helper.mak cflags")
 for line in f:
-    pj_inc_dirs.append(line.rstrip("\r\n"))
+    extra_compile_args.append(line.rstrip("\r\n"))
 f.close()
 
-# Fill in pj_lib_dirs
-pj_lib_dirs = []
-f = os.popen("make --no-print-directory -f helper.mak lib_dir")
-for line in f:
-    pj_lib_dirs.append(line.rstrip("\r\n"))
-f.close()
-
-# Fill in pj_libs
-pj_libs = ['pjsua2-' + pj_target_name]
+# Fill in libraries
+libraries = []
 f = os.popen("make --no-print-directory -f helper.mak libs")
 for line in f:
-    pj_libs.append(line.rstrip("\r\n"))
+    libraries.append(line.rstrip("\r\n"))
 f.close()
 
-# Fill in extra link args
-extra_link_args = ['-static-libstdc++']
-if platform.system() == 'Darwin':
-    # Mac OS X depedencies
-    extra_link_args += ["-framework", "CoreFoundation", 
-                        "-framework", "AudioToolbox",
-			"-framework", "QTKit"]
-    # OS X Lion support
-    if platform.mac_ver()[0].startswith("10.7"):
-        extra_link_args += ["-framework", "AudioUnit"]
+# Fill in extra_link_args
+extra_link_args = []
+f = os.popen("make --no-print-directory -f helper.mak ldflags")
+for line in f:
+    extra_link_args.append(line.rstrip("\r\n"))
+f.close()
 
+# MinGW specific action: put current working dir to PATH, so Python distutils
+# will invoke our dummy gcc/g++ instead, which is in the current working dir.
+if platform.system()=='Windows' and os.environ["MSYSTEM"].find('MINGW')!=-1:
+    os.environ["PATH"] = "." + os.pathsep + os.environ["PATH"]
 
 setup(name="pjsua2", 
       version=pj_version,
       description='SIP User Agent Library based on PJSIP',
       url='http://www.pjsip.org',
       ext_modules = [Extension("_pjsua2", 
-                               ["pjsua2_wrap.cpp"], 
-                               define_macros=[('PJ_AUTOCONF', '1'),],
-                               include_dirs=pj_inc_dirs, 
-                               library_dirs=pj_lib_dirs, 
-                               libraries=pj_libs,
+                               ["pjsua2_wrap.cpp"],
+                               libraries=libraries,
+                               extra_compile_args=extra_compile_args,
                                extra_link_args=extra_link_args
                               )
                     ],

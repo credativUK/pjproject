@@ -1,4 +1,4 @@
-# $Id: chatgui.py 4704 2014-01-16 05:30:46Z ming $
+# $Id: chatgui.py 4757 2014-02-21 07:53:31Z nanang $
 #
 # pjsua Python GUI Demo
 #
@@ -257,7 +257,7 @@ class AudioFrame(ttk.Labelframe):
 		self.btnTxMute.pack(side=tk.LEFT)
 		
 		# stat
-		self.stat = tk.Text(self._callFrame, width=10, height=2, bg='lightgray', relief=tk.FLAT, font=("Arial", "9"))
+		self.stat = tk.Text(self._callFrame, width=10, height=2, bg='lightgray', relief=tk.FLAT, font=("Courier", "9"))
 		self.stat.insert(tk.END, 'stat here')
 		self.stat.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=1)
 

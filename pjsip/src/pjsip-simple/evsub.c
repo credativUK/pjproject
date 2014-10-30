@@ -1,4 +1,4 @@
-/* $Id: evsub.c 4718 2014-01-29 06:58:21Z nanang $ */
+/* $Id: evsub.c 4747 2014-02-18 01:33:17Z bennylp $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -252,7 +252,7 @@ struct dlgsub
 
 /* Static vars. */
 static const pj_str_t STR_EVENT	     = { "Event", 5 };
-static const pj_str_t STR_EVENT_S    = { "Event", 5 };
+static const pj_str_t STR_EVENT_S    = { "o", 1 };
 static const pj_str_t STR_SUB_STATE  = { "Subscription-State", 18 };
 static const pj_str_t STR_TERMINATED = { "terminated", 10 };
 static const pj_str_t STR_ACTIVE     = { "active", 6 };

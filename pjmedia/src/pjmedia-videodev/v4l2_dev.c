@@ -1,4 +1,4 @@
-/* $Id: v4l2_dev.c 4722 2014-01-29 10:40:40Z nanang $ */
+/* $Id: v4l2_dev.c 4736 2014-02-06 11:06:42Z bennylp $ */
 /*
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  *
@@ -557,6 +557,7 @@ static pj_status_t vid4lin_factory_create_stream(pjmedia_vid_dev_factory *f,
 
     vdi = &cf->dev_info[param->cap_id];
     vfd = pjmedia_format_get_video_format_detail(&param->fmt, PJ_TRUE);
+    PJ_UNUSED_ARG(vfd); /* Unused for now */
 
     /* Create and Initialize stream descriptor */
     pool = pj_pool_create(cf->pf, vdi->info.name, 512, 512, NULL);

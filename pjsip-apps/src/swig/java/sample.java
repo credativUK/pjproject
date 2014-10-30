@@ -1,4 +1,4 @@
-/* $Id: sample.java 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: sample.java 4767 2014-02-27 02:26:53Z ming $ */
 /* 
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -97,14 +97,14 @@ public class sample {
 			accCfg.setIdUri("sip:localhost");
 			account = app.addAcc(accCfg);
 
-			accCfg.setIdUri("sip:301@pjsip.org");
+			accCfg.setIdUri("sip:test@pjsip.org");
 			AccountSipConfig sipCfg = accCfg.getSipConfig();		
 			AuthCredInfoVector ciVec = sipCfg.getAuthCreds();
 			ciVec.add(new AuthCredInfo("Digest", 
 					"*",
-					"301",
+					"test",
 					0,
-					"pw301"));
+					"passwd"));
 
 			StringVector proxy = sipCfg.getProxies();
 			proxy.add("sip:pjsip.org;transport=tcp");							

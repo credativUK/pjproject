@@ -1,4 +1,4 @@
-/* $Id: types.cpp 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: types.cpp 4742 2014-02-12 05:18:31Z bennylp $ */
 /*
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -87,7 +87,7 @@ string Error::info(bool multi_line) const
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void TimeValue::fromPj(const pj_time_val &prm)
+void TimeVal::fromPj(const pj_time_val &prm)
 {
     this->sec  = prm.sec;
     this->msec = prm.msec;

@@ -1,16 +1,16 @@
-
-.. The PJSIP Book documentation master file, created by
+.. PJSUA2 documentation master file, created by
    sphinx-quickstart on Sat Nov 30 06:36:26 2013.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to The PJSIP Book's documentation!
+PJSUA2 Documentation
 ==========================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
+   :numbered: 1
 
    intro
    consider
@@ -21,10 +21,10 @@ Contents:
    call
    presence
    samples
-   optimization
    media_quality
    network_problems
    reference
+   breathe
 
    
 Indices and tables

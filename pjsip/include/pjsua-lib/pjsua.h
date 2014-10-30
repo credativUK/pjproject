@@ -1,4 +1,4 @@
-/* $Id: pjsua.h 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: pjsua.h 4889 2014-08-18 09:09:18Z bennylp $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -756,7 +756,7 @@ typedef struct pjsua_callback
     void (*on_dtmf_digit)(pjsua_call_id call_id, int digit);
 
     /**
-     * Notify application on call being transfered (i.e. REFER is received).
+     * Notify application on call being transferred (i.e. REFER is received).
      * Application can decide to accept/reject transfer request
      * by setting the code (default is 202). When this callback
      * is not defined, the default behavior is to accept the
@@ -765,7 +765,7 @@ typedef struct pjsua_callback
      *
      * @param call_id	The call index.
      * @param dst	The destination where the call will be 
-     *			transfered to.
+     *			transferred to.
      * @param code	Status code to be returned for the call transfer
      *			request. On input, it contains status code 200.
      */
@@ -774,7 +774,7 @@ typedef struct pjsua_callback
 				     pjsip_status_code *code);
 
     /**
-     * Notify application on call being transfered (i.e. REFER is received).
+     * Notify application on call being transferred (i.e. REFER is received).
      * Application can decide to accept/reject transfer request
      * by setting the code (default is 202). When this callback
      * is not defined, the default behavior is to accept the
@@ -782,11 +782,11 @@ typedef struct pjsua_callback
      *
      * @param call_id	The call index.
      * @param dst	The destination where the call will be 
-     *			transfered to.
+     *			transferred to.
      * @param code	Status code to be returned for the call transfer
      *			request. On input, it contains status code 200.
      * @param opt	The current call setting, application can update
-     *			this setting for the call being transfered.
+     *			this setting for the call being transferred.
      */
     void (*on_call_transfer_request2)(pjsua_call_id call_id,
 				      const pj_str_t *dst,
@@ -1883,24 +1883,11 @@ PJ_DECL(int) pjsua_handle_events(unsigned msec_timeout);
 
 
 /**
- * Register a thread to poll for events. This function should be
- * called by an external worker thread, and it will block polling
- * for events until the library is destroyed.
- *
- * @return 		PJ_SUCCESS if things are working correctly
- * 			or an error polling cannot be done for some
- * 			reason.
- */
-PJ_DECL(pj_status_t) pjsua_register_worker_thread(const char *name);
-
-
-/**
  * Signal all worker threads to quit. This will only wait until internal
- * threads are done. For external threads, application must perform
- * its own waiting for the external threads to quit from
- * pjsua_register_worker_thread() function.
+ * threads are done.
  */
 PJ_DECL(void) pjsua_stop_worker_threads(void);
+
 
 /**
  * Create memory pool to be used by the application. Once application
@@ -2295,6 +2282,14 @@ typedef struct pjsua_transport_config
      * Default is QoS not set.
      */
     pj_qos_params	qos_params;
+
+    /**
+     * Specify options to be set on the transport. 
+     *
+     * By default there is no options.
+     * 
+     */
+    pj_sockopt_params	sockopt_params;
 
 } pjsua_transport_config;
 
@@ -3058,6 +3053,19 @@ typedef struct pjsua_acc_config
      * (PJSUA_CONTACT_REWRITE_NO_UNREG | PJSUA_CONTACT_REWRITE_ALWAYS_UPDATE)
      */
     int		     contact_rewrite_method;
+
+    /**
+     * Specify if source TCP port should be used as the initial Contact
+     * address if TCP/TLS transport is used. Note that this feature will
+     * be automatically turned off when nameserver is configured because
+     * it may yield different destination address due to DNS SRV resolution.
+     * Also some platforms are unable to report the local address of the
+     * TCP socket when it is still connecting. In these cases, this
+     * feature will also be turned off.
+     *
+     * Default: PJ_TRUE (yes).
+     */
+    pj_bool_t	     contact_use_src_port;
 
     /**
      * This option is used to overwrite the "sent-by" field of the Via header
@@ -4651,7 +4659,7 @@ PJ_DECL(pj_status_t) pjsua_call_update2(pjsua_call_id call_id,
  * \a on_call_transfer_status() callback which will report the progress
  * of the call transfer request.
  *
- * @param call_id	The call id to be transfered.
+ * @param call_id	The call id to be transferred.
  * @param dest		URI of new target to be contacted. The URI may be
  * 			in name address or addr-spec format.
  * @param msg_data	Optional message components to be sent with
@@ -4676,7 +4684,7 @@ PJ_DECL(pj_status_t) pjsua_call_xfer(pjsua_call_id call_id,
  * of \a dest_call_id. The party at \a dest_call_id then should "replace"
  * the call with us with the new call from the REFER recipient.
  *
- * @param call_id	The call id to be transfered.
+ * @param call_id	The call id to be transferred.
  * @param dest_call_id	The call id to be replaced.
  * @param options	Application may specify PJSUA_XFER_NO_REQUIRE_REPLACES
  *			to suppress the inclusion of "Require: replaces" in
@@ -4693,10 +4701,12 @@ PJ_DECL(pj_status_t) pjsua_call_xfer_replaces(pjsua_call_id call_id,
 					      const pjsua_msg_data *msg_data);
 
 /**
- * Send DTMF digits to remote using RFC 2833 payload formats.
+ * Send DTMF digits to remote using RFC 2833 payload formats. 
  *
  * @param call_id	Call identification.
- * @param digits	DTMF string digits to be sent.
+ * @param digits	DTMF string digits to be sent as described on RFC 2833 
+ *			section 3.10. Character 'R' is used to represent the 
+ *			event type 16 (flash) as stated in RFC 4730.
  *
  * @return		PJ_SUCCESS on success, or the appropriate error code.
  */
@@ -6069,6 +6079,29 @@ PJ_DECL(pj_status_t) pjsua_player_get_port(pjsua_player_id id,
 					   pjmedia_port **p_port);
 
 /**
+ * Get additional info about the file player. This operation is not valid
+ * for playlist.
+ *
+ * @param port		The file player ID.
+ * @param info		The info.
+ *
+ * @return		PJ_SUCCESS on success or the appropriate error code.
+ */
+PJ_DECL(pj_status_t) pjsua_player_get_info(pjsua_player_id id,
+                                           pjmedia_wav_player_info *info);
+
+
+/**
+ * Get playback position. This operation is not valid for playlist.
+ *
+ * @param id		The file player ID.
+ *
+ * @return		The current playback position, in samples. On error,
+ * 			return the error code as negative value.
+ */
+PJ_DECL(pj_ssize_t) pjsua_player_get_pos(pjsua_player_id id);
+
+/**
  * Set playback position. This operation is not valid for playlist.
  *
  * @param id		The file player ID.
@@ -6079,7 +6112,6 @@ PJ_DECL(pj_status_t) pjsua_player_get_port(pjsua_player_id id,
  */
 PJ_DECL(pj_status_t) pjsua_player_set_pos(pjsua_player_id id,
 					  pj_uint32_t samples);
-
 
 /**
  * Close the file of playlist, remove the player from the bridge, and free

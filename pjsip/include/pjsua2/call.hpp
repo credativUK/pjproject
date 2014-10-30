@@ -1,4 +1,4 @@
-/* $Id: call.hpp 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: call.hpp 4780 2014-03-06 01:02:26Z ming $ */
 /*
  * Copyright (C) 2012-2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -90,7 +90,7 @@ public:
  */
 struct RtcpStreamStat
 {
-    TimeValue	    update;	/**< Time of last update.		    */
+    TimeVal	    update;	/**< Time of last update.		    */
     unsigned	    updateCount;/**< Number of updates (to calculate avg)   */
     unsigned	    pkt;	/**< Total number of packets		    */
     unsigned	    bytes;	/**< Total number of payload/bytes	    */
@@ -140,7 +140,7 @@ public:
  */
 struct RtcpStat
 {
-    TimeValue           start;          /**< Time when session was created  */
+    TimeVal		start;          /**< Time when session was created  */
     
     RtcpStreamStat      txStat;         /**< Encoder stream statistics.	    */
     RtcpStreamStat      rxStat;         /**< Decoder stream statistics.	    */
@@ -508,12 +508,12 @@ struct CallInfo
      * Up-to-date call connected duration (zero when call is not
      * established)
      */
-    TimeValue		connectDuration;
+    TimeVal		connectDuration;
     
     /**
      * Total call duration, including set-up time
      */
-    TimeValue		totalDuration;
+    TimeVal		totalDuration;
     
     /**
      * Flag if remote was SDP offerer
@@ -726,7 +726,7 @@ struct OnDtmfDigitParam
 struct OnCallTransferRequestParam
 {
     /**
-     * The destination where the call will be transfered to.
+     * The destination where the call will be transferred to.
      */
     string              dstUri;
     
@@ -738,7 +738,7 @@ struct OnCallTransferRequestParam
     
     /**
      * The current call setting, application can update this setting
-     * for the call being transfered.
+     * for the call being transferred.
      */
     CallSetting         opt;
 };
@@ -1239,13 +1239,15 @@ public:
     void setHold(const CallOpParam &prm) throw(Error);
     
     /**
-     * Send re-INVITE to release hold.
+     * Send re-INVITE.
      * The final status of the request itself will be reported on the
      * \a onCallMediaState() callback, which inform the application that
      * the media state of the call has changed.
      *
      * @param prm.opt       Optional call setting, if empty, the current call
      *                      setting will remain unchanged.
+     * @param prm.opt.flag  Bitmask of pjsua_call_flag constants. Specifying
+     *                      PJSUA_CALL_UNHOLD here will release call hold.
      * @param prm.txOption  Optional message components to be sent with
      *                      the request.
      */
@@ -1529,7 +1531,7 @@ public:
     { PJ_UNUSED_ARG(prm); }
     
     /**
-     * Notify application on call being transfered (i.e. REFER is received).
+     * Notify application on call being transferred (i.e. REFER is received).
      * Application can decide to accept/reject transfer request
      * by setting the code (default is 202). When this callback
      * is not implemented, the default behavior is to accept the
