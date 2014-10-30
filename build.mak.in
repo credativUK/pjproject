@@ -28,6 +28,8 @@ export APP_THIRD_PARTY_EXT :=
 export APP_THIRD_PARTY_LIBS :=
 export APP_THIRD_PARTY_LIB_FILES :=
 
+PJLIB_EXT = @PJLIB_EXT@
+
 ifeq (@ac_external_srtp@,1)
 # External SRTP library
 APP_THIRD_PARTY_EXT += -lsrtp
@@ -60,7 +62,7 @@ endif
 ifneq (@ac_no_gsm_codec@,1)
 ifeq (@ac_external_gsm@,1)
 # External GSM library
-APP_THIRD_PARTY_EXT += -lgsm
+PJMEDIA_CODEC_EXT += -lgsm
 else
 APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libgsmcodec-$(LIB_SUFFIX)
 ifeq ($(PJ_SHARED_LIBRARIES),)
@@ -74,7 +76,8 @@ endif
 
 ifneq (@ac_no_speex_codec@,1)
 ifeq (@ac_external_speex@,1)
-APP_THIRD_PARTY_EXT += -lspeex -lspeexdsp
+PJMEDIA_EXT += -lspeexdsp
+PJMEDIA_CODEC_EXT += -lspeex
 else
 APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libspeex-$(LIB_SUFFIX)
 ifeq ($(PJ_SHARED_LIBRARIES),)
@@ -109,7 +112,7 @@ endif
 ifneq ($(findstring pa,@ac_pjmedia_snd@),)
 ifeq (@ac_external_pa@,1)
 # External PA
-APP_THIRD_PARTY_EXT += -lportaudio
+PJMEDIA_AUDIODEV_EXT += -lportaudio
 else
 APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libportaudio-$(LIB_SUFFIX)
 ifeq ($(PJ_SHARED_LIBRARIES),)

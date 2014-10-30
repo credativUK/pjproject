@@ -1,4 +1,4 @@
-no_libasound.patch
-reduce_pjlib_linkage.patch
-reduce_pjmedia_linkage.patch
-pjsip_python.patch
+0001-Remove-pointless-linking-with-libasound.patch
+0002-Reduce-number-of-libraries-linked-with-pjlib.patch
+0003-Reduce-number-of-libraries-linked-with-pjmedia.patch
+0004-Enable-building-python-bindings.patch
