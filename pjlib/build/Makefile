@@ -39,7 +39,7 @@ export PJLIB_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 	string.o timer.o types.o
 export PJLIB_CFLAGS += $(_CFLAGS)
 export PJLIB_CXXFLAGS += $(_CXXFLAGS)
-export PJLIB_LDFLAGS += $(_LDFLAGS)
+export PJLIB_LDFLAGS += $(PJLIB_EXT) $(_LDFLAGS)
 
 ###############################################################################
 # Defines for building test application
