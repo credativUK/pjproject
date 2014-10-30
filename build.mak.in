@@ -28,6 +28,8 @@ export APP_THIRD_PARTY_EXT :=
 export APP_THIRD_PARTY_LIBS :=
 export APP_THIRD_PARTY_LIB_FILES :=
 
+PJLIB_EXT = @PJLIB_EXT@
+
 ifeq (@ac_external_srtp@,1)
 # External SRTP library
 APP_THIRD_PARTY_EXT += -lsrtp
