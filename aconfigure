@@ -620,6 +620,7 @@ ac_includes_default="\
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+PJLIB_EXT
 ac_main_obj
 ac_host
 ac_linux_poll
@@ -4211,7 +4212,7 @@ if test "x$ac_cv_lib_uuid_uuid_generate" = xyes; then :
 #define HAVE_LIBUUID 1
 _ACEOF
 
-  LIBS="-luuid $LIBS"
+  PJLIB_EXT="-luuid $PJLIB_EXT"
 
 fi
 
@@ -7665,7 +7666,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_ERR_load_BIO_strings" >&5
 $as_echo "$ac_cv_lib_crypto_ERR_load_BIO_strings" >&6; }
 if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
-  libcrypto_present=1 && LIBS="$LIBS -lcrypto"
+  libcrypto_present=1 && PJLIB_EXT="$PJLIB_EXT -lcrypto"
 fi
 
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_library_init in -lssl" >&5
@@ -7705,7 +7706,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_SSL_library_init" >&5
 $as_echo "$ac_cv_lib_ssl_SSL_library_init" >&6; }
 if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
-  libssl_present=1 && LIBS="$LIBS -lssl"
+  libssl_present=1 && PJLIB_EXT="$PJLIB_EXT -lssl"
 fi
 
 		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
