@@ -31,7 +31,7 @@ endif
 	dh_auto_configure -- --enable-shared \
 		--disable-g7221-codec --disable-ilbc-codec --disable-resample \
 		--with-external-gsm --with-external-speex --with-external-pa \
-		--with-external-srtp
+		--with-external-srtp --enable-video
 
 override_dh_auto_build:
 	dh_auto_build -- dep all
