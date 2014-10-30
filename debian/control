@@ -5,6 +5,7 @@ Maintainer: Tzafrir Cohen <tzafrir@debian.org>
 Uploaders: Jeremy Lainé <jeremy.laine@m4x.org>
 Build-Depends: debhelper (>= 8),
  autotools-dev,
+ python-dev,
  dh-autoreconf,
  libspeex-dev, libspeexdsp-dev,
  portaudio19-dev,
