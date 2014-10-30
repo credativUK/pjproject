@@ -1,4 +1,4 @@
-# $Id: call.py 4704 2014-01-16 05:30:46Z ming $
+# $Id: call.py 4757 2014-02-21 07:53:31Z nanang $
 #
 # pjsua Python GUI Demo
 #
@@ -70,6 +70,8 @@ class Call(pj.Call):
 				elif mi.status == pj.PJSUA_CALL_MEDIA_ACTIVE and self.onhold:
 					self.chat.addMessage(None, "'%s' sets call active" % (self.peerUri))
 					self.onhold = False
+		if self.chat:
+			self.chat.updateCallMediaState(self, ci)
 			
 	def onInstantMessage(self, prm):
 		# chat instance should have been initalized

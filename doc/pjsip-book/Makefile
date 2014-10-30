@@ -45,7 +45,17 @@ clean:
 	-rm -rf xml
 	-rm -rf html
 
-xml:	Doxyfile
+install:
+	@if test -z "$(WWWDIR)" ; then \
+	  echo WWWDIR is not set; \
+	else \
+	  echo Copying html dir to $(WWWDIR)/docs/book-latest/..; \
+	  cp -a -f _build/html $(WWWDIR)/docs/book-latest/; \
+	  echo Copying PJSUA2Doc.pdf to $(WWWDIR)/docs/book-latest/..; \
+	  cp -f _build/latex/PJSUA2Doc.pdf $(WWWDIR)/docs/book-latest/; \
+	fi
+
+xml:	Doxyfile ../../pjsip/include/pjsua2
 	doxygen
 
 html: xml

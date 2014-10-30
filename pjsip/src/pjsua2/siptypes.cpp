@@ -1,4 +1,4 @@
-/* $Id: siptypes.cpp 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: siptypes.cpp 4884 2014-08-12 11:50:16Z nanang $ */
 /*
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -157,13 +157,14 @@ TlsConfig::TlsConfig()
 pjsip_tls_setting TlsConfig::toPj() const
 {
     pjsip_tls_setting ts;
+    pjsip_tls_setting_default(&ts);
 
     ts.ca_list_file	= str2Pj(this->CaListFile);
     ts.cert_file	= str2Pj(this->certFile);
     ts.privkey_file	= str2Pj(this->privKeyFile);
     ts.password		= str2Pj(this->password);
     ts.method		= this->method;
-    ts.ciphers_num	= this->ciphers.size();
+    ts.ciphers_num	= (unsigned)this->ciphers.size();
     // The following will only work if sizeof(enum)==sizeof(int)
     pj_assert(sizeof(ts.ciphers[0]) == sizeof(int));
     ts.ciphers		= ts.ciphers_num? 
@@ -260,6 +261,7 @@ void TransportConfig::fromPj(const pjsua_transport_config &prm)
 pjsua_transport_config TransportConfig::toPj() const
 {
     pjsua_transport_config tc;
+    pjsua_transport_config_default(&tc);
 
     tc.port		= this->port;
     tc.port_range	= this->portRange;
@@ -424,7 +426,7 @@ pjsip_multipart_part& SipMultipartPart::toPj() const
     pjMsgBody.print_body    = &pjsip_print_text_body;
     pjMsgBody.clone_data    = &pjsip_clone_text_data;
     pjMsgBody.data	    = (void*)body.c_str();
-    pjMsgBody.len	    = body.size();
+    pjMsgBody.len	    = (unsigned)body.size();
     pjMpp.body = &pjMsgBody;
 
     return pjMpp;
@@ -446,6 +448,7 @@ void SipEvent::fromPj(const pjsip_event &ev)
         body.tsxState.prevState = (pjsip_tsx_state_e)
         ev.body.tsx_state.prev_state;
         body.tsxState.tsx.fromPj(*ev.body.tsx_state.tsx);
+        body.tsxState.type = ev.body.tsx_state.type;
         if (body.tsxState.type == PJSIP_EVENT_TX_MSG) {
             if (ev.body.tsx_state.src.tdata)
         	body.tsxState.src.tdata.fromPj(*ev.body.tsx_state.src.tdata);

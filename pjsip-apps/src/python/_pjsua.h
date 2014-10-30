@@ -1,4 +1,4 @@
-/* $Id: _pjsua.h 4609 2013-10-02 03:19:54Z nanang $ */
+/* $Id: _pjsua.h 4724 2014-01-31 08:52:09Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -332,7 +332,7 @@ static PyMemberDef PyObj_pjsua_callback_members[] =
     {
         "on_call_transfer_request", T_OBJECT_EX,
         offsetof(PyObj_pjsua_callback, on_call_transfer_request), 0,
-        "Notify application on call being transfered. "
+        "Notify application on call being transferred. "
 	"Application can decide to accept/reject transfer request "
 	"by setting the code (default is 200). When this callback "
 	"is not defined, the default behavior is to accept the "

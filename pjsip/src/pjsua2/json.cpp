@@ -1,4 +1,4 @@
-/* $Id: json.cpp 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: json.cpp 4761 2014-02-24 09:02:44Z nanang $ */
 /*
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -180,7 +180,7 @@ void JsonDocument::loadString(const string &input) throw(Error)
 	PJSUA2_RAISE_ERROR3(PJ_EINVALIDOP, "JsonDocument.loadString()",
 	                    "Document already initialized");
 
-    unsigned size = input.size();
+    unsigned size = (unsigned)input.size();
     char *buffer = (char*)pj_pool_alloc(pool, size+1);
     unsigned parse_size = (unsigned)size;
     pj_json_err_info err_info;

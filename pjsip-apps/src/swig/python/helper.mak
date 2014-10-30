@@ -1,18 +1,22 @@
 include ../../../../build.mak
+include $(PJDIR)/build/common.mak
 
-lib_dir:
-	@for token in `echo $(APP_LDFLAGS)`; do \
-		echo $$token | grep L | sed 's/-L//'; \
+ldflags:
+	@for token in `echo $(PJ_LDXXFLAGS) $(LDFLAGS)`; do \
+		echo $$token; \
 	done
-
-inc_dir:
-	@for token in `echo $(APP_CFLAGS)`; do \
-		echo $$token | grep I | sed 's/-I//'; \
+	@for token in `echo $(PJ_LDXXLIBS) $(LIBS)`; do \
+		echo $$token | grep -v \\-l; true; \
 	done
 
 libs:
-	@for token in `echo $(APP_LDLIBS)`; do \
+	@for token in `echo $(PJ_LDXXLIBS) $(LIBS)`; do \
 		echo $$token | grep \\-l | sed 's/-l//'; \
+	done
+
+cflags:
+	@for token in `echo $(PJ_CXXFLAGS) $(CFLAGS)`; do \
+		echo $$token; \
 	done
 
 target_name:

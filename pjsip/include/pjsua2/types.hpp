@@ -1,4 +1,4 @@
-/* $Id: types.hpp 4704 2014-01-16 05:30:46Z ming $ */
+/* $Id: types.hpp 4742 2014-02-12 05:18:31Z bennylp $ */
 /* 
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -236,7 +236,7 @@ struct Version
 /**
  * Representation of time value.
  */
-struct TimeValue
+struct TimeVal
 {
     /**
      * The seconds part of the time.

@@ -1,4 +1,4 @@
-/* $Id: log.c 4624 2013-10-21 06:37:30Z ming $ */
+/* $Id: log.c 4761 2014-02-24 09:02:44Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -284,7 +284,8 @@ static void resume_logging(int *saved_level)
 #if PJ_HAS_THREADS
     if (thread_suspended_tls_id != -1) 
     {
-	pj_thread_local_set(thread_suspended_tls_id, (void*)PJ_FALSE);
+	pj_thread_local_set(thread_suspended_tls_id,
+			    (void*)(pj_size_t)PJ_FALSE);
     }
     else
 #endif

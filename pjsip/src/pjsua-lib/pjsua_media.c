@@ -1,4 +1,4 @@
-/* $Id: pjsua_media.c 4694 2013-12-17 09:01:21Z nanang $ */
+/* $Id: pjsua_media.c 4860 2014-06-19 05:07:12Z riza $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -298,6 +298,10 @@ static pj_status_t create_rtp_rtcp_sock(pjsua_call_media *call_med,
 				    &cfg->qos_params,
 				    2, THIS_FILE, "RTP socket");
 
+	/* Apply sockopt, if specified */
+	if (cfg->sockopt_params.cnt)
+	    status = pj_sock_setsockopt_params(sock[0], &cfg->sockopt_params);
+
 	/* Bind RTP socket */
 	pj_sockaddr_set_port(&bound_addr, acc->next_rtp_port);
 	status=pj_sock_bind(sock[0], &bound_addr,
@@ -320,6 +324,10 @@ static pj_status_t create_rtp_rtcp_sock(pjsua_call_media *call_med,
 	status = pj_sock_apply_qos2(sock[1], cfg->qos_type,
 				    &cfg->qos_params,
 				    2, THIS_FILE, "RTCP socket");
+
+	/* Apply sockopt, if specified */
+	if (cfg->sockopt_params.cnt)
+	    status = pj_sock_setsockopt_params(sock[1], &cfg->sockopt_params);
 
 	/* Bind RTCP socket */
 	pj_sockaddr_set_port(&bound_addr, (pj_uint16_t)(acc->next_rtp_port+1));
@@ -829,16 +837,37 @@ static pj_status_t create_ice_media_transport(
     /* Wait until transport is initialized, or time out */
     if (!async) {
 	pj_bool_t has_pjsua_lock = PJSUA_LOCK_IS_LOCKED();
+	pjsip_dialog *dlg = call_med->call->inv ?
+				call_med->call->inv->dlg : NULL;
         if (has_pjsua_lock)
 	    PJSUA_UNLOCK();
+        if (dlg) {
+            /* Don't lock otherwise deadlock:
+             * https://trac.pjsip.org/repos/ticket/1737
+             */
+            ++dlg->sess_count;
+            pjsip_dlg_dec_lock(dlg);
+        }
         while (call_med->tp_ready == PJ_EPENDING) {
 	    pjsua_handle_events(100);
+        }
+        if (dlg) {
+            pjsip_dlg_inc_lock(dlg);
+            --dlg->sess_count;
         }
 	if (has_pjsua_lock)
 	    PJSUA_LOCK();
     }
 
-    if (async && call_med->tp_ready == PJ_EPENDING) {
+    if (!call_med->tp) {
+	/* Call has been disconnected, and media transports have been cleared
+	 * (see ticket #1759).
+	 */
+	PJ_LOG(4,(THIS_FILE, "Media transport initialization cancelled "
+		             "because call has been disconnected"));
+	status = PJ_ECANCELLED;
+	goto on_error;
+    } else if (async && call_med->tp_ready == PJ_EPENDING) {
         return PJ_EPENDING;
     } else if (call_med->tp_ready != PJ_SUCCESS) {
 	pjsua_perror(THIS_FILE, "Error initializing ICE media transport",
@@ -1291,6 +1320,20 @@ on_return:
     return status;
 }
 
+/* Determine if call's media is being changed, for example when video is being
+ * added. Then we can reject incoming re-INVITE, for example. This is the
+ * solution for https://trac.pjsip.org/repos/ticket/1738
+ */
+pj_bool_t  pjsua_call_media_is_changing(pjsua_call *call)
+{
+    /* The problem in #1738 occurs because we do handle_events() loop while
+     * adding media, which could cause incoming re-INVITE to be processed and
+     * cause havoc. Since the handle_events() loop only happens while adding
+     * media, it is sufficient to only check if "prov > cnt" for now.
+     */
+    return call->med_prov_cnt > call->med_cnt;
+}
+
 /* Initialize the media line */
 pj_status_t pjsua_call_media_init(pjsua_call_media *call_med,
                                   pjmedia_type type,
@@ -1344,6 +1387,8 @@ pj_status_t pjsua_call_media_init(pjsua_call_media *call_med,
 	}
 
         if (status != PJ_SUCCESS) {
+	    call_med->tp_ready = status;
+	    pjsua_set_media_tp_state(call_med, PJSUA_MED_TP_NULL);
 	    PJ_PERROR(1,(THIS_FILE, status, "Error creating media transport"));
 	    return status;
 	}
