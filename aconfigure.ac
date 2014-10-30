@@ -663,9 +663,7 @@ else
 	dnl # Check if ALSA is available
 	ac_pjmedia_snd=alsa
 	AC_SUBST(ac_pa_use_alsa,1)
-	AC_CHECK_HEADER(alsa/version.h,
-			[LIBS="$LIBS -lasound"],
-		        [ac_pa_use_alsa=0])
+	AC_CHECK_HEADER(alsa/version.h, [], [ac_pa_use_alsa=0])
 	AC_MSG_RESULT([Checking sound device backend... unix])
 
 	dnl # Check if OSS is disabled
