@@ -1,3 +1,4 @@
 no_libasound.patch
 reduce_pjlib_linkage.patch
 reduce_pjmedia_linkage.patch
+pjsip_python.patch

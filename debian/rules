@@ -6,7 +6,7 @@ export CFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CFL
 export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 %:
-	dh $@ --with autotools_dev
+	dh $@ --with autotools_dev,python2
 
 # In case it would be needed:
 #override_dh_autoreconf:
@@ -27,3 +27,12 @@ endif
 		--disable-g7221-codec --disable-ilbc-codec --disable-resample \
 		--with-external-gsm --with-external-speex --with-external-pa \
 		--with-external-srtp --disable-opencore-amr
+
+override_dh_auto_build:
+	dh_auto_build
+	cd pjsip-apps/src/python && python setup.py build
+
+override_dh_auto_install:
+	dh_auto_install
+	cd pjsip-apps/src/python && python setup.py install
+
