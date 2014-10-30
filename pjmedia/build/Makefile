@@ -82,6 +82,7 @@ export PJMEDIA_CXXFLAGS += $(_CXXFLAGS)
 export PJMEDIA_LDFLAGS += $(PJLIB_LDLIB) \
 			  $(PJLIB_UTIL_LDLIB) \
 			  $(PJNATH_LDLIB) \
+			  $(PJMEDIA_EXT) \
 			  $(_LDFLAGS)
 
 
@@ -97,6 +98,7 @@ export PJMEDIA_AUDIODEV_CFLAGS += $(_CFLAGS)
 export PJMEDIA_AUDIODEV_CXXFLAGS += $(_CXXFLAGS)
 export PJMEDIA_AUDIODEV_LDFLAGS += $(PJMEDIA_LDLIB) \
 				   $(PJLIB_LDLIB) \
+				   $(PJMEDIA_AUDIODEV_EXT) \
 				   $(_LDFLAGS)
 
 
@@ -146,6 +148,7 @@ export PJMEDIA_CODEC_CXXFLAGS += $(_CXXFLAGS) $(GSM_CFLAGS) $(SPEEX_CFLAGS) \
 			$(ILBC_CFLAGS) $(IPP_CFLAGS) $(G7221_CFLAGS)
 export PJMEDIA_CODEC_LDFLAGS += $(PJMEDIA_LDLIB) \
 				$(PJLIB_LDLIB) \
+				$(PJMEDIA_CODEC_EXT) \
 				$(_LDFLAGS)
 
 ###############################################################################
