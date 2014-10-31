@@ -1,4 +1,4 @@
 usr/include/pj*
-usr/lib/libpj*.so
-usr/lib/libpj*.a
-usr/lib/pkgconfig/libpjproject.pc
+usr/lib/*/libpj*.so
+usr/lib/*/libpj*.a
+usr/lib/*/pkgconfig/libpjproject.pc
