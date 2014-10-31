@@ -1,3 +1,5 @@
+git-dpm
+=======
 The package uses git-dpm.
 
 See git-dpm(1) and git-dpm --help
@@ -20,3 +22,22 @@ Quick notes:
 
 * The problem with gbp pq (in the standard flow) is that you lose your
   hostory. The problem with git-dpm is that you keep all of your history.
+
+
+Tests
+=====
+The build-time tests take over an hour to run and are thus disabled.
+To run them:
+
+  ./debian/rules build
+  ./debian/rules run-tests
+
+Or run specific tests. The specific targets are:
+
+  $ grep ^selftest: Makefile 
+  selftest: pjlib-test pjlib-util-test pjnath-test pjmedia-test pjsip-test pjsua-test
+However you need to set LD_LIBRARY_PATH in order to run them:
+
+  LD_LIBRARY_PATH=`echo $$PWD/*/lib | tr ' ' :` make test-foo
+
+At the moment pjmedia-test and pjsua-test fail.

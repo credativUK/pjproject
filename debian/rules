@@ -37,6 +37,12 @@ override_dh_auto_build:
 	dh_auto_build -- dep all
 	#pybuild -d pjsip-apps/src/python
 
+# selftest target takes too long. Parts of it may also require hardware.
+# Don't enable it by default. Allow running it manually.
+#override_dh_auto_test:
+run-tests:
+	LD_LIBRARY_PATH=`echo $$PWD/*/lib | tr ' ' :` make selftest
+
 PC_FILE=$(CURDIR)/debian/tmp/usr/lib/*/pkgconfig/libpjproject.pc
 override_dh_auto_install:
 	dh_auto_install
