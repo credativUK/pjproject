@@ -23,7 +23,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-voip/pjproject.git
 Package: libpjlib-util2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - helper utilities
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -37,7 +37,7 @@ Description: PJ Project - helper utilities
 Package: libpjmedia-audiodev2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - Audio devices
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -51,7 +51,7 @@ Description: PJ Project - Audio devices
 Package: libpjmedia-codec2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - Multimedia codecs handling
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -65,7 +65,7 @@ Description: PJ Project - Multimedia codecs handling
 Package: libpjmedia-videodev2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: SIP handling library - video devices
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -79,7 +79,7 @@ Description: SIP handling library - video devices
 Package: libpjmedia2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - VoIP media
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -93,7 +93,7 @@ Description: PJ Project - VoIP media
 Package: libpjnath2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - NAT handling
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -107,7 +107,7 @@ Description: PJ Project - NAT handling
 Package: libpjsip-simple2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - SIP SIMPLE instant messaging
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -121,7 +121,7 @@ Description: PJ Project - SIP SIMPLE instant messaging
 Package: libpjsip-ua2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: SIP handling library - SIP user agent library
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -135,7 +135,7 @@ Description: SIP handling library - SIP user agent library
 Package: libpjsip2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - SIP handling library
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -149,7 +149,7 @@ Description: PJ Project - SIP handling library
 Package: libpjsua2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - Basic VoIP client library
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -163,7 +163,7 @@ Description: PJ Project - Basic VoIP client library
 Package: libpj2
 Architecture: any
 Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - PJProject core libraries
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
@@ -178,7 +178,7 @@ Package: libpjproject-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends},
  libpjlib-util2 (= ${binary:Version}),
  libpjmedia-audiodev2 (= ${binary:Version}),
  libpjmedia-codec2 (= ${binary:Version}),
