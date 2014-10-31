@@ -40,4 +40,7 @@ However you need to set LD_LIBRARY_PATH in order to run them:
 
   LD_LIBRARY_PATH=`echo $$PWD/*/lib | tr ' ' :` make test-foo
 
+Note that the pjmedia test may use your local hardware (X11 display,
+webcam).
+
 At the moment pjmedia-test and pjsua-test fail.
