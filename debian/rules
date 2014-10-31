@@ -37,10 +37,19 @@ override_dh_auto_build:
 	dh_auto_build -- dep all
 	#pybuild -d pjsip-apps/src/python
 
+PC_FILE=$(CURDIR)/debian/tmp/usr/lib/*/pkgconfig/libpjproject.pc
 override_dh_auto_install:
 	dh_auto_install
 	# Disable it for now. This will wait (and be done properly) in
 	# later versions:
 	#pybuild -d pjsip-apps/src/python --install
+	# FIXME: the proper fix is in the generation of libpjproject.pc.in:
+	# PJ_INSTALL_CXXFLAGS (which is basically CFLAGS) should not be used
+	# as-is. Maybe it should just be avoided and a hand-crafted set
+	# of build flags should be used. But for now let's edit out harmful
+	# flags:
+	sed -i \
+		-e "s|$$CFLAGS||" -e "s|$$CPPFLAGS||" -e 's|-fPIC||' \
+	       	$(PC_FILE)
 
 .PHONY: build
