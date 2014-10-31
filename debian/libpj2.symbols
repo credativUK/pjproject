@@ -320,6 +320,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_sock_set_qos_params@Base 2.1.0~ast20130801
  pj_sock_set_qos_type@Base 2.1.0~ast20130801
  pj_sock_setsockopt@Base 2.1.0~ast20130801
+ pj_sock_setsockopt_params@Base 2.3~dfsg
  pj_sock_setsockopt_sobuf@Base 2.2~svn.4723~dfsg
  pj_sock_shutdown@Base 2.1.0~ast20130801
  pj_sock_socket@Base 2.1.0~ast20130801
@@ -348,6 +349,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_ssl_cert_info_dump@Base 2.1.0~ast20130801
  pj_ssl_cert_load_from_files@Base 2.1.0~ast20130801
  pj_ssl_cipher_get_availables@Base 2.1.0~ast20130801
+ pj_ssl_cipher_id@Base 2.3~dfsg
  pj_ssl_cipher_is_supported@Base 2.1.0~ast20130801
  pj_ssl_cipher_name@Base 2.1.0~ast20130801
  pj_ssl_sock_close@Base 2.1.0~ast20130801

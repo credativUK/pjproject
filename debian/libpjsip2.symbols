@@ -158,6 +158,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_get_ack_method@Base 2.1.0~ast20130801
  pjsip_get_bye_method@Base 2.1.0~ast20130801
  pjsip_get_cancel_method@Base 2.1.0~ast20130801
+ pjsip_get_dest_info@Base 2.3~dfsg
  pjsip_get_invite_method@Base 2.1.0~ast20130801
  pjsip_get_options_method@Base 2.1.0~ast20130801
  pjsip_get_register_method@Base 2.1.0~ast20130801
@@ -274,6 +275,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_target_set_get_next@Base 2.1.0~ast20130801
  pjsip_target_set_set_current@Base 2.1.0~ast20130801
  pjsip_tcp_transport_cfg_default@Base 2.1.0~ast20130801
+ pjsip_tcp_transport_get_socket@Base 2.3~dfsg
  pjsip_tcp_transport_start2@Base 2.1.0~ast20130801
  pjsip_tcp_transport_start3@Base 2.1.0~ast20130801
  pjsip_tcp_transport_start@Base 2.1.0~ast20130801
