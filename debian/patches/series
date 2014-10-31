@@ -3,3 +3,4 @@
 0003-Reduce-number-of-libraries-linked-with-pjmedia.patch
 0004-Enable-building-python-bindings.patch
 0005-CODEC_ID_-changed-to-AV_CODEC_ID_.patch
+0006-Reduce-number-of-libraries-linked-with-pjlib-util.patch
