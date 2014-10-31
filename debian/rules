@@ -35,12 +35,12 @@ endif
 
 override_dh_auto_build:
 	dh_auto_build -- dep all
-	cd pjsip-apps/src/python && python setup.py build
+	#pybuild -d pjsip-apps/src/python
 
 override_dh_auto_install:
 	dh_auto_install
 	# Disable it for now. This will wait (and be done properly) in
 	# later versions:
-	#cd pjsip-apps/src/python && python setup.py install
+	#pybuild -d pjsip-apps/src/python --install
 
 .PHONY: build
