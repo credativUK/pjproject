@@ -183,7 +183,6 @@ export APP_LDFLAGS := -L$(PJDIR)/pjlib/lib\
 	-L$(PJDIR)/pjmedia/lib\
 	-L$(PJDIR)/pjsip/lib\
 	-L$(PJDIR)/third_party/lib\
-	$(PJ_VIDEO_LDFLAGS) \
 	@LDFLAGS@
 export APP_LDXXFLAGS := $(APP_LDFLAGS)
 
