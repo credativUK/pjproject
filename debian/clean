@@ -13,6 +13,7 @@ pjmedia/build/os-auto.mak
 pjmedia/include/pjmedia-codec/config_auto.h
 pjmedia/include/pjmedia/config_auto.h
 pjsip/build/os-auto.mak
+pjsip/build/pjsip-static-bench-x86_64-pc-linux-gnu-gcc.htm
 pjsip/include/pjsip/sip_autoconf.h
 third_party/build/os-auto.mak
 third_party/build/portaudio/os-auto.mak

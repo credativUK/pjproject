@@ -20,6 +20,9 @@ build:
 override_dh_auto_clean:
 	# Handle the case where the source tree is not configured.
 	if test -f build.mak; then make distclean; fi
+	# left-overs from the tests:
+	find tests/pjsua/ -name \*.pyc | xargs --no-run-if-empty rm
+	rm -rf tests/pjsua/logs/ tests/pjsua/wavs/
 
 override_dh_auto_configure:
 	cp debian/config_site.h pjlib/include/pj/
