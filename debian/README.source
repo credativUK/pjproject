@@ -1,1 +1,22 @@
-The package is maintained with git-dpm. See git-dpm(1) and git-dpm --help.
+The package uses git-dpm.
+
+See git-dpm(1) and git-dpm --help
+
+Quick notes:
+
+* Normally (when in the master branch) you have patches under
+  debian/patches. But they are also merged in the tree, and thus no need
+  to use quilt (explicitly or implicitly). Just build.
+
+    debuild -I
+
+* To update the patches in the packaging branch, use:
+
+   git-dpm checkout-patched
+
+  Update the branch. When done:
+
+   git-dpm update-patches
+
+* The problem with gbp pq (in the standard flow) is that you lose your
+  hostory. The problem with git-dpm is that you keep all of your history.
