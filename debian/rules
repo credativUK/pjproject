@@ -5,6 +5,8 @@ export CFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CFL
 #CXXFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS; dpkg-buildflags --get CXXFLAGS)
 export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
+pybuild = pybuild -d pjsip-apps/src/python --pyver 2.7
+
 # FIXME: the explicit and duplicate 'build' target is because of the
 # existing directory 'build'. .PHONY doesn't seem to be good enough with
 # the wildcard target. Any better way?
@@ -20,6 +22,7 @@ build:
 override_dh_auto_clean:
 	# Handle the case where the source tree is not configured.
 	if test -f build.mak; then make distclean; fi
+	rm -rf .pybuild
 	# left-overs from the tests:
 	find tests/pjsua/ -name \*.pyc | xargs --no-run-if-empty rm
 	rm -rf tests/pjsua/logs/ tests/pjsua/wavs/
@@ -38,7 +41,7 @@ endif
 
 override_dh_auto_build:
 	dh_auto_build -- dep all
-	#pybuild -d pjsip-apps/src/python
+	$(pybuild)
 
 # selftest target takes too long. Parts of it may also require hardware.
 # Don't enable it by default. Allow running it manually.
@@ -47,11 +50,15 @@ run-tests:
 	LD_LIBRARY_PATH=`echo $$PWD/*/lib | tr ' ' :` make selftest
 
 PC_FILE=$(CURDIR)/debian/tmp/usr/lib/*/pkgconfig/libpjproject.pc
+pythn_mod=$(CURDIR)/debian/tmp/usr/lib/python2.7/dist-packages/_pjsua.so
 override_dh_auto_install:
 	dh_auto_install
 	# Disable it for now. This will wait (and be done properly) in
 	# later versions:
-	#pybuild -d pjsip-apps/src/python --install
+	$(pybuild) --install
+	ma=`dpkg-architecture -qDEB_BUILD_MULTIARCH`; \
+	  new_name=`echo $(pythn_mod) | sed -e "s|\.so$$|.$$ma&|"`; \
+	  mv $(pythn_mod) $$new_name
 	# FIXME: the proper fix is in the generation of libpjproject.pc.in:
 	# PJ_INSTALL_CXXFLAGS (which is basically CFLAGS) should not be used
 	# as-is. Maybe it should just be avoided and a hand-crafted set
