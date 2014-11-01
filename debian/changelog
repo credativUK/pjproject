@@ -1,12 +1,32 @@
-pjproject (2.3~dfsg-1) UNRELEASED; urgency=low
+pjproject (2.3~dfsg-1) unstable; urgency=low
 
+  * New upstream release: now an upstream version (Closes: #725326).
+    - Update symbols for version 2.3
+    - We use upstream source. No need for the README
+    - rules: config_site moved
+    - CODEC_ID_* changed to AV_CODEC_ID_*
+    - Extra library: pjsua2
   * -dev package: depend explicitly on libsrtp0-dev due to -lsrtp in
     the pkg-config file.
-  * Add README.Debian to explain what exactly we package (Closes: #725326).
-  * Switch to an upstream release.
-  * explicit dfsg in version number as we remove some files (see copyright).
+  * rules: run 'make dep' at build time.
+  * rules: 'build' not cnfused by directory 'build'
+  * Enable opencore-amr codec support
+  * Do enable IPv6 support in config_site
+  * README.source: we use git-dpm
+  * Do enable video
+  * compat level 9
+  * multi-arch support
+    - control: packages pre-depend on multi-arch
+  * Remove offending build flags from pkgconfig file (lintian).
+  * A disabled tests target
+  * extra files to remove after tests
+  * Reduce number of libraries linked with pjlib-util
+  * copyright: Fix syntax (gsm)
+  * Remove video libs dependency for pj-utils and pjnath
+  * package python-pjproject
+    - Depend on python-dev
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Wed, 02 Oct 2013 19:51:32 +0300
+ -- Tzafrir Cohen <tzafrir@debian.org>  Sat, 01 Nov 2014 19:06:29 +0200
 
 pjproject (2.1.0.0.ast20130823-1) unstable; urgency=low
 
