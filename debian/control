@@ -166,7 +166,21 @@ Description: PJ Project - Basic VoIP client library
  that is portable and suitable for almost any type of systems ranging
  from desktops, embedded systems, to mobile handsets.
  .
- This package includes a framework for a VoIP client.
+ This package includes a framework for a VoIP client (pjsua)
+
+Package: libpjsua2-2
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
+Description: PJ Project - Basic VoIP client library
+ PJSIP (a.k.a PJProject) is a multimedia communication library written
+ in C language implementing standard based protocols such as SIP, SDP,
+ RTP, STUN, TURN, and ICE. It combines signaling protocol (SIP) with rich
+ multimedia framework and NAT traversal functionality into high level API
+ that is portable and suitable for almost any type of systems ranging
+ from desktops, embedded systems, to mobile handsets.
+ .
+ This package includes a framework for a VoIP client. (pjsua2)
 
 Package: libpj2
 Architecture: any
@@ -197,6 +211,7 @@ Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends},
  libpjsip-ua2 (= ${binary:Version}),
  libpjsip2 (= ${binary:Version}),
  libpjsua2 (= ${binary:Version}),
+ libpjsua2-2 (= ${binary:Version}),
  libpj2 (= ${binary:Version}),
  libsrtp0-dev,
 Description: PJ Project - development headers
