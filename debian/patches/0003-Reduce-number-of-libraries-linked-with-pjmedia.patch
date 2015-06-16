@@ -1,4 +1,4 @@
-From 472e4b78decbce53e53499d90f34939e58a2fdfd Mon Sep 17 00:00:00 2001
+From a78635de45e7ef35e45c86f3549c254674c8ac14 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:43 +0200
 Subject: Reduce number of libraries linked with pjmedia
@@ -12,7 +12,7 @@ needs them.
  2 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/build.mak.in b/build.mak.in
-index 9f192e4..b151a7f 100644
+index a63808d..d886df5 100644
 --- a/build.mak.in
 +++ b/build.mak.in
 @@ -62,7 +62,7 @@ endif
