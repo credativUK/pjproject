@@ -11,7 +11,7 @@ pjproject (2.4~dfsg-1) unstable; urgency=low
   * rules: run 'make dep' at build time.
   * rules: 'build' not cnfused by directory 'build'
   * Enable opencore-amr codec support
-  * Do enable IPv6 support in config_site
+  * Do enable IPv6 support in config_site (Closes: #787964).
   * README.source: we use git-dpm
   * Do enable video
   * compat level 9
