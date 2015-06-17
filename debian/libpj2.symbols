@@ -142,6 +142,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_grp_lock_chain_lock@Base 2.1.0~ast20130801
  pj_grp_lock_config_default@Base 2.1.0~ast20130801
  pj_grp_lock_create@Base 2.1.0~ast20130801
+ pj_grp_lock_create_w_handler@Base 2.4~dfsg
  pj_grp_lock_dec_ref@Base 2.1.0~ast20130801
  pj_grp_lock_del_handler@Base 2.1.0~ast20130801
  pj_grp_lock_destroy@Base 2.1.0~ast20130801
@@ -347,6 +348,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_srand@Base 2.1.0~ast20130801
  pj_ssl_cert_get_verify_status_strings@Base 2.1.0~ast20130801
  pj_ssl_cert_info_dump@Base 2.1.0~ast20130801
+ pj_ssl_cert_load_from_files2@Base 2.4~dfsg
  pj_ssl_cert_load_from_files@Base 2.1.0~ast20130801
  pj_ssl_cipher_get_availables@Base 2.1.0~ast20130801
  pj_ssl_cipher_id@Base 2.3~dfsg

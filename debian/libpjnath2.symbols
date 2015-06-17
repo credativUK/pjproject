@@ -48,6 +48,7 @@ libpjnath.so.2 libpjnath2 #MINVER#
  pj_stun_binary_attr_create@Base 2.1.0~ast20130801
  pj_stun_binary_attr_init@Base 2.1.0~ast20130801
  pj_stun_client_tsx_create@Base 2.1.0~ast20130801
+ pj_stun_client_tsx_destroy@Base 2.4~dfsg
  pj_stun_client_tsx_get_data@Base 2.1.0~ast20130801
  pj_stun_client_tsx_is_complete@Base 2.1.0~ast20130801
  pj_stun_client_tsx_on_rx_msg@Base 2.1.0~ast20130801

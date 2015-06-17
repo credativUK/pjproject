@@ -138,6 +138,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_endpt_send_request_stateless@Base 2.1.0~ast20130801
  pjsip_endpt_send_response2@Base 2.1.0~ast20130801
  pjsip_endpt_send_response@Base 2.1.0~ast20130801
+ pjsip_endpt_set_ext_resolver@Base 2.4~dfsg
  pjsip_endpt_set_resolver@Base 2.1.0~ast20130801
  pjsip_endpt_unregister_module@Base 2.1.0~ast20130801
  pjsip_event_str@Base 2.1.0~ast20130801
@@ -247,6 +248,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_resolver_create@Base 2.1.0~ast20130801
  pjsip_resolver_destroy@Base 2.1.0~ast20130801
  pjsip_resolver_get_resolver@Base 2.1.0~ast20130801
+ pjsip_resolver_set_ext_resolver@Base 2.4~dfsg
  pjsip_resolver_set_resolver@Base 2.1.0~ast20130801
  pjsip_restore_strict_route_set@Base 2.1.0~ast20130801
  pjsip_retry_after_hdr_create@Base 2.1.0~ast20130801

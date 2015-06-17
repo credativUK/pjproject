@@ -236,6 +236,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_vid_win_set_pos@Base 2.3~dfsg
  pjsua_vid_win_set_show@Base 2.3~dfsg
  pjsua_vid_win_set_size@Base 2.3~dfsg
+ pjsua_vid_win_set_win@Base 2.4~dfsg
  pjsua_vid_win_type_name@Base 2.3~dfsg
  print_call@Base 2.1.0~ast20130801
  resolve_stun_server@Base 2.1.0~ast20130801
