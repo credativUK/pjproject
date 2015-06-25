@@ -23,7 +23,7 @@ pjproject (2.4~dfsg-1) unstable; urgency=low
   * Reduce number of libraries linked with pjlib-util
   * copyright: Fix syntax (gsm)
   * Remove video libs dependency for pj-utils and pjnath
-  * package python-pjproject
+  * package python-pjproject (Closes: #768578)
     - Depend on python-dev
 
  -- Tzafrir Cohen <tzafrir@debian.org>  Sat, 01 Nov 2014 19:06:29 +0200
