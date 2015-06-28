@@ -180,7 +180,7 @@ Description: PJ Project - Basic VoIP client library
  that is portable and suitable for almost any type of systems ranging
  from desktops, embedded systems, to mobile handsets.
  .
- This package includes a framework for a VoIP client. (pjsua2)
+ This package includes version 2 of a framework for a VoIP client (pjsua2).
 
 Package: libpj2
 Architecture: any
