@@ -248,11 +248,14 @@ License: Expat
 
 Files:
  third_party/portaudio/src/hostapi/dsound/pa_win_ds.c
- third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.[ch]
+ third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.c
+ third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.h
 Copyright: 1999-2007 Ross Bencina, Phil Burk, Robert Marsanyi
 License: Expat
 
-Files: third_party/portaudio/src/os/win/pa_win_wdmks_utils.[ch]
+Files:
+ third_party/portaudio/src/os/win/pa_win_wdmks_utils.c
+ third_party/portaudio/src/os/win/pa_win_wdmks_utils.h
 Copyright: 1999 - 2007 Andrew Baldwin, Ross Bencina
 License: Expat
 
