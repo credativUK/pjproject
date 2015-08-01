@@ -51,6 +51,11 @@ run-tests:
 
 PC_FILE=$(CURDIR)/debian/tmp/usr/lib/*/pkgconfig/libpjproject.pc
 pythn_mod=$(CURDIR)/debian/tmp/usr/lib/python2.7/dist-packages/_pjsua.so
+headers_names=m_auto.h os_auto.h
+headers_sub_dir=pj/compat
+headers_base=$(CURDIR)/debian/tmp/usr/include
+headers_dir=$(headers_base)/$(headers_sub_dir)
+headers=$(headers_names:%=$(headers_dir)/%)
 override_dh_auto_install:
 	dh_auto_install
 	# Disable it for now. This will wait (and be done properly) in
@@ -67,5 +72,10 @@ override_dh_auto_install:
 	sed -i \
 		-e "s|$$CFLAGS||" -e "s|$$CPPFLAGS||" -e 's|-fPIC||' \
 	       	$(PC_FILE)
+	# Some headers are architecture-dependent. For now, move them manually:
+	ma=`dpkg-architecture -qDEB_BUILD_MULTIARCH`; \
+	  new_dir=$(headers_base)/$$ma/$(headers_sub_dir); \
+	  mkdir -p $$new_dir; \
+	  mv $(headers) $$new_dir/
 
 .PHONY: build
