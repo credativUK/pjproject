@@ -4,3 +4,4 @@
 0004-Enable-building-python-bindings.patch
 0005-CODEC_ID_-changed-to-AV_CODEC_ID_.patch
 0006-Remove-video-libs-dependency-for-pj-utils-and-pjnath.patch
+0007-Use-the-OpenSSL-RNG-if-available-for-SRTP.patch
