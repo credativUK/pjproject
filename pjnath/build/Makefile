@@ -43,7 +43,8 @@ export PJNATH_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 		stun_transaction.o turn_session.o turn_sock.o
 export PJNATH_CFLAGS += $(_CFLAGS)
 export PJNATH_CXXFLAGS += $(_CXXFLAGS)
-export PJNATH_LDFLAGS += $(PJLIB_UTIL_LDLIB) $(PJLIB_LDLIB) $(_LDFLAGS)
+export PJNATH_LDFLAGS += $(PJLIB_UTIL_LDLIB) $(PJLIB_LDLIB) $(PJNATH_EXT) \
+			$(_LDFLAGS)
 
 ###############################################################################
 # Defines for building test application
