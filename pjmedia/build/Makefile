@@ -85,6 +85,7 @@ export PJMEDIA_LDFLAGS += $(PJMEDIA_VIDEODEV_LDLIB) \
 			  $(PJLIB_UTIL_LDLIB) \
 			  $(PJNATH_LDLIB) \
 			  $(PJMEDIA_EXT) \
+			  $(PJMEDIA_VIDEODEV_EXT) \
 			  $(_LDFLAGS)
 
 
