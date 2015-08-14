@@ -1,4 +1,4 @@
-From 3afb4b016a50df786ee1f18af2e0f29e413b664a Mon Sep 17 00:00:00 2001
+From 0498e9e2daf6f160258b13de4ee13eb94b747195 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:42 +0200
 Subject: Reduce number of libraries linked with pjlib
@@ -13,7 +13,7 @@ libcrypto, libssl and libuuid, but only libpj needs them.
  4 files changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/aconfigure b/aconfigure
-index 83d85a1..ea868d2 100755
+index 42c5da6..eb50910 100755
 --- a/aconfigure
 +++ b/aconfigure
 @@ -620,6 +620,7 @@ ac_includes_default="\
@@ -37,7 +37,7 @@ index 83d85a1..ea868d2 100755
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_ERR_load_BIO_strings" >&5
  $as_echo "$ac_cv_lib_crypto_ERR_load_BIO_strings" >&6; }
  if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
--  libcrypto_present=1 && LIBS="-lcrypto -ldl -lz $LIBS"
+-  libcrypto_present=1 && LIBS="-lcrypto $LIBS"
 +  libcrypto_present=1 && PJLIB_EXT="-lcrypto $PJLIB_EXT"
  fi
  
@@ -52,7 +52,7 @@ index 83d85a1..ea868d2 100755
  
  		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
 diff --git a/aconfigure.ac b/aconfigure.ac
-index 3b9f5e5..9d9bc26 100644
+index e86e27c..72446dd 100644
 --- a/aconfigure.ac
 +++ b/aconfigure.ac
 @@ -114,7 +114,8 @@ AC_CHECK_LIB(winmm,puts)
@@ -69,7 +69,7 @@ index 3b9f5e5..9d9bc26 100644
  		AC_SUBST(libssl_present)
  		AC_SUBST(libcrypto_present)
  		AC_CHECK_HEADER(openssl/ssl.h,[openssl_h_present=1])
--		AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto -ldl -lz $LIBS"],,-ldl -lz)
+-		AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto $LIBS"])
 -		AC_CHECK_LIB(ssl,SSL_library_init,[libssl_present=1 && LIBS="-lssl $LIBS"])
 +		AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && PJLIB_EXT="-lcrypto $PJLIB_EXT"])
 +		AC_CHECK_LIB(ssl,SSL_library_init,[libssl_present=1 && PJLIB_EXT="-lssl $PJLIB_EXT"])
@@ -77,7 +77,7 @@ index 3b9f5e5..9d9bc26 100644
  	        	AC_MSG_RESULT([OpenSSL library found, SSL support enabled])
  			# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
 diff --git a/build.mak.in b/build.mak.in
-index 8a986d7..a63808d 100644
+index 074977d..1add583 100644
 --- a/build.mak.in
 +++ b/build.mak.in
 @@ -28,6 +28,8 @@ export APP_THIRD_PARTY_EXT :=

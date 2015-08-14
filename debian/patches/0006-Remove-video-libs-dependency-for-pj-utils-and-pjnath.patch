@@ -1,4 +1,4 @@
-From ba4f81c07541cae77808b589b687ac9f98c4968d Mon Sep 17 00:00:00 2001
+From 93d80f235e2aaaf50d467b62fc111c866578ab23 Mon Sep 17 00:00:00 2001
 From: Tzafrir Cohen <tzafrir@debian.org>
 Date: Fri, 31 Oct 2014 23:14:49 +0200
 Subject: Remove video libs dependency for pj-utils and pjnath
@@ -13,7 +13,7 @@ some projects.
  3 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/build.mak.in b/build.mak.in
-index d886df5..d8c7a55 100644
+index faa9c98..5c4fc40 100644
 --- a/build.mak.in
 +++ b/build.mak.in
 @@ -186,7 +186,6 @@ export APP_LDFLAGS := -L$(PJDIR)/pjlib/lib\
