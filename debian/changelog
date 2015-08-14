@@ -1,5 +1,6 @@
-pjproject (2.4~dfsg-2) UNRELEASED; urgency=medium
+pjproject (2.4.5~dfsg-1) UNRELEASED; urgency=medium
 
+  * New upstream release. 
   * Missing file in debian/copyright (Closes: #793051)
   * Move arch0dependent headers to a triplet subdir (Closes: #793097).
   * Use the OpenSSL RNG if available for SRTP (Closes: #793972).
