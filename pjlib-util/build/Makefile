@@ -43,7 +43,7 @@ export PJLIB_UTIL_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
 		stun_simple_client.o xml.o
 export PJLIB_UTIL_CFLAGS += $(_CFLAGS)
 export PJLIB_UTIL_CXXFLAGS += $(_CXXFLAGS)
-export PJLIB_UTIL_LDFLAGS += $(PJLIB_LDLIB) $(_LDFLAGS)
+export PJLIB_UTIL_LDFLAGS += $(PJLIB_LDLIB) $(PJLIB_UTIL_EXT) $(_LDFLAGS)
 
 ###############################################################################
 # Defines for building test application
