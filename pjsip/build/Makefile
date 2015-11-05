@@ -34,7 +34,7 @@ export PJSIP_SIMPLE_SHLIB := $(PJSIP_SIMPLE_SONAME).$(PJ_VERSION_MAJOR)
 export PJSUA_LIB_SONAME := libpjsua.$(SHLIB_SUFFIX)
 export PJSUA_LIB_SHLIB := $(PJSUA_LIB_SONAME).$(PJ_VERSION_MAJOR)
 export PJSUA2_LIB_SONAME := libpjsua2.$(SHLIB_SUFFIX)
-export PJSUA2_LIB_SHLIB := $(PJSUA2_LIB_SONAME).$(PJ_VERSION_MAJOR)
+export PJSUA2_LIB_SHLIB := $(PJSUA2_LIB_SONAME).$(PJ_VERSION_MAJOR)v5
 endif
 
 ###############################################################################
