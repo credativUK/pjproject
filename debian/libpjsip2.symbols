@@ -301,6 +301,7 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_tpmgr_receive_packet@Base 2.1.0~ast20130801
  pjsip_tpmgr_register_tpfactory@Base 2.1.0~ast20130801
  pjsip_tpmgr_send_raw@Base 2.1.0~ast20130801
+ pjsip_tpmgr_set_drop_data_cb@Base 2.4.5~dfsg
  pjsip_tpmgr_set_state_cb@Base 2.1.0~ast20130801
  pjsip_tpmgr_unregister_tpfactory@Base 2.1.0~ast20130801
  pjsip_tpselector_add_ref@Base 2.1.0~ast20130801

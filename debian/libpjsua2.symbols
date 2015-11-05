@@ -218,6 +218,9 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_vid_codec_set_priority@Base 2.3~dfsg
  pjsua_vid_dev_count@Base 2.3~dfsg
  pjsua_vid_dev_get_info@Base 2.3~dfsg
+ pjsua_vid_dev_get_setting@Base 2.4.5~dfsg
+ pjsua_vid_dev_is_active@Base 2.4.5~dfsg
+ pjsua_vid_dev_set_setting@Base 2.4.5~dfsg
  pjsua_vid_enum_codecs@Base 2.3~dfsg
  pjsua_vid_enum_devs@Base 2.3~dfsg
  pjsua_vid_enum_wins@Base 2.3~dfsg
