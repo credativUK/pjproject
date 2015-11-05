@@ -176,7 +176,7 @@ static pj_status_t ffmpeg_capture_open(AVFormatContext **ctx,
     fp.prealloced_context = 1;
     fp.width = vfd->size.w;
     fp.height = vfd->size.h;
-    fp.pix_fmt = PIX_FMT_BGR24;
+    fp.pix_fmt = AV_PIX_FMT_BGR24;
     fp.time_base.num = vfd->fps.denum;
     fp.time_base.den = vfd->fps.num;
 

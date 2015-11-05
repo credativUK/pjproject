@@ -5,3 +5,5 @@
 0005-CODEC_ID_-changed-to-AV_CODEC_ID_.patch
 0006-Remove-video-libs-dependency-for-pj-utils-and-pjnath.patch
 0007-Reduce-linkage-of-unused-libraries.patch
+0008-Replace-deprecated-FFmpeg-API.patch
+0009-add-v5-suffix-to-soname-of-libpjsua2-2.patch
