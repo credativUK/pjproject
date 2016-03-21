@@ -11,7 +11,7 @@ libpjmedia-videodev.so.2 libpjmedia-videodev2 #MINVER#
  pjmedia_vid_dev_conv_create_converter@Base 2.4.5~dfsg
  pjmedia_vid_dev_conv_destroy_converter@Base 2.4.5~dfsg
  pjmedia_vid_dev_conv_resize_and_rotate@Base 2.4.5~dfsg
- pjmedia_vid_dev_conv_set_rotation@Base 2.4.5~dfsg-1
+ pjmedia_vid_dev_conv_set_rotation@Base 2.4.5~dfsg
  pjmedia_vid_dev_count@Base 2.3~dfsg
  pjmedia_vid_dev_default_param@Base 2.3~dfsg
  pjmedia_vid_dev_get_global_index@Base 2.3~dfsg
