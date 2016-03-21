@@ -239,7 +239,7 @@ Description: PJ Project - development headers
  that is portable and suitable for almost any type of systems ranging
  from desktops, embedded systems, to mobile handsets.
  .
- This packagee includes the development headers for PJ Project.
+ This package includes the development headers for PJ Project.
 
 Package: python-pjproject
 Architecture: any
@@ -254,4 +254,4 @@ Description: PJ Project - Python bindings
  that is portable and suitable for almost any type of systems ranging
  from desktops, embedded systems, to mobile handsets.
  .
- This packagee includes the Python bindings.
+ This package includes the Python bindings.
