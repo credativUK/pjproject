@@ -1,11 +1,40 @@
-pjproject (2.4.5~dfsg-1) UNRELEASED; urgency=medium
+pjproject (2.4.5~dfsg-1.1) unstable; urgency=medium
 
-  * New upstream release. 
-  * Missing file in debian/copyright (Closes: #793051)
-  * Move arch0dependent headers to a triplet subdir (Closes: #793097).
-  * Use the OpenSSL RNG if available for SRTP (Closes: #793972).
+  * Non-maintainer upload.
 
- -- Tzafrir Cohen <tzafrir@debian.org>  Mon, 03 Aug 2015 08:11:04 +0300
+  [ upstream ]
+  * New release(s).
+    + Use the OpenSSL RNG if available, instead of via SRTP.
+      Closes: Bug#793972.
+    + Support compilation with OpenSSL without OpenSSLv3 support.
+      Closes: Bug#805082. Thanks to Peter Green.
+
+  [ Tzafrir Cohen ]
+  * Fix add Files section for bar-descriptor.xml to debian/copyright.
+    Closes: #793051. Thanks to Thorsten Alteholz.
+  * Move arch-dependent headers to a triplet subdir.
+    Closes: #793097. Thanks to Jakub Wilk.
+  * Bump soname for libpjsua2: Add C++ transitional v5 suffix.
+    Closes: Bug#793094. Thanks to Jakub Wilk and Simon McVittie.
+  * Replace deprecated FFmpeg API.
+    Closes: Bug#803855, #801535. Thanks to Andreas Cadhalpun.
+  * Copy -dev build deps to deps of -dev package.
+    Closes: #795825, #801535. Thanks to Julien Cristau, Simon McVittie
+    and Andreas Beckmann.
+
+  [ Jeremy Lainé ]
+  * Reduce library linkage.
+    Closes: Bug#793141. Thanks to James Cloos.
+
+  [ Jonas Smedegaard ]
+  * Fix typo in long descriptions.
+  * Build-depend on virtual libsrtp-dev (not libsrtp0-dev) to ease
+    pending transition.
+  * Fix have libpjproject-dev depend on libpjsua2-2v5 (not libpjsua2-2).
+  * Fix add version mangling hint to watch file.
+  * Fix strip debian revision from symbols files.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 21 Mar 2016 11:42:57 +0100
 
 pjproject (2.4~dfsg-1) unstable; urgency=low
 
