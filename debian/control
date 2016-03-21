@@ -22,7 +22,7 @@ Build-Depends: debhelper (>= 9),
  libv4l-dev,
  libsdl2-dev,
  uuid-dev,
- libsrtp0-dev,
+ libsrtp-dev,
  libssl-dev
 Standards-Version: 3.9.6
 Homepage: http://www.pjsip.org/
