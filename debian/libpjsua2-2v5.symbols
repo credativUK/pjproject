@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.4.5~dfsg alpha amd64 armel armhf hppa i386 kfreebsd-i386 mipsel powerpc s390x
 libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN10PendingLog7executeEb@Base 2.4.5~dfsg
  _ZN10PendingLogD0Ev@Base 2.4.5~dfsg
@@ -591,12 +591,12 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZNK2pj9TlsConfig11writeObjectERNS_13ContainerNodeE@Base 2.4.5~dfsg
  _ZNK2pj9TlsConfig4toPjEv@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj12AuthCredInfoESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
- _ZNSt6vectorIN2pj12AuthCredInfoESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_@Base 2.4.5~dfsg
+ (subst)_ZNSt6vectorIN2pj12AuthCredInfoESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EE{size_t}RKS1_@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj13CallMediaInfoESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj16SipMultipartPartESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj17ToneDigitMapDigitESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj9SipHeaderESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
- _ZNSt6vectorIN2pj9SipHeaderESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_@Base 2.4.5~dfsg
+ (subst)_ZNSt6vectorIN2pj9SipHeaderESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EE{size_t}RKS1_@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj9SipHeaderESaIS1_EED1Ev@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj9SipHeaderESaIS1_EED2Ev@Base 2.4.5~dfsg
  _ZNSt6vectorIN2pj9SipHeaderESaIS1_EEaSERKS3_@Base 2.4.5~dfsg
@@ -609,11 +609,11 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZNSt6vectorIPN2pj5BuddyESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_@Base 2.4.5~dfsg
  _ZNSt6vectorIPN2pj5MediaESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_@Base 2.4.5~dfsg
  _ZNSt6vectorIPN2pj9CodecInfoESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_@Base 2.4.5~dfsg
- _ZNSt6vectorIiSaIiEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPiS1_EERKi@Base 2.4.5~dfsg
- _ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi@Base 2.4.5~dfsg
+ (arch=alpha amd64 s390x)_ZNSt6vectorIiSaIiEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPiS1_EERKi@Base 2.4.5~dfsg
+ (subst)_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EE{size_t}RKi@Base 2.4.5~dfsg
  _ZNSt6vectorIiSaIiEEaSERKS1_@Base 2.4.5~dfsg
  _ZNSt8_Rb_treeIP11pj_thread_tSt4pairIKS1_PA64_lESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_@Base 2.4.5~dfsg
- _ZNSt8_Rb_treeIP11pj_thread_tSt4pairIKS1_PA64_lESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_@Base 2.4.5~dfsg
+ (arch=amd64 hppa)_ZNSt8_Rb_treeIP11pj_thread_tSt4pairIKS1_PA64_lESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_@Base 2.4.5~dfsg
  _ZNSt8_Rb_treeIP11pj_thread_tSt4pairIKS1_PA64_lESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E@Base 2.4.5~dfsg
  _ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EERKS8_SA_@Base 2.4.5~dfsg
  _ZTI10PendingLog@Base 2.4.5~dfsg
