@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
 libpjmedia-codec.so.2 libpjmedia-codec2 #MINVER#
  g722_dec_decode@Base 2.1.0~ast20130801
  g722_dec_deinit@Base 2.1.0~ast20130801

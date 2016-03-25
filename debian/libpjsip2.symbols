@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
 libpjsip.so.2 libpjsip2 #MINVER#
  PJSIP_SYN_ERR_EXCEPTION@Base 2.1.0~ast20130801
  deinit_sip_parser@Base 2.1.0~ast20130801

@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
 libpjmedia.so.2 libpjmedia2 #MINVER#
  CodecID_to_pjmedia_format_id@Base 2.3~dfsg
  PixelFormat_to_pjmedia_format_id@Base 2.3~dfsg

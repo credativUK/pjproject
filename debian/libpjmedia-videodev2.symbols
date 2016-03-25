@@ -1,3 +1,4 @@
+# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
 libpjmedia-videodev.so.2 libpjmedia-videodev2 #MINVER#
  pjmedia_avi_dev_alloc@Base 2.3~dfsg
  pjmedia_avi_dev_create_factory@Base 2.3~dfsg
