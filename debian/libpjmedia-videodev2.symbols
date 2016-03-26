@@ -7,7 +7,7 @@ libpjmedia-videodev.so.2 libpjmedia-videodev2 #MINVER#
  pjmedia_avi_dev_param_default@Base 2.3~dfsg
  pjmedia_cbar_factory@Base 2.3~dfsg
  pjmedia_sdl_factory@Base 2.3~dfsg
- pjmedia_v4l2_factory@Base 2.3~dfsg
+ (arch=!hurd-any)pjmedia_v4l2_factory@Base 2.3~dfsg
  pjmedia_vid_dev_cap_name@Base 2.3~dfsg
  pjmedia_vid_dev_conv_create_converter@Base 2.4.5~dfsg
  pjmedia_vid_dev_conv_destroy_converter@Base 2.4.5~dfsg
