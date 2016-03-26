@@ -29,8 +29,8 @@ Build-Depends: debhelper (>= 9),
  libssl-dev
 Standards-Version: 3.9.6
 Homepage: http://www.pjsip.org/
-Vcs-Git: git://anonscm.debian.org/pkg-voip/pjproject.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-voip/pjproject.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-voip/pjproject.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-voip/pjproject.git
 
 Package: libpjlib-util2
 Architecture: any
