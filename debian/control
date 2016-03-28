@@ -8,6 +8,7 @@ Uploaders: Jeremy Lainé <jeremy.laine@m4x.org>,
 Build-Depends: debhelper (>= 9),
  autotools-dev,
  python-dev,
+ d-shlibs,
  dh-python,
  dh-autoreconf,
  libspeex-dev, libspeexdsp-dev,
@@ -206,7 +207,7 @@ Package: libpjproject-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}, ${devlibs:Depends},
  libpjlib-util2 (= ${binary:Version}),
  libpjmedia-audiodev2 (= ${binary:Version}),
  libpjmedia-codec2 (= ${binary:Version}),
@@ -219,21 +220,8 @@ Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends},
  libpjsua2 (= ${binary:Version}),
  libpjsua2-2v5 (= ${binary:Version}),
  libpj2 (= ${binary:Version}),
- libspeex-dev, libspeexdsp-dev,
- portaudio19-dev,
- libgsm1-dev,
- libopencore-amrnb-dev,
- libopencore-amrwb-dev,
- libavcodec-dev,
- libavformat-dev,
- libavutil-dev,
- libswscale-dev,
  libx264-dev,
- libv4l-dev,
- libsdl2-dev,
- uuid-dev,
- libsrtp0-dev,
- libssl-dev
+
 Description: PJ Project - development headers
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
