@@ -1,3 +1,16 @@
+pjproject (2.4.5~dfsg-4) UNRELEASED; urgency=medium
+
+  * Fix avoid build-depending on libv4l-dev on the Hurd:
+    + Adapt symbols.
+    + Resolve libpjproject-dev dependencies related to linked libraries
+      during build.
+    + Build-depend on d-shlibs.
+  * Modernize Vcs-* field URLs:
+    + Use https protocol.
+    + Use cgit viewer.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 28 Mar 2016 18:55:41 +0200
+
 pjproject (2.4.5~dfsg-3) unstable; urgency=medium
 
   * Update symbois.
