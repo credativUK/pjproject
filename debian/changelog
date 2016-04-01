@@ -1,4 +1,4 @@
-pjproject (2.4.5~dfsg-4) UNRELEASED; urgency=medium
+pjproject (2.4.5~dfsg-4) unstable; urgency=medium
 
   * Fix avoid build-depending on libv4l-dev on the Hurd:
     + Adapt symbols.
@@ -8,8 +8,14 @@ pjproject (2.4.5~dfsg-4) UNRELEASED; urgency=medium
   * Modernize Vcs-* field URLs:
     + Use https protocol.
     + Use cgit viewer.
+  * Build-depend unversioned on debhelper: Needed version satisfied even
+    in oldstable.
+  * Add lintian override regarding debhelper 9.
+  * Declare compliance with Debian Policy 3.9.7.
+  * Update symbols file (affects only optional symbols).
+  * Fix stop have libpjproject-dev depend on libx264-dev: Seems unused.
 
- -- Jonas Smedegaard <dr@jones.dk>  Mon, 28 Mar 2016 18:55:41 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 01 Apr 2016 15:03:42 +0200
 
 pjproject (2.4.5~dfsg-3) unstable; urgency=medium
 
