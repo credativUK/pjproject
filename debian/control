@@ -220,8 +220,7 @@ Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}, ${devlibs:Depe
  libpjsip2 (= ${binary:Version}),
  libpjsua2 (= ${binary:Version}),
  libpjsua2-2v5 (= ${binary:Version}),
- libpj2 (= ${binary:Version}),
- libx264-dev
+ libpj2 (= ${binary:Version})
 Description: PJ Project - development headers
  PJSIP (a.k.a PJProject) is a multimedia communication library written
  in C language implementing standard based protocols such as SIP, SDP,
