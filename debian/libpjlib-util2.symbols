@@ -1,7 +1,6 @@
 # SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjlib-util.so.2 libpjlib-util2 #MINVER#
  arg_type@Base 2.2~svn.4723~dfsg
- (arch-endian=big)byteReverse@Base 2.4.5~dfsg
  pj_base64_decode@Base 2.1.0~ast20130801
  pj_base64_encode@Base 2.1.0~ast20130801
  pj_cis_add_alpha@Base 2.1.0~ast20130801
