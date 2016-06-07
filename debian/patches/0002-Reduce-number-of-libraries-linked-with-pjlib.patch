@@ -1,4 +1,4 @@
-From c19ac09a2637e0f32186d37a272c204c237f7070 Mon Sep 17 00:00:00 2001
+From 07bd3e90c8832e955b9779b3183ef8349e66661d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:42 +0200
 Subject: Reduce number of libraries linked with pjlib
@@ -12,10 +12,10 @@ libcrypto, libssl and libuuid, but only libpj needs them.
  3 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/aconfigure.ac b/aconfigure.ac
-index e86e27c..72446dd 100644
+index 0f0e201..214284d 100644
 --- a/aconfigure.ac
 +++ b/aconfigure.ac
-@@ -114,7 +114,8 @@ AC_CHECK_LIB(winmm,puts)
+@@ -113,7 +113,8 @@ AC_CHECK_LIB(winmm,puts)
  AC_CHECK_LIB(socket,puts)
  AC_CHECK_LIB(rt,puts)
  AC_CHECK_LIB(m,sin)
@@ -25,7 +25,7 @@ index e86e27c..72446dd 100644
  AC_CHECK_LIB(uuid,uuid_generate,[ac_has_uuid_lib=1])
  AC_SEARCH_LIBS(gethostbyname,nsl)
  
-@@ -1532,8 +1533,8 @@ AC_ARG_ENABLE(ssl,
+@@ -1618,8 +1619,8 @@ AC_ARG_ENABLE(ssl,
  		AC_SUBST(libssl_present)
  		AC_SUBST(libcrypto_present)
  		AC_CHECK_HEADER(openssl/ssl.h,[openssl_h_present=1])

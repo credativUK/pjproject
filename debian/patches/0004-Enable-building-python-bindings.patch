@@ -1,4 +1,4 @@
-From 7e0432730b897797d9cbef2e272670a7b76d44a6 Mon Sep 17 00:00:00 2001
+From 0fd2c8bedfaa6f3f9ba2f8e78987c85a1ab243c3 Mon Sep 17 00:00:00 2001
 From: Tzafrir Cohen <tzafrir@debian.org>
 Date: Thu, 30 Oct 2014 08:09:44 +0200
 Subject: Enable building python bindings

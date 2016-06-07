@@ -1,4 +1,4 @@
-From 14ef4deafe2cae51e2100a4897665c489476bafb Mon Sep 17 00:00:00 2001
+From 428ccbd291634ba43265c6ef66cc362876cae064 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:41 +0200
 Subject: Remove pointless linking with libasound
@@ -10,18 +10,21 @@ but it was not being used anywhere.
 
 Upstream says: this cannot be merged as-is.
 ---
- aconfigure.ac | 1 -
- 1 file changed, 1 deletion(-)
+ aconfigure.ac | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/aconfigure.ac b/aconfigure.ac
-index 179dfac..e86e27c 100644
+index 846a782..0f0e201 100644
 --- a/aconfigure.ac
 +++ b/aconfigure.ac
-@@ -654,7 +654,6 @@ else
- 	ac_pjmedia_snd=pa_unix
- 	AC_CHECK_HEADER(alsa/version.h,
- 			[AC_SUBST(ac_pa_use_alsa,1)
--			 LIBS="$LIBS -lasound"
- 			],
- 		        [AC_SUBST(ac_pa_use_alsa,0)])
+@@ -663,9 +663,7 @@ else
+ 	dnl # Check if ALSA is available
+ 	ac_pjmedia_snd=alsa
+ 	AC_SUBST(ac_pa_use_alsa,1)
+-	AC_CHECK_HEADER(alsa/version.h,
+-			[LIBS="$LIBS -lasound"],
+-		        [ac_pa_use_alsa=0])
++	AC_CHECK_HEADER(alsa/version.h, [], [ac_pa_use_alsa=0])
  	AC_MSG_RESULT([Checking sound device backend... unix])
+ 
+ 	dnl # Check if OSS is disabled

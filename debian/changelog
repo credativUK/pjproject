@@ -23,6 +23,7 @@ pjproject (2.4.5~dfsg-5) UNRELEASED; urgency=medium
     Tighten build-dependency on debhelper.
   * Drop import script (gbp import-orig clashes with git-dpm patches).
     Document in README.source how to import new upstream source.
+  * Unfuzz patch, and drop ones resolved upstream.
 
  -- Jonas Smedegaard <dr@jones.dk>  Tue, 07 Jun 2016 14:23:43 +0200
 
