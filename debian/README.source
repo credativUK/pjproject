@@ -12,6 +12,12 @@ Quick notes:
 
     debuild -I
 
+* To upgrade to newer upstream source, use:
+
+   uscan
+
+   git-dpm import-new-upstream --ptc --rebase ../new-stuff.orig.tar.gz
+
 * To update the patches in the packaging branch, use:
 
    git-dpm checkout-patched
