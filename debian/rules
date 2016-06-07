@@ -80,14 +80,6 @@ override_dh_auto_install:
 override_dh_shlibdeps:
 	dh_shlibdeps
 	d-devlibdeps \
-	  --override 's/libopencore-\(amr[nw]b\)[0-9]\+-dev/libopencore-\1-dev/' \
-	  --override 's/libSDL2-[0-9.-]\+-dev/libsdl2-dev/' \
-	  --override 's/lib\(avcodec\|avformat\|avutil\|swscale\)-ffmpeg[0-9]\+-dev/lib\1-dev/' \
-	  --override 's/libpj\(\|lib-util\|media\(\|-audiodev\|-codec\|-videodev\)\|nath\|sip\(\|-simple\|-ua\)\|sua\)2-dev/libpjproject-dev/' \
-	  --override 's/libportaudio2-dev/portaudio19-dev/' \
-	  --override 's/libspeexdsp1-dev/libspeexdsp-dev/' \
-	  --override 's/libv4l2-0-dev/libv4l-dev/' \
-	  --override 's/libsrtp0/libsrtp/' \
 	  debian/libpjproject-dev.substvars debian/lib*/usr/lib/*/lib*.so.*
 
 .PHONY: build
