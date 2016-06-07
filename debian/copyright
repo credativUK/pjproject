@@ -19,9 +19,8 @@ Files-Excluded:
  pjmedia/src/pjmedia-audiodev/s60_g729_bitstream.h
 
 Files: *
-Copyright:
- 2008-2011 Teluu Inc. (http://www.teluu.com)
- 2003-2008 Benny Prijono <benny@prijono.org>
+Copyright: 2003-2008, Benny Prijono <benny@prijono.org>
+  2008-2011, Teluu Inc. <http://www.teluu.com>
 License: GPL-2+
 Comment:
  The bulk of the code. The whole source code is often dual-licensed by
@@ -29,11 +28,11 @@ Comment:
  https://trac.pjsip.org/repos/wiki/PJSIP-Detail-License
 
 Files: debian/*
-Copyright: 2013 Tzafrir Cohen <tzafrir.cohen@xorcom.com>
+Copyright: 2013, Tzafrir Cohen <tzafrir.cohen@xorcom.com>
 License: GPL-2+
 
 Files: pjlib/src/pj/timer.c pjlib/include/pj/timer.h
-Copyright: 1993-2006 Douglas C. Schmidt <d.schmidt@vanderbilt.edu>
+Copyright: 1993-2006, Douglas C. Schmidt <d.schmidt@vanderbilt.edu>
 License: GPL-2+
 Comment:
  The PJLIB's timer heap is based (or more correctly, copied and modied)
@@ -67,9 +66,8 @@ License: public-domain
 
 Files:
  pjlib-util/src/pjlib-util/getopt.c
-Copyright:
- 1987,88,89,90,91,92,93,94,96,97 Free Software Foundation, Inc
- [modified later by] Mike Borella <mike_borella@mw.3com.com>
+Copyright: Mike Borella <mike_borella@mw.3com.com>
+  1987-1994,1996-1997, Free Software Foundation, Inc.
 License: LGPL-2+
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -89,7 +87,7 @@ Comment:
  removed by Upstream).
 
 Files: pjlib/src/pj/compat/longjmp_i386.S pjlib/src/pj/compat/setjmp_i386.S
-Copyright: 1995-2001 Free Software Foundation, Inc.
+Copyright: 1995-2001, Free Software Foundation, Inc.
 License: LGPL-2.1+
 
 Files: pjmedia/src/pjmedia/alaw_ulaw.c
@@ -120,7 +118,7 @@ Copyright: 1999-2002 A.L. Faber
 License: LGPL-2.1+
 
 Files: third_party/resample/*
-Copyright: 1994-2006 by Julius O. Smith III <jos@ccrma.stanford.edu>
+Copyright: 1994-2006, Julius O. Smith III <jos@ccrma.stanford.edu>
 License: LGPL-2.1
  The resample program is free software distributed in accordance
  with the Lesser GNU Public License (LGPL).  There is NO warranty; not
@@ -168,8 +166,8 @@ Comment:
 
 Files: third_party/gsm/*
 Copyright:
- 1992, 1993, 1994 by Jutta Degener and Carsten Bormann, Technische
- Universitaet Berlin
+ 1992-1994, Carsten Bormann, Technische Universitaet Berlin
+ 1992-1994, Jutta Degener, Technische Universitaet Berlin
 License: gsm
  Any use of this software is permitted provided that this notice is not
  removed and that neither the authors nor the Technische Universitaet Berlin
@@ -180,7 +178,7 @@ Comment:
  This software is not the copy of the library used in the Debian package.
 
 Files: third_party/speex/*
-Copyright: 2002-2008 Jean-Marc Valin
+Copyright: 2002-2008, Jean-Marc Valin
 License: BSD-3-clause-Xiph
 Comment:
  This software is not the copy of the library used in the Debian package.
@@ -190,7 +188,7 @@ Copyright: 2005 Analog Devices
 License: BSD-3-clause-Xiph
 
 Files: third_party/speex/symbian/config.h
-Copyright: 2003 Commonwealth Scientific and Industrial Research
+Copyright: 2003, Commonwealth Scientific and Industrial Research
 License: BSD-3-clause-CSIRO
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
@@ -209,7 +207,7 @@ License: BSD-3-clause-CSIRO
 
 Files: third_party/speex/libspeex/lsp_bfin.h
  third_party/speex/libspeex/quant_lsp_bfin.h
-Copyright: 2006 David Rowe
+Copyright: 2006, David Rowe
 License: BSD-3-clause-Xiph
 
 Files: third_party/speex/libspeex/kiss_fft.c
@@ -219,56 +217,57 @@ Copyright: 2003-2004, Mark Borgerding
 License: BSD-3-clause-Xiph
 
 Files: third_party/speex/libspeex/preprocess.c
-Copyright: 2004-2006 Epic Games
+Copyright: 2004-2006, Epic Games
 License: BSD-3-clause-Xiph
 
 Files: third_party/speex/libspeex/resample.c
-Copyright: 2008 Thorvald Natvig
+Copyright: 2008, Thorvald Natvig
 License: BSD-3-clause-Xiph
 
 Files: third_party/portaudio/*
-Copyright: 1999-2008 Ross Bencina and Phil Burk
+Copyright: 1999-2008, Ross Bencina and Phil Burk
 License: Expat
 Comment:
  This software is not the copy of the library used in the Debian package.
 
 Files: third_party/portaudio/src/hostapi/asihpi/pa_linux_asihpi.c
-Copyright:
- 2005,2006 Ludwig Schwardt
- 2003 Fred Gleason
+Copyright: 2003, Fred Gleason
+  2005,2006, Ludwig Schwardt
 License: Expat
 
 Files: third_party/portaudio/src/hostapi/jack/pa_jack.c
-Copyright:
- 2004 Arve Knudsen <aknuds-1@broadpark.no>
- 2004 Stefan Westerfeld <stefan@space.twc.de>
- 2002 Joshua Haberman <joshua@haberman.com>
- 1999-2002 Ross Bencina, Phil Burk
+Copyright: 1999-2002, Ross Bencina, Phil Burk
+  2002, Joshua Haberman <joshua@haberman.com>
+  2004, Arve Knudsen <aknuds-1@broadpark.no>
+  2004, Stefan Westerfeld <stefan@space.twc.de>
 License: Expat
 
 Files:
  third_party/portaudio/src/hostapi/dsound/pa_win_ds.c
  third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.c
  third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.h
-Copyright: 1999-2007 Ross Bencina, Phil Burk, Robert Marsanyi
+Copyright: 1999-2007, Robert Marsanyi
+  1999-2007, Ross Bencina
+  1999-2007, Phil Burk
 License: Expat
 
 Files:
  third_party/portaudio/src/os/win/pa_win_wdmks_utils.c
  third_party/portaudio/src/os/win/pa_win_wdmks_utils.h
-Copyright: 1999 - 2007 Andrew Baldwin, Ross Bencina
+Copyright: 1999-2007, Andrew Baldwin
+  1999-2007, Ross Bencina
 License: Expat
 
 Files: third_party/portaudio/include/pa_mac_core.h
-Copyright: 2005-2006 Bjorn Roche
+Copyright: 2005-2006, Bjorn Roche
 License: Expat
 
 Files: third_party/srtp/pjlib/srtp_err.c
-Copyright: 2003-2007 Benny Prijono <benny@prijono.org>
+Copyright: 2003-2007, Benny Prijono <benny@prijono.org>
 License: GPL-2+
 
 Files: pjsip-apps/src/pjsua/bb10/bar-descriptor.xml
-Copyright: 2011, 2012, 2013 Research In Motion Limited
+Copyright: 2011-2013, Research In Motion Limited
 License: Apache-2
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
