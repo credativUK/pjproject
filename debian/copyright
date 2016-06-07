@@ -19,28 +19,27 @@ Files-Excluded:
  pjmedia/src/pjmedia-audiodev/s60_g729_bitstream.h
 
 Files: *
-Copyright: 2003-2008, Benny Prijono <benny@prijono.org>
+Copyright:
+  1993-2006, Douglas C. Schmidt <d.schmidt@vanderbilt.edu>
+  2003-2008, Benny Prijono <benny@prijono.org>
+  2007-2009, Keystream AB
+  2007-2009, Konftel AB
   2008-2015, Teluu Inc. <http://www.teluu.com>
+  2010-2012, Regis Montoya (r3gis) <http://www.r3gis.fr>
+  2011 Dan Arrhenius <dan@keystream.se>
+License-Grant:
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the
+ Free Software Foundation; either version 2 of the License, or (at your
+ option) any later version.
 License: GPL-2+
 Comment:
- The bulk of the code. The whole source code is often dual-licensed by
- Upstream. See their clarifications regarding licensing at
- https://trac.pjsip.org/repos/wiki/PJSIP-Detail-License
+ Some files has additional alternative licensing ignored as irrelevant
+ for our redistribution.
 
 Files: debian/*
 Copyright: 2013, Tzafrir Cohen <tzafrir.cohen@xorcom.com>
 License: GPL-2+
-
-Files: pjlib/src/pj/timer.c pjlib/include/pj/timer.h
-Copyright: 1993-2006, Douglas C. Schmidt <d.schmidt@vanderbilt.edu>
-License: GPL-2+
-Comment:
- The PJLIB's timer heap is based (or more correctly, copied and modied)
- from ACE library by Douglas C. Schmidt.
- .
- You may use this file according to ACE open source terms or PJLIB open
- source terms. You can find the fine ACE library at:
-  http://www.cs.wustl.edu/~schmidt/ACE.html
 
 Files:
  pjlib-util/src/pjlib-util/md5.c pjlib-util/src/pjlib-util/crc32.c
@@ -262,10 +261,6 @@ Files: third_party/portaudio/include/pa_mac_core.h
 Copyright: 2005-2006, Bjorn Roche
 License: Expat
 
-Files: third_party/srtp/pjlib/srtp_err.c
-Copyright: 2003-2007, Benny Prijono <benny@prijono.org>
-License: GPL-2+
-
 Files: pjsip-apps/src/pjsua/bb10/bar-descriptor.xml
 Copyright: 2011-2013, Research In Motion Limited
 License: Apache-2
@@ -285,18 +280,7 @@ License: Apache-2
  /usr/share/common-licenses/Apache-2.0 .
 
 License: GPL-2+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- On Debian systems you should find a copy of GPL v. 2 on
- /usr/share/common-licenses/GPL-2 .
+License-Reference: /usr/share/common-licenses/GPL-2
 
 License: LGPL-2.1+
  This library is free software; you can redistribute it and/or
