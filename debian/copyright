@@ -222,42 +222,19 @@ Copyright: 2008, Thorvald Natvig
 License: BSD-3-clause-Xiph
 
 Files: third_party/portaudio/*
-Copyright: 1999-2008, Ross Bencina and Phil Burk
-License: Expat
-Comment:
- This software is not the copy of the library used in the Debian package.
-
-Files: third_party/portaudio/src/hostapi/asihpi/pa_linux_asihpi.c
-Copyright: 2003, Fred Gleason
-  2005,2006, Ludwig Schwardt
-License: Expat
-
-Files: third_party/portaudio/src/hostapi/jack/pa_jack.c
-Copyright: 1999-2002, Ross Bencina, Phil Burk
+Copyright: 1999-2007, Andrew Baldwin
+  1999-2007, Robert Marsanyi
+  1999-2008, Ross Bencina and Phil Burk
   2002, Joshua Haberman <joshua@haberman.com>
+  2003, Fred Gleason
   2004, Arve Knudsen <aknuds-1@broadpark.no>
   2004, Stefan Westerfeld <stefan@space.twc.de>
+  2005-2006, Bjorn Roche
+  2005-2006, Ludwig Schwardt
 License: Expat
-
-Files:
- third_party/portaudio/src/hostapi/dsound/pa_win_ds.c
- third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.c
- third_party/portaudio/src/hostapi/dsound/pa_win_ds_dynlink.h
-Copyright: 1999-2007, Robert Marsanyi
-  1999-2007, Ross Bencina
-  1999-2007, Phil Burk
-License: Expat
-
-Files:
- third_party/portaudio/src/os/win/pa_win_wdmks_utils.c
- third_party/portaudio/src/os/win/pa_win_wdmks_utils.h
-Copyright: 1999-2007, Andrew Baldwin
-  1999-2007, Ross Bencina
-License: Expat
-
-Files: third_party/portaudio/include/pa_mac_core.h
-Copyright: 2005-2006, Bjorn Roche
-License: Expat
+Comment:
+ This software is not the copy of the library used in the Debian
+ package.
 
 Files: pjsip-apps/src/pjsua/bb10/bar-descriptor.xml
 Copyright: 2011-2013, Research In Motion Limited
