@@ -81,6 +81,7 @@ override_dh_shlibdeps:
 	dh_shlibdeps
 	d-devlibdeps \
 	  --override 's/libopus0-dev/libopus-dev/' \
+	  --override 's/libvo-amrwbenc0-dev/libvo-amrwbenc-dev/' \
 	  debian/libpjproject-dev.substvars debian/lib*/usr/lib/*/lib*.so.*
 
 .PHONY: build
