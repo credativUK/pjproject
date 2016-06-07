@@ -620,12 +620,6 @@ ac_includes_default="\
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
-PJLIB_EXT
-PJLIB_UTIL_EXT
-PJMEDIA_EXT
-PJMEDIA_CODEC_EXT
-PJMEDIA_VIDEODEV_EXT
-PJNATH_EXT
 ac_main_obj
 ac_host
 ac_linux_poll
@@ -4219,7 +4213,7 @@ if test "x$ac_cv_lib_uuid_uuid_generate" = xyes; then :
 #define HAVE_LIBUUID 1
 _ACEOF
 
-  PJLIB_EXT="-luuid $PJLIB_EXT"
+  LIBS="-luuid $LIBS"
 
 fi
 
@@ -6108,6 +6102,8 @@ $as_echo "Checking sound device backend... null sound" >&6; }
 if test "x$ac_cv_header_alsa_version_h" = xyes; then :
   ac_pa_use_alsa=1
 
+			 LIBS="$LIBS -lasound"
+
 else
   ac_pa_use_alsa=0
 
@@ -6652,9 +6648,7 @@ $as_echo "not found" >&6; }
 			ac_sdl_cflags=`$SDL_CONFIG --cflags`
 			ac_sdl_cflags="-DPJMEDIA_VIDEO_DEV_HAS_SDL=1 $ac_sdl_cflags"
 			ac_sdl_ldflags=`$SDL_CONFIG --libs`
-			PJLIB_UTIL_EXT="$PJLIB_UTIL_EXT $ac_sdl_ldflags"
-			PJMEDIA_VIDEODEV_EXT="$PJMEDIA_VIDEODEV_EXT $ac_sdl_ldflags"
-			PJNATH_EXT="$PJNATH_EXT $ac_sdl_ldflags"
+			LIBS="$LIBS $ac_sdl_ldflags"
 		  else
 			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: Unsupported SDL version" >&5
 $as_echo "Unsupported SDL version" >&6; }
@@ -7057,11 +7051,7 @@ fi
 
 		fi
 
-		PJLIB_UTIL_EXT="$PJLIB_UTIL_EXT $ac_ffmpeg_ldflags"
-		PJMEDIA_EXT="$PJMEDIA_EXT $ac_ffmpeg_ldflags"
-		PJMEDIA_CODEC_EXT="$PJMEDIA_CODEC_EXT $ac_ffmpeg_ldflags"
-		# FIXME: only needs libavutil
-		PJNATH_EXT="$PJNATH_EXT $ac_ffmpeg_ldflags"
+		LIBS="$LIBS $ac_ffmpeg_ldflags"
 		export PKG_CONFIG_PATH=$SAVED_PKG_CONFIG_PATH
 
 
@@ -7119,9 +7109,7 @@ $as_echo "$ac_cv_lib_v4l2_v4l2_open" >&6; }
 if test "x$ac_cv_lib_v4l2_v4l2_open" = xyes; then :
   ac_v4l2_cflags="-DPJMEDIA_VIDEO_DEV_HAS_V4L2=1"
 			      ac_v4l2_ldflags="-lv4l2"
-			      PJLIB_UTIL_EXT="$PJLIB_UTIL_EXT -lv4l2"
-			      PJMEDIA_VIDEODEV_EXT="$PJMEDIA_VIDEODEV_EXT -lv4l2"
-			      PJNATH_EXT="$PJNATH_EXT -lv4l2"
+			      LIBS="$LIBS -lv4l2"
 
 
 fi
@@ -7719,7 +7707,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_ERR_load_BIO_strings" >&5
 $as_echo "$ac_cv_lib_crypto_ERR_load_BIO_strings" >&6; }
 if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
-  libcrypto_present=1 && PJLIB_EXT="-lcrypto $PJLIB_EXT"
+  libcrypto_present=1 && LIBS="-lcrypto $LIBS"
 fi
 
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_library_init in -lssl" >&5
@@ -7759,7 +7747,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ssl_SSL_library_init" >&5
 $as_echo "$ac_cv_lib_ssl_SSL_library_init" >&6; }
 if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
-  libssl_present=1 && PJLIB_EXT="-lssl $PJLIB_EXT"
+  libssl_present=1 && LIBS="-lssl $LIBS"
 fi
 
 		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
@@ -7891,7 +7879,6 @@ fi
 $as_echo "$ac_cv_lib_opencore_amrnb_Encoder_Interface_init" >&6; }
 if test "x$ac_cv_lib_opencore_amrnb_Encoder_Interface_init" = xyes; then :
   opencore_amrnb_present=1 && LIBS="$LIBS -lopencore-amrnb"
-  opencore_amrnb_present=1 && PJLIB_UTIL_EXT="$PJLIB_UTIL_EXT -lopencore-amrnb" && PJNATH_EXT="$PJNATH_EXT -lopencore-amrnb"
 fi
 
 		if test "x$opencore_amrnb_h_present" = "x1" -a "x$opencore_amrnb_present" = "x1"; then
@@ -7957,7 +7944,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_opencore_amrwb_D_IF_init" >&5
 $as_echo "$ac_cv_lib_opencore_amrwb_D_IF_init" >&6; }
 if test "x$ac_cv_lib_opencore_amrwb_D_IF_init" = xyes; then :
-  opencore_amrwb_dec_present=1 && PJLIB_UTIL_EXT="$PJLIB_UTIL_EXT -lopencore-amrnb" && PJNATH_EXT="$PJNATH_EXT -lopencore-amrwb"
+  opencore_amrwb_dec_present=1 && LIBS="$LIBS -lopencore-amrwb"
 fi
 
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for E_IF_init in -lvo-amrwbenc" >&5

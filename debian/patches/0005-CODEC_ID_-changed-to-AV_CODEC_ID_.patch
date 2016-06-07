@@ -1,4 +1,4 @@
-From 054f4253a2f2584d134997ed2fc5814226bd5a64 Mon Sep 17 00:00:00 2001
+From 0bba0c4fbb982e50ee2617817f9f7066d6b4e35c Mon Sep 17 00:00:00 2001
 From: Tzafrir Cohen <tzafrir@debian.org>
 Date: Thu, 30 Oct 2014 09:15:03 +0200
 Subject: CODEC_ID_* changed to AV_CODEC_ID_*

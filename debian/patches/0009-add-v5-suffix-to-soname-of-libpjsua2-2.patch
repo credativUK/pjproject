@@ -1,4 +1,4 @@
-From c9d40b9830767ef21a09eaa15272f9ca0ce08bfc Mon Sep 17 00:00:00 2001
+From 24cd21cda01347fb146bbc7c41bdbdc89db85439 Mon Sep 17 00:00:00 2001
 From: Tzafrir Cohen <tzafrir@debian.org>
 Date: Thu, 5 Nov 2015 04:55:06 +0200
 Subject: add 'v5' suffix to soname of libpjsua2-2

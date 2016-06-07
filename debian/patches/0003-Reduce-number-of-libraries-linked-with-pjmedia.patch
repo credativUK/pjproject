@@ -1,4 +1,4 @@
-From 8cc3c5d59c3f19f4038fad879381cd383b7cd659 Mon Sep 17 00:00:00 2001
+From 8ef6c96798adeab34a7b25aed593af66cba056c4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:43 +0200
 Subject: Reduce number of libraries linked with pjmedia

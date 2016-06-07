@@ -1,4 +1,4 @@
-From 93d80f235e2aaaf50d467b62fc111c866578ab23 Mon Sep 17 00:00:00 2001
+From 02756cc4c005bb5ef889c8057a62d6344ef3e0b1 Mon Sep 17 00:00:00 2001
 From: Tzafrir Cohen <tzafrir@debian.org>
 Date: Fri, 31 Oct 2014 23:14:49 +0200
 Subject: Remove video libs dependency for pj-utils and pjnath

@@ -1,4 +1,4 @@
-From 6dc6353dfc8009504c17367d9e6a14dba12d2d02 Mon Sep 17 00:00:00 2001
+From 9710e1e5a02bc36e5f44a1102d06d006b43c4f72 Mon Sep 17 00:00:00 2001
 From: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
 Date: Thu, 5 Nov 2015 05:01:32 +0200
 Subject: Replace deprecated FFmpeg API

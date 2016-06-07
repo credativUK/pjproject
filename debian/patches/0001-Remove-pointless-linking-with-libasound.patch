@@ -1,4 +1,4 @@
-From 47cd036dddae3bac96e78fef557b9859c44427b6 Mon Sep 17 00:00:00 2001
+From 14ef4deafe2cae51e2100a4897665c489476bafb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jeremy=20Lain=C3=A9?= <jeremy.laine@m4x.org>
 Date: Thu, 30 Oct 2014 08:09:41 +0200
 Subject: Remove pointless linking with libasound
@@ -10,23 +10,9 @@ but it was not being used anywhere.
 
 Upstream says: this cannot be merged as-is.
 ---
- aconfigure    | 2 --
  aconfigure.ac | 1 -
- 2 files changed, 3 deletions(-)
+ 1 file changed, 1 deletion(-)
 
-diff --git a/aconfigure b/aconfigure
-index 83fc5d7..42c5da6 100755
---- a/aconfigure
-+++ b/aconfigure
-@@ -6102,8 +6102,6 @@ $as_echo "Checking sound device backend... null sound" >&6; }
- if test "x$ac_cv_header_alsa_version_h" = xyes; then :
-   ac_pa_use_alsa=1
- 
--			 LIBS="$LIBS -lasound"
--
- else
-   ac_pa_use_alsa=0
- 
 diff --git a/aconfigure.ac b/aconfigure.ac
 index 179dfac..e86e27c 100644
 --- a/aconfigure.ac
