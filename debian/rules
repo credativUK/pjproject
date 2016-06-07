@@ -11,13 +11,12 @@ pybuild = pybuild -d pjsip-apps/src/python --pyver 2.7
 # existing directory 'build'. .PHONY doesn't seem to be good enough with
 # the wildcard target. Any better way?
 %:
-	dh $@ --with autotools_dev,python2,pkgkde_symbolshelper
+	dh $@ --with python2,pkgkde_symbolshelper
 build:
-	dh $@ --with autotools_dev,python2,pkgkde_symbolshelper
+	dh $@ --with python2,pkgkde_symbolshelper
 
-# In case it would be needed:
-#override_dh_autoreconf:
-#	dh_autoreconf autoconf aconfigure.ac >aconfigure
+override_dh_autoreconf:
+	dh_autoreconf autoconf aconfigure.ac >aconfigure
 
 override_dh_auto_clean:
 	# Handle the case where the source tree is not configured.

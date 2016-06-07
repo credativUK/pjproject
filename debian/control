@@ -7,7 +7,7 @@ Uploaders: Jeremy Lainé <jeremy.laine@m4x.org>,
  Tzafrir Cohen <tzafrir@debian.org>
 Build-Depends:
  autotools-dev,
- debhelper,
+ debhelper (>= 9.20160403~),
  dh-autoreconf,
  dh-python,
  d-shlibs,
