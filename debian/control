@@ -27,7 +27,6 @@ Build-Depends:
  libv4l-dev [!hurd-any],
  libvo-amrwbenc-dev,
  libwebrtc-audio-processing-dev,
- libx264-dev,
  pkg-kde-tools,
  portaudio19-dev,
  python-dev,
