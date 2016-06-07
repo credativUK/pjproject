@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjmedia.so.2 libpjmedia2 #MINVER#
  CodecID_to_pjmedia_format_id@Base 2.3~dfsg
  PixelFormat_to_pjmedia_format_id@Base 2.3~dfsg
@@ -12,6 +12,23 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_add_bandwidth_tias_in_sdp@Base 2.1.0~ast20130801
  pjmedia_add_rtpmap_for_static_pt@Base 2.1.0~ast20130801
  pjmedia_alaw2linear_tab@Base 2.1.0~ast20130801
+ pjmedia_aud_dev_cap_name@Base 2.5.1~dfsg
+ pjmedia_aud_dev_count@Base 2.5.1~dfsg
+ pjmedia_aud_dev_default_param@Base 2.5.1~dfsg
+ pjmedia_aud_dev_get_info@Base 2.5.1~dfsg
+ pjmedia_aud_dev_lookup@Base 2.5.1~dfsg
+ pjmedia_aud_dev_refresh@Base 2.5.1~dfsg
+ pjmedia_aud_driver_deinit@Base 2.5.1~dfsg
+ pjmedia_aud_driver_init@Base 2.5.1~dfsg
+ pjmedia_aud_param_get_cap@Base 2.5.1~dfsg
+ pjmedia_aud_param_set_cap@Base 2.5.1~dfsg
+ pjmedia_aud_stream_create@Base 2.5.1~dfsg
+ pjmedia_aud_stream_destroy@Base 2.5.1~dfsg
+ pjmedia_aud_stream_get_cap@Base 2.5.1~dfsg
+ pjmedia_aud_stream_get_param@Base 2.5.1~dfsg
+ pjmedia_aud_stream_set_cap@Base 2.5.1~dfsg
+ pjmedia_aud_stream_start@Base 2.5.1~dfsg
+ pjmedia_aud_stream_stop@Base 2.5.1~dfsg
  pjmedia_avi_player_create_streams@Base 2.3~dfsg
  pjmedia_avi_stream_get_len@Base 2.3~dfsg
  pjmedia_avi_stream_set_eof_cb@Base 2.3~dfsg
@@ -88,13 +105,15 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_echo_port_create@Base 2.1.0~ast20130801
  pjmedia_echo_reset@Base 2.1.0~ast20130801
  pjmedia_endpt_atexit@Base 2.1.0~ast20130801
- pjmedia_endpt_create@Base 2.1.0~ast20130801
+ pjmedia_endpt_create2@Base 2.5.1~dfsg
+#MISSING: 2.5.1~dfsg# pjmedia_endpt_create@Base 2.1.0~ast20130801
  pjmedia_endpt_create_audio_sdp@Base 2.1.0~ast20130801
  pjmedia_endpt_create_base_sdp@Base 2.1.0~ast20130801
  pjmedia_endpt_create_pool@Base 2.1.0~ast20130801
  pjmedia_endpt_create_sdp@Base 2.1.0~ast20130801
  pjmedia_endpt_create_video_sdp@Base 2.3~dfsg
- pjmedia_endpt_destroy@Base 2.1.0~ast20130801
+ pjmedia_endpt_destroy2@Base 2.5.1~dfsg
+#MISSING: 2.5.1~dfsg# pjmedia_endpt_destroy@Base 2.1.0~ast20130801
  pjmedia_endpt_dump@Base 2.1.0~ast20130801
  pjmedia_endpt_get_codec_mgr@Base 2.1.0~ast20130801
  pjmedia_endpt_get_flag@Base 2.1.0~ast20130801
@@ -119,6 +138,8 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_format_id_to_CodecID@Base 2.3~dfsg
  pjmedia_format_id_to_PixelFormat@Base 2.3~dfsg
  pjmedia_format_init_video@Base 2.3~dfsg
+ pjmedia_get_aud_subsys@Base 2.5.1~dfsg
+ pjmedia_get_vid_subsys@Base 2.5.1~dfsg
  pjmedia_get_video_format_info@Base 2.3~dfsg
  pjmedia_ice_create2@Base 2.1.0~ast20130801
  pjmedia_ice_create3@Base 2.1.0~ast20130801
@@ -281,10 +302,10 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_silence_det_set_fixed@Base 2.1.0~ast20130801
  pjmedia_silence_det_set_name@Base 2.1.0~ast20130801
  pjmedia_silence_det_set_params@Base 2.1.0~ast20130801
- pjmedia_snd_deinit@Base 2.1.0~ast20130801
- pjmedia_snd_get_dev_count@Base 2.1.0~ast20130801
+#MISSING: 2.5.1~dfsg# pjmedia_snd_deinit@Base 2.1.0~ast20130801
+#MISSING: 2.5.1~dfsg# pjmedia_snd_get_dev_count@Base 2.1.0~ast20130801
  pjmedia_snd_get_dev_info@Base 2.1.0~ast20130801
- pjmedia_snd_init@Base 2.1.0~ast20130801
+#MISSING: 2.5.1~dfsg# pjmedia_snd_init@Base 2.1.0~ast20130801
  pjmedia_snd_open@Base 2.1.0~ast20130801
  pjmedia_snd_open_player@Base 2.1.0~ast20130801
  pjmedia_snd_open_rec@Base 2.1.0~ast20130801
@@ -378,6 +399,28 @@ libpjmedia.so.2 libpjmedia2 #MINVER#
  pjmedia_vid_codec_mgr_unregister_factory@Base 2.3~dfsg
  pjmedia_vid_codec_param_clone@Base 2.3~dfsg
  pjmedia_vid_codec_parse_h263_fmtp@Base 2.3~dfsg
+ pjmedia_vid_dev_cap_name@Base 2.5.1~dfsg
+ pjmedia_vid_dev_count@Base 2.5.1~dfsg
+ pjmedia_vid_dev_default_param@Base 2.5.1~dfsg
+ pjmedia_vid_dev_get_global_index@Base 2.5.1~dfsg
+ pjmedia_vid_dev_get_info@Base 2.5.1~dfsg
+ pjmedia_vid_dev_get_local_index@Base 2.5.1~dfsg
+ pjmedia_vid_dev_lookup@Base 2.5.1~dfsg
+ pjmedia_vid_dev_param_get_cap@Base 2.5.1~dfsg
+ pjmedia_vid_dev_param_set_cap@Base 2.5.1~dfsg
+ pjmedia_vid_dev_refresh@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_create@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_destroy@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_get_cap@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_get_frame@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_get_param@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_is_running@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_put_frame@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_set_cap@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_start@Base 2.5.1~dfsg
+ pjmedia_vid_dev_stream_stop@Base 2.5.1~dfsg
+ pjmedia_vid_driver_deinit@Base 2.5.1~dfsg
+ pjmedia_vid_driver_init@Base 2.5.1~dfsg
  pjmedia_vid_port_connect@Base 2.3~dfsg
  pjmedia_vid_port_create@Base 2.3~dfsg
  pjmedia_vid_port_destroy@Base 2.3~dfsg

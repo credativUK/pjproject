@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64 hppa powerpc s390x
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjlib-util.so.2 libpjlib-util2 #MINVER#
  arg_type@Base 2.2~svn.4723~dfsg
  (arch-endian=big)byteReverse@Base 2.4.5~dfsg

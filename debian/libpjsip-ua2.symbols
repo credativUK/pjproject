@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjsip-ua.so.2 libpjsip-ua2 #MINVER#
  pjsip_100rel_attach@Base 2.1.0~ast20130801
  pjsip_100rel_create_prack@Base 2.1.0~ast20130801

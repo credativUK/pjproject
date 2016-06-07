@@ -1,6 +1,7 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjsip.so.2 libpjsip2 #MINVER#
  PJSIP_SYN_ERR_EXCEPTION@Base 2.1.0~ast20130801
+ create_uas_dialog@Base 2.5.1~dfsg
  deinit_sip_parser@Base 2.1.0~ast20130801
  init_sip_parser@Base 2.1.0~ast20130801
  mod_stateful_util@Base 2.1.0~ast20130801
@@ -70,7 +71,8 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_dlg_create_request@Base 2.1.0~ast20130801
  pjsip_dlg_create_response@Base 2.1.0~ast20130801
  pjsip_dlg_create_uac@Base 2.1.0~ast20130801
- pjsip_dlg_create_uas@Base 2.1.0~ast20130801
+#MISSING: 2.5.1~dfsg# pjsip_dlg_create_uas@Base 2.1.0~ast20130801
+ pjsip_dlg_create_uas_and_inc_lock@Base 2.5.1~dfsg
  pjsip_dlg_dec_lock@Base 2.1.0~ast20130801
  pjsip_dlg_dec_session@Base 2.1.0~ast20130801
  pjsip_dlg_fork@Base 2.1.0~ast20130801
@@ -362,9 +364,11 @@ libpjsip.so.2 libpjsip2 #MINVER#
  pjsip_ua_unregister_dlg@Base 2.1.0~ast20130801
  pjsip_udp_transport_attach2@Base 2.1.0~ast20130801
  pjsip_udp_transport_attach@Base 2.1.0~ast20130801
+ pjsip_udp_transport_cfg_default@Base 2.5.1~dfsg
  pjsip_udp_transport_get_socket@Base 2.1.0~ast20130801
  pjsip_udp_transport_pause@Base 2.1.0~ast20130801
  pjsip_udp_transport_restart@Base 2.1.0~ast20130801
+ pjsip_udp_transport_start2@Base 2.5.1~dfsg
  pjsip_udp_transport_start6@Base 2.1.0~ast20130801
  pjsip_udp_transport_start@Base 2.1.0~ast20130801
  pjsip_unsupported_hdr_create@Base 2.1.0~ast20130801

@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpj.so.2 libpj2 #MINVER#
  PJ_AF_INET6@Base 2.1.0~ast20130801
  PJ_AF_INET@Base 2.1.0~ast20130801
@@ -197,6 +197,7 @@ libpj.so.2 libpj2 #MINVER#
  pj_ioqueue_set_default_concurrency@Base 2.1.0~ast20130801
  pj_ioqueue_set_lock@Base 2.1.0~ast20130801
  pj_ioqueue_set_user_data@Base 2.1.0~ast20130801
+ pj_ioqueue_trylock_key@Base 2.5.1~dfsg
  pj_ioqueue_unlock_key@Base 2.1.0~ast20130801
  pj_ioqueue_unregister@Base 2.1.0~ast20130801
  pj_leave_critical_section@Base 2.1.0~ast20130801
@@ -359,12 +360,14 @@ libpj.so.2 libpj2 #MINVER#
  pj_ssl_sock_create@Base 2.1.0~ast20130801
  pj_ssl_sock_get_info@Base 2.1.0~ast20130801
  pj_ssl_sock_get_user_data@Base 2.1.0~ast20130801
+ pj_ssl_sock_param_copy@Base 2.5.1~dfsg
  pj_ssl_sock_param_default@Base 2.1.0~ast20130801
  pj_ssl_sock_renegotiate@Base 2.1.0~ast20130801
  pj_ssl_sock_send@Base 2.1.0~ast20130801
  pj_ssl_sock_sendto@Base 2.1.0~ast20130801
  pj_ssl_sock_set_certificate@Base 2.1.0~ast20130801
  pj_ssl_sock_set_user_data@Base 2.1.0~ast20130801
+ pj_ssl_sock_start_accept2@Base 2.5.1~dfsg
  pj_ssl_sock_start_accept@Base 2.1.0~ast20130801
  pj_ssl_sock_start_connect@Base 2.1.0~ast20130801
  pj_ssl_sock_start_read2@Base 2.1.0~ast20130801

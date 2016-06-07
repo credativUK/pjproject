@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjsua.so.2 libpjsua2 #MINVER#
  acquire_call@Base 2.1.0~ast20130801
  call_media_on_event@Base 2.1.0~ast20130801
@@ -144,6 +144,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_init_tpselector@Base 2.1.0~ast20130801
  pjsua_logging_config_default@Base 2.1.0~ast20130801
  pjsua_logging_config_dup@Base 2.1.0~ast20130801
+ pjsua_media_acc_is_using_stun@Base 2.5.1~dfsg
  pjsua_media_apply_xml_control@Base 2.1.0~ast20130801
  pjsua_media_channel_create_sdp@Base 2.1.0~ast20130801
  pjsua_media_channel_deinit@Base 2.1.0~ast20130801
@@ -191,9 +192,11 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_set_msg_route_set@Base 2.1.0~ast20130801
  pjsua_set_no_snd_dev@Base 2.1.0~ast20130801
  pjsua_set_null_snd_dev@Base 2.1.0~ast20130801
+ pjsua_set_snd_dev2@Base 2.5.1~dfsg
  pjsua_set_snd_dev@Base 2.1.0~ast20130801
  pjsua_set_state@Base 2.1.0~ast20130801
  pjsua_sip_acc_is_using_stun@Base 2.1.0~ast20130801
+ pjsua_snd_dev_param_default@Base 2.5.1~dfsg
  pjsua_snd_get_setting@Base 2.1.0~ast20130801
  pjsua_snd_is_active@Base 2.1.0~ast20130801
  pjsua_snd_set_setting@Base 2.1.0~ast20130801
@@ -209,6 +212,7 @@ libpjsua.so.2 libpjsua2 #MINVER#
  pjsua_transport_set_enable@Base 2.1.0~ast20130801
  pjsua_turn_config_dup@Base 2.1.0~ast20130801
  pjsua_turn_config_from_media_config@Base 2.1.0~ast20130801
+ pjsua_update_stun_servers@Base 2.5.1~dfsg
  pjsua_var@Base 2.1.0~ast20130801
  pjsua_verify_sip_url@Base 2.1.0~ast20130801
  pjsua_verify_url@Base 2.1.0~ast20130801

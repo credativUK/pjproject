@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg alpha amd64 arm64 armel armhf hppa i386 kfreebsd-amd64 kfreebsd-i386 mips64el mipsel powerpc ppc64 ppc64el s390x sh4
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN10PendingLog7executeEb@Base 2.4.5~dfsg
  _ZN10PendingLogD0Ev@Base 2.4.5~dfsg
@@ -149,6 +149,8 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj13TransportInfo6fromPjERK20pjsua_transport_info@Base 2.4.5~dfsg
  _ZN2pj13TsxStateEventD1Ev@Base 2.4.5~dfsg
  _ZN2pj13TsxStateEventD2Ev@Base 2.4.5~dfsg
+ _ZN2pj13VidCodecParam12setCodecFmtpERK18pjmedia_codec_fmtpRSt6vectorINS_9CodecFmtpESaIS5_EE@Base 2.5.1~dfsg
+ _ZN2pj13VidCodecParam6fromPjERK23pjmedia_vid_codec_param@Base 2.5.1~dfsg
  _ZN2pj13VidDevManager11getDevCountEv@Base 2.4.5~dfsg
  _ZN2pj13VidDevManager11refreshDevsEv@Base 2.4.5~dfsg
  _ZN2pj13VidDevManager13setInputScaleEiRKNS_9MediaSizeEb@Base 2.4.5~dfsg
@@ -250,6 +252,7 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj4Call12xferReplacesERKS0_RKNS_11CallOpParamE@Base 2.4.5~dfsg
  _ZN2pj4Call13getRemNatTypeEv@Base 2.4.5~dfsg
  _ZN2pj4Call13onCallRxOfferERNS_18OnCallRxOfferParamE@Base 2.4.5~dfsg
+ _ZN2pj4Call13onCallTxOfferERNS_18OnCallTxOfferParamE@Base 2.5.1~dfsg
  _ZN2pj4Call14onCallReplacedERNS_19OnCallReplacedParamE@Base 2.4.5~dfsg
  _ZN2pj4Call14onCallTsxStateERNS_19OnCallTsxStateParamE@Base 2.4.5~dfsg
  _ZN2pj4Call15onStreamCreatedERNS_20OnStreamCreatedParamE@Base 2.4.5~dfsg
@@ -370,6 +373,7 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj8Endpoint16onTransportStateERKNS_21OnTransportStateParamE@Base 2.4.5~dfsg
  _ZN2pj8Endpoint16on_call_replacedEii@Base 2.4.5~dfsg
  _ZN2pj8Endpoint16on_call_rx_offerEiPK19pjmedia_sdp_sessionPvP17pjsip_status_codeP18pjsua_call_setting@Base 2.4.5~dfsg
+ _ZN2pj8Endpoint16on_call_tx_offerEiPvP18pjsua_call_setting@Base 2.5.1~dfsg
  _ZN2pj8Endpoint16on_incoming_callEiiP13pjsip_rx_data@Base 2.4.5~dfsg
  _ZN2pj8Endpoint16on_pager_status2EiPK8pj_str_tS3_Pv17pjsip_status_codeS3_P13pjsip_tx_dataP13pjsip_rx_datai@Base 2.4.5~dfsg
  _ZN2pj8Endpoint16transportGetInfoEi@Base 2.4.5~dfsg
@@ -383,8 +387,9 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj8Endpoint18on_call_redirectedEiPK9pjsip_uriPK11pjsip_event@Base 2.4.5~dfsg
  _ZN2pj8Endpoint18on_transport_stateEP15pjsip_transport21pjsip_transport_statePK26pjsip_transport_state_info@Base 2.4.5~dfsg
  _ZN2pj8Endpoint18performPendingJobsEv@Base 2.4.5~dfsg
+ _ZN2pj8Endpoint18setVideoCodecParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_13VidCodecParamE@Base 2.5.1~dfsg
  _ZN2pj8Endpoint18transportSetEnableEib@Base 2.4.5~dfsg
- _ZN2pj8Endpoint18videoCodecSetParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPv@Base 2.4.5~dfsg
+#MISSING: 2.5.1~dfsg# _ZN2pj8Endpoint18videoCodecSetParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPv@Base 2.4.5~dfsg
  _ZN2pj8Endpoint19natCheckStunServersERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEbPv@Base 2.4.5~dfsg
  _ZN2pj8Endpoint19on_call_media_eventEijP13pjmedia_event@Base 2.4.5~dfsg
  _ZN2pj8Endpoint19on_call_media_stateEi@Base 2.4.5~dfsg
@@ -392,11 +397,14 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj8Endpoint19on_stream_destroyedEiP14pjmedia_streamj@Base 2.4.5~dfsg
  _ZN2pj8Endpoint19updateCodecInfoListEP16pjsua_codec_infojRSt6vectorIPNS_9CodecInfoESaIS5_EE@Base 2.4.5~dfsg
  _ZN2pj8Endpoint20libStopWorkerThreadsEv@Base 2.4.5~dfsg
+ _ZN2pj8Endpoint20natUpdateStunServersERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEb@Base 2.5.1~dfsg
+ _ZN2pj8Endpoint20resetVideoCodecParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@Base 2.5.1~dfsg
  _ZN2pj8Endpoint21libIsThreadRegisteredEv@Base 2.4.5~dfsg
  _ZN2pj8Endpoint21on_incoming_subscribeEiP14pjsua_srv_presiPK8pj_str_tP13pjsip_rx_dataP17pjsip_status_codePS3_P14pjsua_msg_data@Base 2.4.5~dfsg
  _ZN2pj8Endpoint21videoCodecSetPriorityERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEh@Base 2.4.5~dfsg
  _ZN2pj8Endpoint22onNatDetectionCompleteERKNS_27OnNatDetectionCompleteParamE@Base 2.4.5~dfsg
  _ZN2pj8Endpoint23on_call_transfer_statusEiiPK8pj_str_tiPi@Base 2.4.5~dfsg
+ _ZN2pj8Endpoint24on_acc_find_for_incomingEPK13pjsip_rx_dataPi@Base 2.5.1~dfsg
  _ZN2pj8Endpoint24on_call_replace_request2EiP13pjsip_rx_dataPiP8pj_str_tP18pjsua_call_setting@Base 2.4.5~dfsg
  _ZN2pj8Endpoint25natCancelCheckStunServersEPvb@Base 2.4.5~dfsg
  _ZN2pj8Endpoint25on_call_transfer_request2EiPK8pj_str_tP17pjsip_status_codeP18pjsua_call_setting@Base 2.4.5~dfsg
@@ -437,6 +445,8 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZN2pj9BuddyInfo6fromPjERK16pjsua_buddy_info@Base 2.4.5~dfsg
  _ZN2pj9BuddyInfoD1Ev@Base 2.4.5~dfsg
  _ZN2pj9BuddyInfoD2Ev@Base 2.4.5~dfsg
+ _ZN2pj9CodecFmtpD1Ev@Base 2.5.1~dfsg
+ _ZN2pj9CodecFmtpD2Ev@Base 2.5.1~dfsg
  _ZN2pj9CodecInfo6fromPjERK16pjsua_codec_info@Base 2.4.5~dfsg
  _ZN2pj9JbufState6fromPjERK16pjmedia_jb_state@Base 2.4.5~dfsg
  _ZN2pj9LogConfig10readObjectERKNS_13ContainerNodeE@Base 2.4.5~dfsg
@@ -493,6 +503,7 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZNK2pj13AudDevManager13getCaptureDevEv@Base 2.4.5~dfsg
  _ZNK2pj13AudDevManager13getInputRouteEv@Base 2.4.5~dfsg
  _ZNK2pj13AudDevManager13setCaptureDevEi@Base 2.4.5~dfsg
+ _ZNK2pj13AudDevManager13setSndDevModeEj@Base 2.5.1~dfsg
  _ZNK2pj13AudDevManager14getInputSignalEv@Base 2.4.5~dfsg
  _ZNK2pj13AudDevManager14getInputVolumeEv@Base 2.4.5~dfsg
  _ZNK2pj13AudDevManager14getOutputRouteEv@Base 2.4.5~dfsg
@@ -520,6 +531,8 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZNK2pj13ContainerNode9readArrayERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@Base 2.4.5~dfsg
  _ZNK2pj13ToneGenerator11getDigitMapEv@Base 2.4.5~dfsg
  _ZNK2pj13ToneGenerator6isBusyEv@Base 2.4.5~dfsg
+ _ZNK2pj13VidCodecParam12getCodecFmtpERKSt6vectorINS_9CodecFmtpESaIS2_EER18pjmedia_codec_fmtp@Base 2.5.1~dfsg
+ _ZNK2pj13VidCodecParam4toPjEv@Base 2.5.1~dfsg
  _ZNK2pj13VidDevManager10getDevInfoEi@Base 2.4.5~dfsg
  _ZNK2pj13VidDevManager13getInputScaleEi@Base 2.4.5~dfsg
  _ZNK2pj13VidDevManager15isCaptureActiveEi@Base 2.4.5~dfsg
@@ -581,7 +594,8 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  _ZNK2pj8Endpoint13mediaMaxPortsEv@Base 2.4.5~dfsg
  _ZNK2pj8Endpoint14mediaEnumPortsEv@Base 2.4.5~dfsg
  _ZNK2pj8Endpoint16mediaActivePortsEv@Base 2.4.5~dfsg
- _ZNK2pj8Endpoint18videoCodecGetParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@Base 2.4.5~dfsg
+ _ZNK2pj8Endpoint18getVideoCodecParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@Base 2.5.1~dfsg
+#MISSING: 2.5.1~dfsg# _ZNK2pj8Endpoint18videoCodecGetParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@Base 2.4.5~dfsg
  _ZNK2pj8EpConfig11writeObjectERNS_13ContainerNodeE@Base 2.4.5~dfsg
  _ZNK2pj8UaConfig11writeObjectERNS_13ContainerNodeE@Base 2.4.5~dfsg
  _ZNK2pj8UaConfig4toPjEv@Base 2.4.5~dfsg
@@ -595,6 +609,9 @@ libpjsua2.so.2v5 libpjsua2-2v5 #MINVER#
  (optional=templinst)_ZNSt6vectorIN2pj13CallMediaInfoESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  (optional=templinst)_ZNSt6vectorIN2pj16SipMultipartPartESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  (optional=templinst)_ZNSt6vectorIN2pj17ToneDigitMapDigitESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
+ (optional=templinst)_ZNSt6vectorIN2pj9CodecFmtpESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.5.1~dfsg
+ (optional=templinst)_ZNSt6vectorIN2pj9CodecFmtpESaIS1_EED1Ev@Base 2.5.1~dfsg
+ (optional=templinst)_ZNSt6vectorIN2pj9CodecFmtpESaIS1_EED2Ev@Base 2.5.1~dfsg
  (optional=templinst)_ZNSt6vectorIN2pj9SipHeaderESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_@Base 2.4.5~dfsg
  (subst|optional=templinst)_ZNSt6vectorIN2pj9SipHeaderESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EE{size_t}RKS1_@Base 2.4.5~dfsg
  (optional=templinst)_ZNSt6vectorIN2pj9SipHeaderESaIS1_EED1Ev@Base 2.4.5~dfsg

@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 2.4.5~dfsg amd64
+# SymbolsHelper-Confirmed: 2.5.1~dfsg amd64
 libpjmedia-codec.so.2 libpjmedia-codec2 #MINVER#
  g722_dec_decode@Base 2.1.0~ast20130801
  g722_dec_deinit@Base 2.1.0~ast20130801
@@ -51,6 +51,10 @@ libpjmedia-codec.so.2 libpjmedia-codec2 #MINVER#
  pjmedia_codec_opencore_amrnb_init@Base 2.3~dfsg
  pjmedia_codec_opencore_amrnb_set_config@Base 2.3~dfsg
  pjmedia_codec_opencore_amrwb_set_config@Base 2.3~dfsg
+ pjmedia_codec_opus_deinit@Base 2.5.1~dfsg
+ pjmedia_codec_opus_get_config@Base 2.5.1~dfsg
+ pjmedia_codec_opus_init@Base 2.5.1~dfsg
+ pjmedia_codec_opus_set_default_param@Base 2.5.1~dfsg
  pjmedia_codec_register_audio_codecs@Base 2.1.0~ast20130801
  pjmedia_codec_speex_deinit@Base 2.1.0~ast20130801
  pjmedia_codec_speex_init@Base 2.1.0~ast20130801
