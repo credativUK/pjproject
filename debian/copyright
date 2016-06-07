@@ -20,7 +20,7 @@ Files-Excluded:
 
 Files: *
 Copyright: 2003-2008, Benny Prijono <benny@prijono.org>
-  2008-2011, Teluu Inc. <http://www.teluu.com>
+  2008-2015, Teluu Inc. <http://www.teluu.com>
 License: GPL-2+
 Comment:
  The bulk of the code. The whole source code is often dual-licensed by
