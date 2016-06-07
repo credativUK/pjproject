@@ -25,6 +25,7 @@ Build-Depends:
  libssl-dev,
  libswscale-dev,
  libv4l-dev [!hurd-any],
+ libvo-amrwbenc-dev,
  libwebrtc-audio-processing-dev,
  libx264-dev,
  pkg-kde-tools,
