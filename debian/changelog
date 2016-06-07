@@ -1,3 +1,14 @@
+pjproject (2.5.1~dfsg-2) unstable; urgency=medium
+
+  * Build-depend on libvo-amrwbenc-dev.
+  * Declare compliance with Debian Policy 3.9.8.
+  * Stop build-depend on unused libx264-dev.
+  * Add d-shlibdev override for libvo-amrwbenc.
+  * Add lintian override regarding license in License-Reference field.
+    See bug#786450.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 07 Jun 2016 22:46:25 +0200
+
 pjproject (2.5.1~dfsg-1) unstable; urgency=medium
 
   [ upstream ]
