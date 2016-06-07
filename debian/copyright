@@ -238,21 +238,11 @@ Comment:
 
 Files: pjsip-apps/src/pjsua/bb10/bar-descriptor.xml
 Copyright: 2011-2013, Research In Motion Limited
+License-Grant:
+ Licensed under the Apache License, Version 2.0 (the "License"); you may
+ not use this file except in compliance with the License. You may obtain
+ a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 License: Apache-2
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- .
- http://www.apache.org/licenses/LICENSE-2.0
- .
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- .
- On Debian systems you should find a copy of Apache 2 license on
- /usr/share/common-licenses/Apache-2.0 .
 
 License: GPL-2+
 License-Reference: /usr/share/common-licenses/GPL-2
@@ -319,3 +309,5 @@ License: BSD-3-clause-Xiph
  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+License: Apache-2
+License-Reference: /usr/share/common-licenses/Apache-2.0
