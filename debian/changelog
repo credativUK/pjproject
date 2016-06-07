@@ -1,10 +1,13 @@
-pjproject (2.5.1~dfsg-1) UNRELEASED; urgency=medium
+pjproject (2.5.1~dfsg-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release(s).
 
   [ Jonas Smedegaard ]
   * Update copyright info:
     + Normalize and sort copyright holders.
     + Fix use double-space as copyright-holder delimiter.
-    + Extend coverage for main author to include recent year.
+    + Extend coverage for main author to include recent years.
     + Use License-Grant and License-Reference fields for GPL license.
       Thanks to Ben Finney.
     + Merge Files sections with identical license-grant.
@@ -24,9 +27,13 @@ pjproject (2.5.1~dfsg-1) UNRELEASED; urgency=medium
   * Drop import script (gbp import-orig clashes with git-dpm patches).
     Document in README.source how to import new upstream source.
   * Unfuzz patch, and drop ones resolved upstream.
-  * new upstream version
+  * Build-depend on libopus-dev libwebrtc-audio-processing-dev.
+  * Simplify d-shlibdeps call and instead tighten build-dependency on
+    d-shlibs.
+  * Update symbols files.
+  * Add d-shlibdev override for libopus.
 
- -- Jonas Smedegaard <dr@jones.dk>  Tue, 07 Jun 2016 16:36:37 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 07 Jun 2016 18:59:26 +0200
 
 pjproject (2.4.5~dfsg-4) unstable; urgency=medium
 
