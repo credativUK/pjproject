@@ -4,4 +4,3 @@
 0004-Enable-building-python-bindings.patch
 0005-Remove-video-libs-dependency-for-pj-utils-and-pjnath.patch
 0006-Reduce-linkage-of-unused-libraries.patch
-0007-add-v5-suffix-to-soname-of-libpjsua2-2.patch
