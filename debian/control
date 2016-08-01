@@ -10,7 +10,7 @@ Build-Depends:
  debhelper,
  dh-autoreconf,
  dh-python,
- d-shlibs (>= 0.71~),
+ d-shlibs,
  libavcodec-dev,
  libavdevice-dev,
  libavformat-dev,
