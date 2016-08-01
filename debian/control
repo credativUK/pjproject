@@ -176,11 +176,9 @@ Description: PJ Project - Basic VoIP client library
  .
  This package includes a framework for a VoIP client (pjsua)
 
-Package: libpjsua2-2v5
+Package: libpjsua2-2
 Architecture: any
 Multi-Arch: same
-Breaks: libpjsua2-2
-Replaces: libpjsua2-2
 Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
 Description: PJ Project - Basic VoIP client library
  PJSIP (a.k.a PJProject) is a multimedia communication library written
